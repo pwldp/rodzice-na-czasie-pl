@@ -1,0 +1,75 @@
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_kids').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj dziecko</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_kids" style="display: none;">
+        <form ng-submit="saveKid(kidform)" name="kidform" class="form_add_kid">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wprowadź dane dziecka:</div>
+            <p><input type="text" class="input_text" placeholder="Imię" ng-model="kidform.kidFirstName" required oninvalid="this.setCustomValidity('Wprowadź poprawne imię!')" /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko" ng-model="kidform.kidLastName" required oninvalid="this.setCustomValidity('Wprowadź poprawne nazwisko!')" /></p>
+            <p><div class="selectstyled"><select ng-model="kidform.kidGender" data-placeholder="Płeć" id="kid_form_genre_select"><option value="" disabled style="display: none;">Płeć</option><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+            <p><input type="text" class="input_text" placeholder="Data urodzenia" ng-model="kidform.kidBornDate" id="kid_born_date" my-datepicker required oninvalid="this.setCustomValidity('Wprowadź poprawną datę urodzenia!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+            <!--<p><input type="text" class="input_text" placeholder="Telefon" ng-model="kidform.kidPhone" id="f_kid_phone" /></p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidform.kidEmail"  /></p>
+            <p><input type="text" class="input_text" placeholder="Kod pocztowy" ng-model="kidform.kidZipcode" id="f_kid_zipcode" /></p>
+            <div id="kid-fine-uploader"></div>-->
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+<!--<br/><br/><br/><br/>
+<tt>kidFirstName = {{kidform.kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidform.kidLastName}}</tt><br>
+<tt>kidSex = {{kidform.kidGender}}</tt><br>
+<tt>kidBornDate = {{kidform.kidBornDate}}</tt><br>
+<tt>kidform.input.$valid = {{kidform.input.$valid}}</tt><br>
+<tt>kidform.input.$error = {{kidform.input.$error}}</tt><br>
+<tt>kidform.$valid = {{kidform.$valid}}</tt><br>
+<tt>kidform.$error.required = {{!!kidform.$error.required}}</tt><br>-->
+        </form>
+
+
+    </div>
+
+
+    <div class="kid_card" ng:repeat="kid in kids">
+        <div class="kid_card_inner">
+            <!--<div class="kid_card_image"><img src="/images/{{kid.avatar}}" width="60" align="left" /></div>-->
+            <div class="kid_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="kid_card_info"><span class="kid_name">{{kid.first_name}} {{kid.last_name}}</span><br/><br/><span class="kid_age">lat: {{kid.age}}</span></div>
+            <div><br/><span class="kid_class">Aktualna klasa:<br/>
+                <b ng-repeat="active_class in kid.active_classes"><a class="bottom_box_options_icons font_link font14" title="Pokaż szczegóły klasy {{active_class.class_name}}" ng-href="/schoolClassDetails/{{active_class.school_id}}/{{active_class.class_id}}" class="bold">{{active_class.class_name}}</a>, </b>
+                <b ng-show="kid.active_classes.length == 0" class="font_link font14">&nbsp;&nbsp;&nbsp;</b>
+            </span></div>
+        </div>
+        <div class="kid_card_inner">
+            <div class="kid_pie_graph" id="kid_pie_chart{{kid.id}}"></div>
+            <div class="kid_graph">
+                <span class="kid_blue_info" id="kid_graph_info{{kid.id}}">{{kid.stats_timetable}}</span><br/>godzin tygodniowo na zajęciach szkolnych
+            </div>
+        </div>
+        <div class="kid_card_inner" id="kid_stats_timetable_empty{{kid.id}}" style="display: none; height: 50px;">
+            <span class="font_grey">Wypełnij plan lekcji, aby mieć podgląd dodatkowych informacji</span><br/>&nbsp;
+        </div>
+        <div class="kid_card_inner" id="kid_stats_timetable_filled{{kid.id}}" style="display: none; height: 50px;">
+            Teraz w szkole:&nbsp;<span class="kid_blue_info font14" id="kid_now_in_school_info1{{kid.id}}"></span><br/>
+            <!--{{kid.first_name}} kończy dziś naukę o&nbsp;&nbsp;<span class="kid_blue_info font14" id="kid_now_in_school_info2{{kid.id}}">{{kid.end_class_today}}</span>-->
+        </div>
+        <div class="kid_card_inner bottom_box_options">
+            <div class="bottom_box_options_icons" title="Edytuj dane"><a ng-href="/kidsEdit/{{kid.id}}"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" /></a></div>
+            <div class="bottom_box_options_icons" title="Dodaj kolejnego opiekuna do dziecka"><a ng-href="/kidsSecondParent/{{kid.id}}"><img src="/images/Metro_Icons/System_Icons/Contacts_add_parent_32x32.png" /></a></div>
+            <div class="bottom_box_options_icons" title="Pokaż klasę dziecka" ng-hide="kid.first_active_class.school_id == undefined"><a ng-href="/schoolClassDetails/{{kid.first_active_class.school_id}}/{{kid.first_active_class.class_id}}"><img src="/images/Metro_Icons/Folders_OS/Libraries_32x32.png" /></a></div>
+            <div class="bottom_box_options_icons" title="Wybierz placówkę dla dziecka" ng-show="kid.first_active_class.school_id == undefined"><a ng-href="/schools/"><img src="/images/Metro_Icons/Folders_OS/Libraries_32x32.png" /></a></div>
+            <div class="bottom_box_options_icons" title="Pokaż plan lekcji"><a ng-href="/kidsTimetable/{{kid.id}}"><img src="/images/Metro_Icons/Folders_OS/Groups_32x32.png" /></a></div>
+            <!--<div class="bottom_box_options_icons" title="Pokaż komentarze nauczycieli"><a ng-href="/kidsComments/{{kid.id}}"><img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" /></a></div>
+            --><div class="bottom_box_options_icons" title="Usuń dziecko"><a ng-href="/kidsDelete/{{kid.id}}?n={{kid.first_name}} {{kid.last_name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+        </div>
+    </div>
+
+
+
+
+

@@ -1,0 +1,56 @@
+#profile_avatar_cropper {
+    margin-left: 300px;
+}
+
+#profile_avatar_cropper .profile_title {
+    position: relative;
+    top: 12px;
+}
+
+
+/* FORM */
+
+#hidden_forms_user_profile {
+    height: 640px;
+}
+
+.form_user_profile {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_user_profile p {
+    display: block;
+    width: 200px;
+    margin-top: 12px;
+}
+
+.form_user_profile_title {
+    font-size: 16px;
+}
+
+#kid_sex {
+    width: 140px;
+}
+
+.form_user_profile .input_text {
+    background-color: #1F0127;
+    border: 0 none;
+    color: #E8E6ED;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 12px;
+}
+
+
+#form_select_voivodeship_profile {
+    float: left;
+    margin-bottom: 12px;
+}
+
+#form_select_city_profile {
+    float: left;
+    margin-bottom: 12px;
+}
+

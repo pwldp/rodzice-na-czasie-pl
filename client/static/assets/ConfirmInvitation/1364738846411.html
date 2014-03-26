@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="resetPassApp">
+<head>
+    <title>RodziceNaCzasie.pl</title>
+    <meta charset="utf-8" />	
+    <link rel="icon" type="image/png" href="/images/rnc_logo_icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext" media="all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&subset=latin,latin-ext" media="all" rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->  
+        
+        <!--[if lte IE 8]>
+        <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+        </script>
+        <![endif]-->
+	<!--[if lt IE 8]>
+        <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+        <![endif]-->
+        
+    <link href="/assets/ConfirmInvitation/1364738846411.css" media="screen" rel="stylesheet" type="text/css"><script src="/assets/ConfirmInvitation/1364738846411.js" type="text/javascript"></script><script type="text/ng-template" id="abuse.html">
+    <div class="abuse_box">
+        <form name="abuse">
+        <div class="delete_box_inner">
+            Czy na pewno chcesz zgłosić nadużycie wobec {{type}} <b>{{name}}</b>?
+        </div>
+        <div class="delete_box_buttons">
+            <button ng-click="confirmAbuse()" class="delete_button">Tak, chcę</button>&nbsp;&nbsp;
+            <button ng-click="cancelAbuse()" class="delete_button red">Nie, nie chcę</button>&nbsp;&nbsp;
+        </div>
+        <div class="delete_box_outside_textarea">
+            Możesz dopisać własną treść zgłoszenia:<br/>
+            <textarea placeholder="Wpisz treść zgłoszenia" ng-model="abuse_context" ng-show="studentName.length > 1">Informuję, że {{studentName}} nie jest uczniem klasy {{schoolclassName}} w szkole {{schoolName}}.</textarea>
+            <textarea placeholder="Wpisz treść zgłoszenia" ng-model="abuse_context" ng-show="teacherName.length > 1">Informuję, że {{teacherName}} nie jest nauczycielem w szkole {{schoolName}}.</textarea>
+        </div>
+        </form>
+    </div>
+
+
+
+
+
+</script><script type="text/ng-template" id="base.html">&nbsp;
+</script><script type="text/ng-template" id="budget.html">
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link"><img src="images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj składkę</span></div></div>
+    </div>
+
+
+<div id="budget_page" style="width: 100%; margin: 12px auto;">
+            <div style="font-size: 16px;">
+                <span style="position: relative; left: 12px; color: #7dbadf;">Aktualnie prowadzone zbiórki pieniędzy</span><br/>
+            </div>
+            <div style="background-color: #2B0135; margin-left: 12px; margin-top: 12px; float: left; width: 31%;">
+                <span style="color: #26dc26; margin: 4px; font-size: 13px;">ZAPŁACONE</span>
+                <span style="float: right; position: relative; top: -12px; left: 6px; width: 38px; height: 38px; background: url(images/Dusseldorf_icons/notify.png) no-repeat -4px -8px transparent;"></span>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 4px 12px; text-align: center;">
+                    <span style="font-size: 24px; color: #7dbadf;">14,50zł</span><br/><span style="font-size: 16px;">Zakup książek do ćwiczeń w klasach I-III</span>
+                </p>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 24px 12px; text-align: left;">
+                    W dniach <b>2012-02-13</b> - <b>2012-04-15</b> prowadzona jest zbiórka pieniędzy na zakup książek do ćwiczeń dla najmłodszych.<br/><br/>Skarbnik składki:<br/><b>Zbenek Smetanina</b>
+                </p>
+            </div>
+            <div style="background-color: #2B0135; margin-left: 12px; margin-top: 12px; float: left; width: 31%;">
+                <span style="color: #f31717; margin: 4px; font-size: 13px;">ZALEGAM</span>
+                <span style="float: right; position: relative; top: -12px; left: 6px; width: 38px; height: 38px; background: url(images/Dusseldorf_icons/notify.png) no-repeat -96px -8px transparent;" /></span>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 4px 12px; text-align: center;">
+                    <span style="font-size: 24px; color: #7dbadf;">7,20zł</span><br/><span style="font-size: 16px;">Walentynki 2013</span>
+                </p>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 24px 12px; text-align: left;">
+                    W dniach <b>2012-02-13</b> - <b>2012-04-15</b> prowadzona jest zbiórka pieniędzy na prezenty dla dziewczynek na Walentynki 2013.<br/><br/>Skarbnik składki:<br/><b>Zbenek Smetanina</b>
+                </p>
+            </div>
+            <div style="background-color: #2B0135; margin-left: 12px; margin-top: 12px; float: left; width: 31%;">
+                <span style="color: #f31717; margin: 4px; font-size: 13px;">ZALEGAM</span>
+                <span style="float: right; position: relative; top: -12px; left: 6px; width: 38px; height: 38px; background: url(images/Dusseldorf_icons/notify.png) no-repeat -96px -8px transparent;"></span>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 4px 12px; text-align: center;">
+                    <span style="font-size: 24px; color: #7dbadf;">420zł</span><br/><span style="font-size: 16px;">Wycieczka do Zakopanego</span>
+                </p>
+                <p style="color: #FFFFFF; font-size: 12px; margin: 24px 12px; text-align: left;">
+                    W dniach <b>2012-02-13</b> - <b>2012-04-15</b> prowadzona jest zbiórka pieniędzy na wyjazd na zimowisko do Zakopanego.<br/><br/>Skarbnik składki:<br/><b>Zbenek Smetanina</b>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--    <div id="budget_list">
+        <div class="budget_position" ng-repeat="fee in fees | startFrom:currentPage*pageSize | limitTo:pageSize">
+            {{fee}}
+        </div>
+    </div>
+    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"> << </button>
+    &nbsp;{{currentPage+1}}/{{numPages()}}&nbsp;
+    <button ng-disabled="currentPage >= numPages()-1" ng-click="currentPage=currentPage+1"> >> </button>
+-->
+</script><script type="text/ng-template" id="calendar.html">
+<div class="options_panel">
+    <div class="option"><img src="images/Dusseldorf_icons/16x16_white/plus.png" align="left" onclick="$('#hidden_forms_calendar').slideToggle();" />&nbsp;Dodaj wydarzenie</div>
+</div>
+
+<div id="eventCalendar"></div>
+
+</script><script type="text/ng-template" id="change_password.html"><div class="rncpg_body" ng-controller="resetPassCtrl">
+        
+
+<div id="rncpg_topper_transparent">
+    <div id="rncpg_login_form">
+        <div class="rncpg_white_logo">
+            <a ng-click="redirectToMain()"><img src="/images/rnc_logo_54x42.png" border="0" align="left" /></a>
+            <span id="rncpg_app_logo_big_text" class="rncpg_app_logo_top_part color_dark_violet">Rodzice</span><br/>
+            <span id="rncpg_app_logo_small_text" class="rncpg_app_logo_bottom_part color_dark_violet">naCzasie.pl</span>
+        </div>
+    </div>
+</div>
+
+     
+<div class="rncpg_wrapper_violet_changepass">
+    
+    <div class="rncpg_change_password"><br/>
+        Wprowadź nowe hasło i potwierdź je:<br/>
+        <form name="rncpg_change_password_form" id="rncpg_change_password_form" ng-submit="resetPassword(passform)">
+            <p align="center" class="rncpg_rgstr_message_small">Hasło powinno mieć co najmniej 8 znaków</p><br/>
+            <input type="password" name="new_pass1" id="new_pass1" class="rncpg_input_change_password" ng-model="passform.new_pass" placeholder="Nowe hasło" required oninvalid="this.setCustomValidity('Proszę wypełnić pole!')" /><br/>
+            <input type="password" name="new_pass2" id="new_pass2" class="rncpg_input_change_password" ng-model="passform.new_pass2" placeholder="Powtórz nowe hasło" required oninvalid="this.setCustomValidity('Proszę wypełnić pole!')" /><br/>
+            <input type="submit" class="rncpg_button_bigger2 blue" name="rncpg_change_password_submit" id="rncpg_change_password_submit" value="Zmień hasło" />
+        </form><br/><br/><br/><br/>
+        <a ng-click="redirectToMain()" class="rncpg_a_register_bigger">RodziceNaCzasie.pl</a>
+    </div>
+
+</div>
+
+
+</div>
+</script><script type="text/ng-template" id="chat.html">
+    
+
+    <div class="chat_content_left">
+        <div class="chat_title">
+            <span><b>Twoje prywatne wiadomości</b></span>
+        </div>
+        <div class="class_box" ng-repeat="student in students">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{student.first_name}} {{student.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <a ng-hide="student.parent_id == userInfo.id"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Rodzicem dziecka" /></a>
+                <a ng-href="/schoolClassStudentDelete/{{school.id}}/{{schoolclass.id}}/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scn={{schoolclass.name}}&sn={{school.name}}" ng-show="student.parent_id == userInfo.id"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="schoolclass_contact_icon" title="Usuń dziecko z klasy" /></a>
+                <a ng-href="/studentAbuse/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scid={{schoolclass.id}}&sid={{school.id}}&scn={{schoolclass.name}}&sn={{school.name}}"><img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest uczeń w tej klasie? Zgłoś nadużycie." /></a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="chat_content_right">
+        <div class="chat_title">
+            <span><b>Podgląd konwersacji</b></span>
+        </div>
+        <div class="class_box" ng-repeat="teacher in teachers">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{teacher.first_name}} {{teacher.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Nauczycielem" />
+                <img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest Nauczyciel w tej klasie? Zgłoś nadużycie." />
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+</script><script type="text/ng-template" id="confirm_invitation.html"><div class="rncpg_body" ng-controller="convInvitCtrl">
+        
+
+<div id="rncpg_topper_transparent">
+    <div id="rncpg_login_form">
+        <div class="rncpg_white_logo">
+            <a ng-click="redirectToMain()"><img src="/images/rnc_logo_54x42.png" border="0" align="left" /></a>
+            <span id="rncpg_app_logo_big_text" class="rncpg_app_logo_top_part color_dark_violet">Rodzice</span><br/>
+            <span id="rncpg_app_logo_small_text" class="rncpg_app_logo_bottom_part color_dark_violet">naCzasie.pl</span>
+        </div>
+    </div>
+</div>
+
+<div class="rncpg_wrapper_convinv">
+    <div class="rncpg_change_password"><br/>
+        <p ng-show="type == 'kidclass'">
+            Zostałeś zaproszony do serwisu <span class="bold">RodziceNaCzasie.pl</span> przez Nauczyciela,<br/>który zaproponował przypisanie Twojego dziecka do swojej klasy.<br/><br/>
+            Jeśli wyrażasz na to zgodę, zmień swoje hasło tymczasowe korzystając z poniższego formularza.<br/>Jeśli nie wyrażasz zgody lub nie chcesz się zarejestrować, zignoruj tą wiadomość.<br/>
+        </p>
+        <p ng-show="type == 'kidparent'">
+            Zostałeś zaproszony do serwisu <span class="bold">RodziceNaCzasie.pl</span> przez użytkownika,<br/>który wskazał Ciebie jako innego opiekuna swojego dziecka.<br/><br/>
+            Jeśli wyrażasz na to zgodę, zmień swoje hasło tymczasowe korzystając z poniższego formularza.<br/>Jeśli nie wyrażasz zgody lub nie chcesz się zarejestrować, zignoruj tą wiadomość.<br/>
+        </p>
+    </div>
+</div>
+     
+<div class="rncpg_wrapper_violet_changepass top-220">
+    <div class="rncpg_change_password"><br/>
+        <form name="rncpg_change_password_form" id="rncpg_change_password_form" ng-submit="confirmInvitation(passform)">
+            <p align="center" class="rncpg_rgstr_message_small">Hasło powinno mieć co najmniej 8 znaków</p><br/>
+            <input type="password" name="new_pass1" id="new_pass1" class="rncpg_input_change_password" ng-model="passform.new_pass" placeholder="Nowe hasło" required oninvalid="this.setCustomValidity('Proszę wypełnić pole!')" /><br/>
+            <input type="password" name="new_pass2" id="new_pass2" class="rncpg_input_change_password" ng-model="passform.new_pass2" placeholder="Powtórz nowe hasło" required oninvalid="this.setCustomValidity('Proszę wypełnić pole!')" /><br/>
+            <br/><span class="rncpg_register_terms_info font14"><input type="checkbox" name="register_rules" ng-model="passform.checked" required /> Rejestrując się musisz zaakceptować <a href="#" class="rncpg_a_register">Regulamin</a> serwisu.</span><br/>
+            <input type="submit" class="rncpg_button_bigger2 blue" name="rncpg_change_password_submit" id="rncpg_change_password_submit" value="Zmień hasło" />
+        </form><br/><br/><br/><br/>
+        <a ng-click="redirectToMain()" class="rncpg_a_register_bigger">RodziceNaCzasie.pl</a>
+    </div>
+
+</div>
+
+
+</div>
+</script><script type="text/ng-template" id="contacts.html">
+
+    <div id="contact_letters">
+        <div class="letter hover" id="letter_ALL">Wszyscy</div>
+        <div class="letter" id="letter_A">A</div>
+        <div class="letter" id="letter_B">B</div>
+        <div class="letter" id="letter_C">C</div>
+        <div class="letter" id="letter_Ć">Ć</div>
+        <div class="letter" id="letter_D">D</div>
+        <div class="letter" id="letter_E">E</div>
+        <div class="letter" id="letter_F">F</div>
+        <div class="letter" id="letter_G">G</div>
+        <div class="letter" id="letter_H">H</div>
+        <div class="letter" id="letter_I">I</div>
+        <div class="letter" id="letter_J">J</div>
+        <div class="letter" id="letter_K">K</div>
+        <div class="letter" id="letter_L">L</div>
+        <div class="letter" id="letter_Ł">Ł</div>
+        <div class="letter" id="letter_M">M</div>
+        <div class="letter" id="letter_N">N</div>
+        <div class="letter" id="letter_O">O</div>
+        <div class="letter" id="letter_Ó">Ó</div>
+        <div class="letter" id="letter_P">P</div>
+        <div class="letter" id="letter_R">R</div>
+        <div class="letter" id="letter_S">S</div>
+        <div class="letter" id="letter_Ś">Ś</div>
+        <div class="letter" id="letter_T">T</div>
+        <div class="letter" id="letter_U">U</div>
+        <div class="letter" id="letter_W">W</div>
+        <div class="letter" id="letter_Z">Z</div>
+        <div class="letter" id="letter_Ź">Ź</div>
+        <div class="letter" id="letter_Ż">Ż</div>
+    </div>
+
+
+    <div class="notifications_container">
+    <div class="notifications" id="invitation_box_{{invitation.invit_id}}" ng-repeat="invitation in invitations">
+    <form name="friends_invitations_form" ng-submit="confirmInvitationForm(invitation)">
+        <p><img src="/images/important.gif" align="left" />&nbsp;&nbsp;Czeka na Ciebie zaproszenie do znajomych od:&nbsp;&nbsp;<b class="font14">{{invitation.inv_user_name}}</b>
+           <div class="notifications_confirm">
+               <input type="submit" class="button" value="Zatwierdź" />&nbsp;&nbsp;
+               <button class="red" ng-click="rejectInvitation(invitation.invit_id)">Odrzuć</button>
+           </div>
+        </p>
+    </form>
+    </div>
+    </div>
+
+    <div class="vis_card">
+        <div class="contact_vis_card_inner" id="vis_card_inner_{{contact.id}}" ng-repeat="contact in contacts">
+            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="contact_vis_card_info" id="vis_card_info_{{contact.id}}">
+                <span><b class="contact_name" id="contact_name_{{contact.id}}">{{contact.first_name}} <label>{{contact.last_name}}</label></b></span><br/>
+                <span>{{contact.city}}</span><br/>
+            </div>
+            <div class="contact_inside_box contact_vis_card_bottom bottom_box_options">
+                <!--<div class="bottom_box_options_icons" title="Przypisz do grupy"><a ng-click="setRoute('groups')"><img src="/images/Metro_Icons/System_Icons/Windows_Card_Space_32x32.png" /></a></div>-->
+                <div class="bottom_box_options_icons" title="Skontaktuj się z użytkownikiem"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z użytkownikiem" /></div>
+                <div class="bottom_box_options_icons" title="Usuń znajomego"><a ng-href="/contactsDelete/{{contact.id}}?n={{contact.first_name}} {{contact.last_name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+
+</script><script type="text/ng-template" id="delete.html">
+    <div class="delete_box">
+        <div class="delete_box_inner">
+            Czy na pewno chcesz usunąć {{type}} <b>{{name}}</b>?
+        </div>
+        <div class="delete_box_buttons">
+            <button ng-click="confirmDelete()" class="delete_button">Tak, chcę</button>&nbsp;&nbsp;
+            <button ng-click="cancelDelete()" class="delete_button red">Nie, nie chcę</button>&nbsp;&nbsp;
+        </div>
+    </div>
+
+
+
+
+
+</script><script type="text/ng-template" id="delete_from_class.html">
+    <div class="delete_box">
+        <div class="delete_box_inner">
+            Czy na pewno chcesz usunąć {{type}} <b>{{name}}</b> z klasy {{schoolclassName}}?
+        </div>
+        <div class="delete_box_buttons_class">
+            <button ng-click="confirmDelete()" class="delete_button">Tak, chcę</button>&nbsp;&nbsp;
+            <button ng-click="cancelDelete()" class="delete_button red">Nie, nie chcę</button>&nbsp;&nbsp;
+        </div>
+    </div>
+
+
+
+
+
+</script><script type="text/ng-template" id="documents.html">
+<br/>
+<div id="thumbnail-fine-uploader"></div>
+<div id="triggerUpload" class="button" style="margin-top: 10px; width: 140px; text-align: center;">
+    <i class="icon-upload icon-white"></i> Rozpocznij przesyłanie
+</div>
+</script><script type="text/ng-template" id="empty.html"></script><script type="text/ng-template" id="groups.html">
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_groups').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj grupę</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_groups" style="display: none;">
+        <form name="form_add_groups" class="form_add_kidtimetable" ng-submit="saveGroup(group)">
+            <div class="form_add_groups_title" id="form_add_groups_title">Wprowadź nową grupę:</div>
+            <div class="form_add_groups_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa grupy" autocomplete="off" id="field_group_name" ng-model="group.name" required oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę grupy!')" /></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+    <div id="group_types">
+        <div class="group_type hover" id="group_type_ALL">Wszystkie</div>
+        <div class="group_type" id="group_type_CLASS">Grupy klasowe</div>
+        <div class="group_type" id="group_type_PRIVATE">Grupy prywatne</div>
+        <div class="group_type" id="group_type_FRIENDS">Grupy znajomych</div>
+    </div>
+
+
+    <div class="notifications_container">
+    <div class="notifications" id="invitation_box_{{invitation.invit_id}}" ng-repeat="invitation in invitations">
+    <form name="groups_invitations_form" ng-submit="confirmInvitationForm(invitation)">
+        <p><img src="/images/important.gif" align="left" />&nbsp;&nbsp;Użytkownik <b class="font14 bold">{{invitation.inv_user_name}}</b> zaprosił Cię do grupy:&nbsp;&nbsp;<b class="font14 bold">{{invitation.grp_name}}</b>
+           <div class="notifications_confirm">
+               <input type="submit" class="button" value="Zatwierdź" />&nbsp;&nbsp;
+               <button class="red" ng-click="rejectInvitation(invitation.invit_id)">Odrzuć</button>
+           </div>
+        </p>
+    </form>
+    </div>
+    </div>
+
+    <div class="group_vis_card">
+        <div class="group_vis_card_inner" id="vis_card_inner_{{group.id}}" ng-repeat="group in groups">
+            <div class="group_vis_card_info" id="vis_card_info_{{group.id}}">
+                <div class="group_title"><a ng-href="/groupsDetails/{{group.id}}"><b class="group_name" id="group_name_{{group.id}}"><label>{{group.name}}</label></b></a></div>
+                <div class="group_inside_box">
+                  <div class="group_inside_box_left">
+                      <div class="vis_card_card_inner">
+                          <div class="vis_card_card_info">
+                              <div><span class="kid_blue_info">0</span>&nbsp;ankiety</div>
+                              <div><span class="kid_blue_info">0</span>&nbsp;wydarzenia</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="group_inside_box_right">
+                      <div class="vis_card_card_inner">
+                          <div class="members_title">Członkowie grupy</div>
+                          <div class="group_members_container" id="group_members_container_{{group.id}}">
+                              <div class="group_members" id="group_members_{{group.id}}">
+                                  <div class="members" ng-repeat="member in group.members.res.members"><img src="/images/avatar.png" title="{{member.first_name}} {{member.last_name}}" class="small_group_avatar" /></div>
+                                  <div class="add_member" id="add_member_{{group.id}}" style="display: none;"><span>+</span></div>
+                              </div>
+                          </div>
+                          <div class="group_members_more">
+                              <a ng-href="/groupsDetails/{{group.id}}"><span>więcej &raquo;</span></a>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="group_inside_box group_vis_card_bottom bottom_box_options">
+                    <div class="bottom_box_options_icons" title="Pokaż szczegóły grupy"><a ng-href="/groupsDetails/{{group.id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+                    <div class="bottom_box_options_icons" ng-show="group.group_type == 'private'" >
+                        <div class="bottom_box_options_icons" title="Edytuj nazwę grupy"><a ng-href="/groupsEdit/{{group.id}}"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" /></a></div>
+                        <div class="bottom_box_options_icons" title="Opuść grupę"><a ng-href="/groupsLeave/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" /></a></div>
+                    </div>                    
+                    <div class="bottom_box_options_icons" ng-show="group.can_delete == '1'" >
+                        <div class="bottom_box_options_icons" title="Usuń grupę"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+                    </div>                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</script><script type="text/ng-template" id="groups_details.html">    <div class="options_panel">
+        <div class="option"><div class="option_link" ng-hide="group.group_type == 'friends'" onclick="$('#hidden_forms_groups_details').slideToggle(); $('#form_add_groups_details_bottom').jScrollPane();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj członków do grupy</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_groups_details" style="display: none;">
+        <form name="form_add_groups_details" class="form_add_groups_details" ng-submit="saveGroupNewMembers(members)">
+            <div class="form_add_groups_left">
+                <div class="c_letters">
+                    <div class="c_letter" id="c_letter_ALL"><span>*</span></div>
+                    <div class="c_letter" id="c_letter_AB"><span>A</span>&nbsp;<span>B</span></div>
+                    <div class="c_letter" id="c_letter_CĆ"><span>C</span>&nbsp;<span>Ć</span></div>
+                    <div class="c_letter" id="c_letter_DE"><span>D</span>&nbsp;<span>E</span></div>
+                    <div class="c_letter" id="c_letter_FG"><span>F</span>&nbsp;<span>G</span></div>
+                    <div class="c_letter" id="c_letter_HI"><span>H</span>&nbsp;<span>I</span></div>
+                    <div class="c_letter" id="c_letter_JK"><span>J</span>&nbsp;<span>K</span></div>
+                    <div class="c_letter" id="c_letter_LŁ"><span>L</span>&nbsp;<span>Ł</span></div>
+                    <div class="c_letter" id="c_letter_MN"><span>M</span>&nbsp;<span>N</span></div>
+                    <div class="c_letter" id="c_letter_OP"><span>O</span>&nbsp;<span>P</span></div>
+                    <div class="c_letter" id="c_letter_RS"><span>R</span>&nbsp;<span>S</span></div>
+                    <div class="c_letter" id="c_letter_ŚT"><span>Ś</span>&nbsp;<span>T</span></div>
+                    <div class="c_letter" id="c_letter_UW"><span>U</span>&nbsp;<span>W</span></div>
+                    <div class="c_letter" id="c_letter_ZŹ"><span>Z</span>&nbsp;<span>Ź</span></div>
+                    <div class="c_letter" id="c_letter_Ż"><span>Ż</span></div>
+                </div>
+            </div>
+            <div id="form_add_groups_details_bottom">
+                <div class="form_add_groups_title">Zaznacz znajomych, których chcesz dodać do grupy</div>
+                <div id="gd_contacts_container">
+                    <p><div class="group_details_contact" ng-repeat="contact in contacts" id="gd_contact_{{contact.id}}" title="{{contact.first_name}} {{contact.last_name}}"><img src="/images/avatar.png" /><br/>{{contact.first_name}} {{contact.last_name}}</div></p>
+                </div>
+                <!--<p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>-->
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+    <p id="groups_change_info" style="display: none;">Zaznaczono nowych członków do dodania do grupy. Zapisz zmiany aby ich dodać.</p>
+    <div id="btn_save_group_members" style="display: none;"><button type="button" ng-click="saveGroupMembers();" class="btn_save_group_members">ZAPISZ ZMIANY</button></div>
+    
+    
+    
+
+    <div class="group_details_box">
+        <div class="group_details_box_inner">
+            <div class="group_vis_card_info">
+                <div class="group_details_members_title">Szczegóły grupy <span class="bold">{{group.name}}</span></div><br/>
+                
+                <div class="group_details_top_options">
+                    <div class="group_details_top_option lightblue2" title="Dyskusje w grupie"><a ng-href="/news/{{group.id}}"><img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" align="left" />&nbsp;&nbsp;<span>Dyskusje w grupie</span></a></div>
+                    <div class="group_details_top_option red4" title="Opuść grupę" ng-show="group.group_type == 'private'"><a ng-href="/groupsLeave/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" align="left" />&nbsp;&nbsp;<span>Opuść grupę</span></a></div>
+                    <div class="group_details_top_option red3" title="Usuń grupę" ng-show="group.can_delete == '1'"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" align="left" />&nbsp;&nbsp;<span>Usuń grupę</span></a></div>
+                </div>
+                <br class="clear"/><br/>
+
+                <div class="group_details_members_title">Aktualni członkowie grupy</div>
+                <div class="group_details_members_container" id="group_members_container_{{group.id}}">
+                    <div class="group_details_members" id="group_members_{{group.id}}">
+                        <div class="group_details_vis_card_inner" id="vis_card_inner_{{member.id}}" ng-repeat="member in group.members">
+                            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+                            <div class="contact_vis_card_info" id="vis_card_info_{{member.id}}">
+                                <span><b class="contact_name" id="contact_name_{{member.id}}">{{member.first_name}} <label>{{member.last_name}}</label></b></span><br/>
+                                <span class="font_lightblue2 bold" ng-show="member.id == group.moderator">MODERATOR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</script><script type="text/ng-template" id="groups_edit.html">
+    <div class="hidden_forms" id="hidden_forms_groups_edit">
+        <form name="form_add_groups_edit" class="form_add_kidtimetable" ng-submit="saveGroup(groupformedit)">
+            <div class="form_add_groups_title">Zmień nazwę grupy:</div>
+            <div class="form_add_groups_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa grupy" autocomplete="off" id="field_edit_group_name" ng-model="groupformedit.name" required oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę grupy!')" /></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+
+
+</script><script type="text/ng-template" id="groups_leave.html">
+    <div class="delete_box">
+        <div class="delete_box_inner">
+            Czy na pewno chcesz odłączyć od grupy <b>{{name}}</b>?
+        </div>
+        <div class="delete_box_buttons">
+            <button ng-click="confirmDelete()" class="delete_button">Tak, chcę</button>&nbsp;&nbsp;
+            <button ng-click="cancelDelete()" class="delete_button red">Nie, nie chcę</button>&nbsp;&nbsp;
+        </div>
+    </div>
+
+
+
+
+
+</script><script type="text/ng-template" id="home.html">
+<div id="homepage">
+
+    <div class="homepage_left">
+        <div style="height: 60px; background-color: #2B0135; font-size: 24px;" id="common_cases_title"><span style="position: relative; top: 12px; left: 24px;">Twoje bieżące sprawy</span></div>
+        <div class="common_case" ng-hide="common_cases.length > 1">
+            <span class="font14 font_grey">Brak bieżących spraw</span>
+        </div>
+        <div class="common_case" ng-repeat="case in common_cases">
+            <img src="{{case.icon}}" align="left" />
+            {{case.text}}</span>.<br/>
+            <div align="right" ng-show="case.more == 'buttons'"><button class="button_small" ng-click="confirmNotification(case)">Zatwierdź</button>&nbsp;<button class="button_small red" ng-click="rejectNotification(case)">Odrzuć</button></div>
+            <div align="right" ng-show="case.more == 'link'"><button class="button_small" ng-click="setRoute(case.link)">Więcej</button></div>
+        </div>
+
+        <br class="clear" />
+
+        <div id="home_invite_friends_div">
+            <form name="invite_friends" id="invite_friends_form">
+            <p><span class="font16 font_grey">Twoi znajomi nie mają jeszcze konta? <span style="color: #ffffff;">Zaproś ich!</span></span>
+            <span class="font16 font_grey"><input class="input_text" type="email" ng-model="invite.email" placeholder="Podaj email znajomego" required />&nbsp;
+            <button ng:click="sendExternalInvitation(invite)">Zaproś</button></p>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="homepage_right">
+        <div class="home_title"><span>Aktualne dyskusje</span></div>
+        <ul id="home_post_list">
+            <li ng-repeat="post in posts" class="home_posts">
+                <div class="home_post_header" id="home_post_header_{{post.id}}">
+                    <div class="home_post_image"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="home_post_title">
+                        <span class="home_post_author">{{post.owner_obj.first_name}} {{post.owner_obj.last_name}}</span>&nbsp;
+                        <span class="home_post_created_text">{{post.created_text}}</span><br/>
+                        {{post.title}}<br/>
+                        <span class="home_post_content">{{post.content_short}}</span>
+                    </div>
+                </div>
+                <br class="clear"/>
+            </li>
+        </ul>
+        <div class="home_posts_more"><a ng-click="setRoute('news')"><span>więcej &raquo;</span></a></div>
+        <br class="clear" />
+    </div>
+    
+    <!--<div style="background-color: #2B0135; margin: 12px 0; height: 100px; float: left; width: 100%;">
+            <p style="font-size: 16px; color: #7DBADF; position: relative; top: 12px; left: 12px;">Twoi znajomi online</p>
+            <p style="position: relative; top: 12px; left: 12px;">
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+            </p>
+        </div>-->
+    
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script><script type="text/ng-template" id="home_backup.html">
+<div id="homepage" style="float: left; width: 100%; margin: 12px;">
+
+    <div class="homepage_left" style="float: left; width: 46%;">
+        <div style="height: 120px; background-color: #2B0135; font-size: 24px;"><span style="position: relative; top: 12px; left: 24px;">Jesteś Rodzicem?</span><br/><input type="button" value="Dopisz dzieci" class="green2" style="color: #ffffff; padding: 4px 8px; font-size: 16px; border: 1px solid #ffffff; border-radius: 2px; margin: 24px;" /></div>
+        <div>
+            <div style="height: 80px; background-color: #2B0135; margin-top: 12px;">
+                <div style="position: relative; top: 8px; left: 12px; float: left;"><img src="images/avatar.png" width="60" align="left" /></div>
+                <div style="position: relative; top: 8px; left: 24px; float: left;"><span style="font-size: 16px; color: #7DBADF;">Mariusz Wróbel</span><br/>Teraz w szkole: <b>Matematyka</b></div>
+            </div>
+            <div style="height: 80px; background-color: #2B0135; margin-top: 12px;">
+                <div style="position: relative; top: 8px; left: 12px; float: left;"><img src="images/avatar.png" width="60" align="left" /></div>
+                <div style="position: relative; top: 8px; left: 24px; float: left;"><span style="font-size: 16px; color: #7DBADF;">Kazik Staszewski</span><br/>Teraz w szkole: <b>Muzyka</b></div>
+            </div>
+        </div>
+        <div style="float: left; width: 100%;">
+            <div style="height: 180px; background-color: #2B0135; margin-top: 12px; float: left; width: 40%;">
+                <div>
+                    <span style="font-size: 16px; color: #7DBADF; margin: 12px; position: relative; top: 4px;">Najbliższe wydarzenie</span>
+                    <div style="margin-top: 18px; text-align: center;"><span style="font-size: 20px; color: #ffffff;">24.12.2012</span><br/>
+                        <p>Wigilia szkolna w klasie Ia, w sali 15 na parterze. O godzinie 17:00</p>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 180px; background-color: #2B0135; margin-top: 12px; float: right; width: 57%;">
+                <div>
+                    <span style="font-size: 16px; color: #7DBADF; margin: 12px; position: relative; top: 4px;">Aktualna ankieta</span>
+                    <div style="margin-left: 12px; margin-top: 6px;"><span style="">Czy lubisz zimę?</span><br/><br/>
+                        <div style="float: left; position: relative; top: 7px; left: 2px; font-size: 13px;">Tak&nbsp;</div><div class="green2" style="width: 110px; height: 20px; margin-top: 6px;"></div>
+                        <div style="float: left; position: relative; top: 7px; left: 2px; font-size: 13px;">Nie&nbsp;</div><div class="lightblue2" style="width: 60px; height: 20px; margin-top: 6px;"></div>
+                        <div style="float: left; position: relative; top: 7px; left: 2px; font-size: 13px;">Może tak a może nie&nbsp;</div><div class="violet" style="width: 140px; height: 20px; margin-top: 6px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="homepage_right" style="margin-left: 12px; float: left; width: 46%;">
+        <div style="height: 120px; background-color: #2B0135; font-size: 24px;"><span style="position: relative; top: 12px; left: 24px;">Jesteś Nauczycielem?</span><br/><input type="button" value="Dołącz do swojej szkoły" class="orange2" style="color: #ffffff;; padding: 4px 8px; font-size: 16px; border: 1px solid #ffffff; border-radius: 2px; margin: 24px;" /></div>
+        <div style="background-color: #2B0135; float: left; margin-top: 12px;">
+            <p style="font-size: 16px; color: #7DBADF; position: relative; top: -12px; left: 12px;">Ostatnie komentarze</p>
+            <div style="margin-left: 12px; margin-bottom: 12px; position: relative; top: -12px;">
+                <p><img src="images/avatar.png" width="32" align="left" /><span style="margin-left: 8px; font-size: 12px; color: #7DBADF;">Mariusz Wróbel</span> > <span style="font-size: 12px; color: #7DBADF;">Zimowa wycieczka szkolna</span></p>
+                <p style="margin-left: 40px; position: relative; top: -12px;">Myślę, że trzeba jechać. Taka okazja może się już nie trafić. Myślę, że trzeba jechać. Taka okazja może się już nie trafić. Myślę, że trzeba jechać. Taka okazja może się już nie trafić. Myślę, że trzeba jechać. Taka okazja może się już nie trafić. Myślę, że trzeba jechać. Taka okazja może się już nie trafić. Myślę, że trzeba jechać. Taka okazja może się już nie trafić. </p>
+            </div>
+            <div style="margin-left: 12px; margin-bottom: 12px; position: relative; top: -12px;">
+                <p><img src="images/avatar.png" width="32" align="left" /><span style="margin-left: 8px; font-size: 12px; color: #7DBADF;">Mariusz Wróbel</span> > <span style="font-size: 12px; color: #7DBADF;">Składki na Radę Rodziców</span></p>
+                <p style="margin-left: 40px; position: relative; top: -12px;">Drogo. Nie stać mnie na taką kwotę w tym miesiącu.</p>
+            </div>
+            <div style="margin-left: 12px; margin-bottom: 12px; position: relative; top: -12px;">
+                <p><img src="images/avatar.png" width="32" align="left" /><span style="margin-left: 8px; font-size: 12px; color: #7DBADF;">Mariusz Wróbel</span> > <span style="font-size: 12px; color: #7DBADF;">Zimowa wycieczka szkolna</span></p>
+                <p style="margin-left: 40px; position: relative; top: -12px;">To jak? Jedziemy?</p>
+            </div>
+        </div>
+        <div style="background-color: #2B0135; margin: 12px 0; height: 100px; float: left; width: 100%;">
+            <p style="font-size: 16px; color: #7DBADF; position: relative; top: -12px; left: 12px;">Moi znajomi online</p>
+            <p style="position: relative; top: -12px; left: 12px;">
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+            </p>
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script><script type="text/ng-template" id="kids.html">
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_kids').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj dziecko</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_kids" style="display: none;">
+        <form ng-submit="saveKid(kidform)" name="kidform" class="form_add_kid">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wprowadź dane dziecka:</div>
+            <p><input type="text" class="input_text" placeholder="Imię" ng-model="kidform.kidFirstName" required oninvalid="this.setCustomValidity('Wprowadź poprawne imię!')" /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko" ng-model="kidform.kidLastName" required oninvalid="this.setCustomValidity('Wprowadź poprawne nazwisko!')" /></p>
+            <p><div class="selectstyled"><select ng-model="kidform.kidGender" data-placeholder="Płeć" id="kid_form_genre_select"><option value="" disabled style="display: none;">Płeć</option><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+            <p><input type="text" class="input_text" placeholder="Data urodzenia" ng-model="kidform.kidBornDate" id="kid_born_date" my-datepicker required oninvalid="this.setCustomValidity('Wprowadź poprawną datę urodzenia!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+            <!--<p><input type="text" class="input_text" placeholder="Telefon" ng-model="kidform.kidPhone" id="f_kid_phone" /></p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidform.kidEmail"  /></p>
+            <p><input type="text" class="input_text" placeholder="Kod pocztowy" ng-model="kidform.kidZipcode" id="f_kid_zipcode" /></p>
+            <div id="kid-fine-uploader"></div>-->
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+<!--<br/><br/><br/><br/>
+<tt>kidFirstName = {{kidform.kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidform.kidLastName}}</tt><br>
+<tt>kidSex = {{kidform.kidGender}}</tt><br>
+<tt>kidBornDate = {{kidform.kidBornDate}}</tt><br>
+<tt>kidform.input.$valid = {{kidform.input.$valid}}</tt><br>
+<tt>kidform.input.$error = {{kidform.input.$error}}</tt><br>
+<tt>kidform.$valid = {{kidform.$valid}}</tt><br>
+<tt>kidform.$error.required = {{!!kidform.$error.required}}</tt><br>-->
+        </form>
+
+
+    </div>
+
+
+    <div class="kid_card" ng:repeat="kid in kids">
+        <div class="kid_card_inner">
+            <!--<div class="kid_card_image"><img src="/images/{{kid.avatar}}" width="60" align="left" /></div>-->
+            <div class="kid_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="kid_card_info"><span class="kid_name">{{kid.first_name}} {{kid.last_name}}</span><br/><br/><span class="kid_age">lat: {{kid.age}}</span></div>
+            <div><br/><span class="kid_class">Aktualna klasa:<br/>
+                <b ng-repeat="active_class in kid.active_classes"><a class="bottom_box_options_icons font_link font14" title="Pokaż szczegóły klasy {{active_class.class_name}}" ng-href="/schoolClassDetails/{{active_class.school_id}}/{{active_class.class_id}}" class="bold">{{active_class.class_name}}</a>, </b>
+                <b ng-show="kid.active_classes.length == 0" class="font_link font14">&nbsp;</b>
+            </span></div>
+        </div>
+        <div class="kid_card_inner">
+            <div class="kid_pie_graph" id="kid_pie_chart{{kid.id}}"></div>
+            <div class="kid_graph">
+                <span class="kid_blue_info" id="kid_graph_info{{kid.id}}">{{kid.stats_timetable}}</span><br/>godzin tygodniowo na zajęciach szkolnych
+            </div>
+        </div>
+        <!--<div class="kid_card_inner" ng-show="kid.filled_timetable == 0">
+            <span class="font_grey">Wypełnij plan lekcji, aby mieć podgląd dodatkowych informacji</span><br/>&nbsp;
+        </div>
+        <div class="kid_card_inner" ng-show="kid.filled_timetable > 0">
+            Teraz w szkole:&nbsp;<span class="kid_blue_info bold" id="kid_now_in_school_info1{{kid.id}}"><span ng-show="kid.now_in_school == ''">brak zajęć</span><span ng-show="kid.now_in_school != ''">{{kid.now_in_school}}</span></span><br/>
+            {{kid.first_name}} kończy dziś naukę o <span class="kid_blue_info" id="kid_now_in_school_info2{{kid.id}}">{{kid.end_class_today}}</span>
+        </div>-->
+        <div class="kid_card_inner bottom_box_options">
+            <div class="bottom_box_options_icons" title="Edytuj dane"><a ng-href="/kidsEdit/{{kid.id}}"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" /></a></div>
+            <div class="bottom_box_options_icons" title="Dodaj kolejnego opiekuna do dziecka"><a ng-href="/kidsSecondParent/{{kid.id}}"><img src="/images/Metro_Icons/System_Icons/Contacts_add_parent_32x32.png" /></a></div>
+            <!--<div class="bottom_box_options_icons" title="Pokaż placówkę dziecka"><a ng-href="/kidsSchool/{{kid.id}}"><img src="/images/Metro_Icons/Folders_OS/Libraries_32x32.png" /></a></div>-->
+            <div class="bottom_box_options_icons" title="Pokaż plan lekcji"><a ng-href="/kidsTimetable/{{kid.id}}"><img src="/images/Metro_Icons/Folders_OS/Groups_32x32.png" /></a></div>
+            <!--<div class="bottom_box_options_icons" title="Pokaż komentarze nauczycieli"><a ng-href="/kidsComments/{{kid.id}}"><img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" /></a></div>
+            --><div class="bottom_box_options_icons" title="Usuń dziecko"><a ng-href="/kidsDelete/{{kid.id}}?n={{kid.first_name}} {{kid.last_name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+        </div>
+    </div>
+
+
+
+
+
+</script><script type="text/ng-template" id="kids_comments.html">
+
+<div class="kid_comments_top_box">
+    <img src="/images/avatar.png" align="left" />
+    <span>&nbsp;&nbsp;Mariusz Wróbel<br/>&nbsp;&nbsp;klasa: <b>Ia</b></span>
+</div>
+
+<div class="comments_page_title">
+    <span>Komentarze nauczycieli</span><br/>
+</div>
+            
+<div class="kids_comments">   
+    <div class="kids_comment">         
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span class="kids_comment_teacher">&nbsp;&nbsp;Jan Ptaszkowski / Biologia</span></div>
+                    <h3>13 listopada, 9:27</h3>
+                    <p>
+                        Uczeń nie uważa na lekcjach. Wierci się i rozmawia z kolegą z ławki. Będę zmuszony postawić mu ocenę nieodpowiednią z zachowania, jeśli to się nie zmieni.
+                    </p>
+                    <div class="link_like" onclick="$('#news_comments_block_1').slideToggle();">więcej &raquo;</div>
+                    <div class="news_comments_block" id="news_comments_block_1" style="display: none;">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">60 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Rozumiem, porozmawiam z nim w domu.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Jan Ptaszkowski</span></div>
+                            <div class="news_comment_date">16 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Dobrze, proszę tak uczynić. Będę oczekiwał rezultatów już na następnej lekcji.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">6 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Ok, kumam.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+    </div>
+    <br class="clear"/>
+
+    <div class="kids_comment" style="background-color: #2A013B; padding: 12px;">         
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span style="color: #7dbadf;">&nbsp;&nbsp;Jan Ptaszkowski / Biologia</span></div>
+                    <h3>13 listopada, 9:27</h3>
+                    <p>
+                        Uczeń nie uważa na lekcjach. Wierci się i rozmawia z kolegą z ławki. Będę zmuszony postawić mu ocenę nieodpowiednią z zachowania, jeśli to się nie zmieni.
+                    </p>
+                    <div class="link_like" onclick="$('#news_comments_block_2').slideToggle();">więcej &raquo;</div>
+                    <div class="news_comments_block" id="news_comments_block_2" style="display: none;">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">60 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Rozumiem, porozmawiam z nim w domu.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Jan Ptaszkowski</span></div>
+                            <div class="news_comment_date">16 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Dobrze, proszę tak uczynić. Będę oczekiwał rezultatów już na następnej lekcji.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">6 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Ok, kumam.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+    </div>
+    <br class="clear"/>
+
+
+</div>
+
+
+
+</script><script type="text/ng-template" id="kids_edit.html">
+    <div class="hidden_forms" id="hidden_forms_kids_edit">
+        <form ng-submit="saveKid(kidformedit)" name="kidformedit" class="form_add_kid">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Zmień dane dziecka:</div>
+            <p><input type="text" class="input_text" placeholder="Imię" ng-model="kidformedit.kidFirstName" required oninvalid="this.setCustomValidity('Wprowadź poprawne imię!')" /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko" ng-model="kidformedit.kidLastName" required oninvalid="this.setCustomValidity('Wprowadź poprawne nazwisko!')" /></p>
+            <p><div class="selectstyled"><select ng-model="kidformedit.kidGender"><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+            <p><input type="text" class="input_text" placeholder="Data urodzenia" ng-model="kidformedit.kidBornDate" id="f_edit_kid_born_date" my-datepicker required oninvalid="this.setCustomValidity('Wprowadź poprawną datę urodzenia!')"  /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+            <!--<p><input type="text" class="input_text" placeholder="Telefon" ng-model="kidformedit.kidPhone" id="f_edit_kid_phone" /></p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidformedit.kidEmail"  /></p>
+            <p><input type="text" class="input_text" placeholder="Kod pocztowy" ng-model="kidformedit.kidZipcode" id="f_edit_kid_zipcode" /></p>
+            <div id="kid-fine-uploader"></div>-->
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+<!--<br/><br/><br/><br/>
+<tt>kidFirstName = {{kidform.kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidform.kidLastName}}</tt><br>
+<tt>kidSex = {{kidform.kidGender}}</tt><br>
+<tt>kidBornDate = {{kidform.kidBornDate}}</tt><br>
+<tt>kidform.input.$valid = {{kidform.input.$valid}}</tt><br>
+<tt>kidform.input.$error = {{kidform.input.$error}}</tt><br>
+<tt>kidform.$valid = {{kidform.$valid}}</tt><br>
+<tt>kidform.$error.required = {{!!kidform.$error.required}}</tt><br>-->
+        </form>
+
+
+    </div>
+
+
+
+
+</script><script type="text/ng-template" id="kids_school.html">
+    <div class="options_panel">
+        <div class="option"><img src="images/Dusseldorf_icons/16x16_white/plus.png" align="left" onclick="$('#hidden_forms_kids').slideToggle();" />&nbsp;Przypisz do klasy</div>
+    </div>
+    
+
+    <div class="kid_school_left">
+        <div class="school_info">
+            <span class="school_info_title">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego</span><br/><br/>
+            <span>klasa: <b class="font14">IIIa</b></span><br/><br/>
+            <span>rok: <b>2012/2013</b></span><br/>
+            <span>wychowawca: <b>Pani Ziętek</b></span><br/><br/>
+            <span>kierunek: <b>biologiczno-chemiczny</b></span><br/>
+            
+        </div>
+        <div class="kid_school_teachers_content">
+            <div class="kid_school_teachers_content_block">
+            <span>Nauczyciele</span><br/>
+            <div class="kid_school_teacher_name" title="Mariuszowski Wróbelowskiewicz - W-F">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Chemia">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Fizyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Biologia">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Plastyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Fizyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Biologia">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Plastyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            </div>
+            <div class="kid_school_teachers_content_block"><br/>
+            <span>Nauczyciele niepotwierdzeni</span><br/>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Muzyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Język polski">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Geografia">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Historia">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            <div class="kid_school_teacher_name" title="Mariusz Wróbel - Matematyka">
+                <img src="/images/avatar.png" width="36" align="left" />
+            </div>
+            </div>
+            <!--<div style="width: 236px; text-align: right; position: relative; top: 12px;"><a ng-click="setRoute('teachers')">Pokaż wszystkich</a></div>-->
+        </div>
+    </div>
+    <div class="kid_school_right">
+        <div class="kid_school_students_title">
+            <span>Lista uczniów w klasie: <b>IIIa</b></span>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+        <div class="student_box">
+            <div><img src="images/Metro_Icons/Folders_OS/Personal_80x80.png" width="36" align="left" /><span>Jan Kowalski</span></div>
+        </div>
+   </div>
+
+
+
+
+
+
+</script><script type="text/ng-template" id="kids_second_parent.html">
+    <div class="hidden_forms" id="hidden_forms_kids_second_parent">
+        <form ng-submit="saveParent(kidformparent)" name="kidformparent" class="form_add_kid_sec_parent">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Podaj adres email innego opiekuna dziecka.</div>
+            <p>Na podany adres zostanie wysłane zaproszenie do serwisu. Wskazany opiekun/rodzic będzie miał pełen dostęp do danych dziecka.</p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidformparent.email" required oninvalid="this.setCustomValidity('Wprowadź poprawny adres email!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+
+
+    </div>
+
+
+
+
+</script><script type="text/ng-template" id="kids_timetable.html">
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_kidtimetable').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj przedmiot dodatkowy</span></div></div>
+    <!--    <div class="option"><div class="option_link"><img src="/images/Dusseldorf_icons/16x16_white/print.png" align="left" />&nbsp;<span>Wydrukuj</span></div></div>-->
+    </div>
+    <div class="hidden_forms" id="hidden_forms_kidtimetable" style="display: none;">
+        <form name="form_add_kidtimetable" class="form_add_kidtimetable" ng-submit="saveSubject(subject)">
+            <div class="form_add_kidtimetable_title" id="form_add_kidtimetable_title">Wprowadź nowy przedmiot:</div>
+            <div class="form_add_kidtimetable_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa przedmiotu" id="field_subject_name" ng-model="subject.name" required autocomplete="off"oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę przedmiotu!')" />&nbsp;&nbsp;&nbsp;
+                   <span id="field_subject_shortcut">Skrót:&nbsp;<span></span></span>
+                </p>
+                <!--<p><input type="text" class="input_text" placeholder="Skrót" id="field_subject_shortcut" ng-model="subject.abbr" readonly maxlength="5" required /></p>-->
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelSubject()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>kidFirstName = {{kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidLastName}}</tt><br>
+<tt>kidSex = {{kidSex}}</tt><br>
+<tt>kidBornDate = {{kidBornDate}}</tt><br>
+<tt>form_add_kid.input.$valid = {{form_add_kid.input.$valid}}</tt><br>
+<tt>form_add_kid.input.$error = {{form_add_kid.input.$error}}</tt><br>
+<tt>form_add_kid.$valid = {{form_add_kid.$valid}}</tt><br>
+<tt>form_add_kid.$error.required = {{!!form_add_kid.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+    <div class="kid_timetable">
+        <div class="timetable_legend">Pokaż plan lekcji dla dziecka:</div>
+        <div id="tt_kids_chooser_outside">
+            <div id="tt_kids_chooser">
+            <!--    <div ng-repeat="kid in kids" class="tt_kid_choose_box" id="tt_kid_choose_{{kid.id}}">
+                    <a ng-href="/kidsTimetable/{{kid.id}}"><img src="/images/avatar.png" align="left" /><span>{{kid.first_name}}</span></a>
+                </div>-->
+                <a ng-href="/kidsTimetable/{{kid.id}}" ng-repeat="kid in kids"><div class="tt_kid_choose_box" id="tt_kid_choose_{{kid.id}}">
+                    <img src="/images/avatar.png" align="left" /><span>{{kid.first_name}}</span>
+                </div></a>
+            </div>
+        </div>
+        <br class="clear"/>
+
+        <div id="timetable_close_subjects" onclick="$('#subjects_all_outside').slideToggle('fast');" title="Zwiń/rozwiń listę przedmiotów"><img src="/images/collapse_expand_48x22.png" /></div>
+        <div class="timetable_legend">
+            <div><div class="subject_box_legend orange2"></div> - Przedmioty programowe&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div><div class="subject_box_legend lightblue2"></div> - Twoje przedmioty dodatkowe</div>
+            <div><div class="subject_box_legend yellow"></div> - Posiłki</div>
+        </div>
+
+        <!--<div class="subjects_navigation" id="subjects_navigation"><span>Zwiń listę przedmiotów</span></div>-->
+        <div id="subjects_all_outside">
+            <div class="subjects" id="subjects_all">
+                <div class="subjects_normal" ng-repeat="MENSubject in MENSchoolSubjectsList">
+                    <div class="subject_box orange2" title="{{MENSubject.descr}}"><span>{{MENSubject.abbr}}</span></div>
+                </div>
+                <div class="subjects_normal" ng-repeat="eatSubject in eatSubjectsList">
+                    <div class="subject_box yellow" title="{{eatSubject.descr}}"><span>{{eatSubject.abbr}}</span></div>
+                </div>
+
+                
+                <div class="subjects_additional" ng-repeat="userSubject in additionalSubjects">
+                    <div class="subject_box lightblue2" title="{{userSubject.name}}"><span>{{userSubject.abbr}}</span></div>
+                </div>
+                <!--<div class="subjects_additional">
+                    <div class="subject_box yellow" title="Śniadanie"><img src="/images/timetable/breakfast.png" border="0" /></div>
+                    <div class="subject_box yellow" title="Obiad"><img src="/images/timetable/lunch.png" border="0" /></div>
+                    <div class="subject_box yellow" title="Podwieczorek"><img src="/images/timetable/fruits.png" border="0" /></div>
+                </div>-->
+            </div>
+            <div id="subject_trash" class="opacity7" title="Przeciągnij tutaj przedmiot dodatkowy aby go usunąć"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png"/></div>
+        </div>
+        <br class="clear"/><br/>
+
+        <form ng-submit="saveHours(hours)" name="hoursform">
+        <button type="button" ng-click="saveTimetable();" class="btn_change_hours" id="btn_save_timetable">ZAPISZ PLAN LEKCJI</button>
+        <button type="button" ng-click="changeHours();" class="btn_change_hours" id="btn_change_hours">Zmień godziny zajęć</button>
+        <button type="button" ng-click="cancelChangeHours();" class="btn_change_hours" id="btn_change_hours_cancel" style="display: none;">Anuluj</button>
+        <button type="submit" class="btn_change_hours bold" id="btn_change_hours_submit" style="display: none;">Zapisz godziny zajęć</button>
+        <p id="timetable_change_info" style="display: none;">Dokonano zmian w planie lekcji. Zapisz plan aby je zachować.</p>
+        <table id="timetable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="hours">Godz</th>
+                    <th>Pon</th>
+                    <th>Wto</th>
+                    <th>Śro</th>
+                    <th>Czw</th>
+                    <th>Pią</th>
+                    <th>Sob</th>
+                    <th>Nie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="hours_row"><div id="hour1_start">{{hour1_start}}</div><br/><div id="hour1_stop">{{hour1_stop}}</div></td>
+                    <td class="days_cell" id="day_1_1"></td><td class="days_cell" id="day_2_1"></td><td class="days_cell" id="day_3_1"></td>
+                    <td class="days_cell" id="day_4_1"></td><td class="days_cell" id="day_5_1"></td><td class="days_cell" id="day_6_1"></td>
+                    <td class="days_cell" id="day_7_1"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour2_start">{{hour2_start}}</div><br/><div id="hour2_stop">{{hour2_stop}}</div></td>
+                    <td class="days_cell" id="day_1_2"></td><td class="days_cell" id="day_2_2"></td><td class="days_cell" id="day_3_2"></td>
+                    <td class="days_cell" id="day_4_2"></td><td class="days_cell" id="day_5_2"></td><td class="days_cell" id="day_6_2"></td>
+                    <td class="days_cell" id="day_7_2"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour3_start">{{hour3_start}}</div><br/><div id="hour3_stop">{{hour3_stop}}</div></td>
+                    <td class="days_cell" id="day_1_3"></td><td class="days_cell" id="day_2_3"></td><td class="days_cell" id="day_3_3"></td>
+                    <td class="days_cell" id="day_4_3"></td><td class="days_cell" id="day_5_3"></td><td class="days_cell" id="day_6_3"></td>
+                    <td class="days_cell" id="day_7_3"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour4_start">{{hour4_start}}</div><br/><div id="hour4_stop">{{hour4_stop}}</div></td>
+                    <td class="days_cell" id="day_1_4"></td><td class="days_cell" id="day_2_4"></td><td class="days_cell" id="day_3_4"></td>
+                    <td class="days_cell" id="day_4_4"></td><td class="days_cell" id="day_5_4"></td><td class="days_cell" id="day_6_4"></td>
+                    <td class="days_cell" id="day_7_4"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour5_start">{{hour5_start}}</div><br/><div id="hour5_stop">{{hour5_stop}}</div></td>
+                    <td class="days_cell" id="day_1_5"></td><td class="days_cell" id="day_2_5"></td><td class="days_cell" id="day_3_5"></td>
+                    <td class="days_cell" id="day_4_5"></td><td class="days_cell" id="day_5_5"></td><td class="days_cell" id="day_6_5"></td>
+                    <td class="days_cell" id="day_7_5"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour6_start">{{hour6_start}}</div><br/><div id="hour6_stop">{{hour6_stop}}</div></td>
+                    <td class="days_cell" id="day_1_6"></td><td class="days_cell" id="day_2_6"></td><td class="days_cell" id="day_3_6"></td>
+                    <td class="days_cell" id="day_4_6"></td><td class="days_cell" id="day_5_6"></td><td class="days_cell" id="day_6_6"></td>
+                    <td class="days_cell" id="day_7_6"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour7_start">{{hour7_start}}</div><br/><div id="hour7_stop">{{hour7_stop}}</div></td>
+                    <td class="days_cell" id="day_1_7"></td><td class="days_cell" id="day_2_7"></td><td class="days_cell" id="day_3_7"></td>
+                    <td class="days_cell" id="day_4_7"></td><td class="days_cell" id="day_5_7"></td><td class="days_cell" id="day_6_7"></td>
+                    <td class="days_cell" id="day_7_7"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour8_start">{{hour8_start}}</div><br/><div id="hour8_stop">{{hour8_stop}}</div></td>
+                    <td class="days_cell" id="day_1_8"></td><td class="days_cell" id="day_2_8"></td><td class="days_cell" id="day_3_8"></td>
+                    <td class="days_cell" id="day_4_8"></td><td class="days_cell" id="day_5_8"></td><td class="days_cell" id="day_6_8"></td>
+                    <td class="days_cell" id="day_7_8"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour9_start">{{hour9_start}}</div><br/><div id="hour9_stop">{{hour9_stop}}</div></td>
+                    <td class="days_cell" id="day_1_9"></td><td class="days_cell" id="day_2_9"></td><td class="days_cell" id="day_3_9"></td>
+                    <td class="days_cell" id="day_4_9"></td><td class="days_cell" id="day_5_9"></td><td class="days_cell" id="day_6_9"></td>
+                    <td class="days_cell" id="day_7_9"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour10_start">{{hour10_start}}</div><br/><div id="hour10_stop">{{hour10_stop}}</div></td>
+                    <td class="days_cell" id="day_1_10"></td><td class="days_cell" id="day_2_10"></td><td class="days_cell" id="day_3_10"></td>
+                    <td class="days_cell" id="day_4_10"></td><td class="days_cell" id="day_5_10"></td><td class="days_cell" id="day_6_10"></td>
+                    <td class="days_cell" id="day_7_10"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour11_start">{{hour11_start}}</div><br/><div id="hour11_stop">{{hour11_stop}}</div></td>
+                    <td class="days_cell" id="day_1_11"></td><td class="days_cell" id="day_2_11"></td><td class="days_cell" id="day_3_11"></td>
+                    <td class="days_cell" id="day_4_11"></td><td class="days_cell" id="day_5_11"></td><td class="days_cell" id="day_6_11"></td>
+                    <td class="days_cell" id="day_7_11"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour12_start">{{hour12_start}}</div><br/><div id="hour12_stop">{{hour12_stop}}</div></td>
+                    <td class="days_cell" id="day_1_12"></td><td class="days_cell" id="day_2_12"></td><td class="days_cell" id="day_3_12"></td>
+                    <td class="days_cell" id="day_4_12"></td><td class="days_cell" id="day_5_12"></td><td class="days_cell" id="day_6_12"></td>
+                    <td class="days_cell" id="day_7_12"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour13_start">{{hour13_start}}</div><br/><div id="hour13_stop">{{hour13_stop}}</div></td>
+                    <td class="days_cell" id="day_1_13"></td><td class="days_cell" id="day_2_13"></td><td class="days_cell" id="day_3_13"></td>
+                    <td class="days_cell" id="day_4_13"></td><td class="days_cell" id="day_5_13"></td><td class="days_cell" id="day_6_13"></td>
+                    <td class="days_cell" id="day_7_13"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour14_start">{{hour14_start}}</div><br/><div id="hour14_stop">{{hour14_stop}}</div></td>
+                    <td class="days_cell" id="day_1_14"></td><td class="days_cell" id="day_2_14"></td><td class="days_cell" id="day_3_14"></td>
+                    <td class="days_cell" id="day_4_14"></td><td class="days_cell" id="day_5_14"></td><td class="days_cell" id="day_6_14"></td>
+                    <td class="days_cell" id="day_7_14"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br class="clear" />
+        </form>
+    </div>
+
+
+
+
+
+
+</script><script type="text/ng-template" id="login.html"><div class="rncpg_body" ng-controller="AuthCtrl">
+        
+
+<div id="rncpg_topper">
+    <div id="rncpg_login_form">
+        <div class="rncpg_white_logo">
+            <a href="http://rnc.rodzicenaczasie.pl/login"><img src="/images/rnc_logo_54x42.png" border="0" align="left" />
+            <span id="rncpg_app_logo_big_text" class="rncpg_app_logo_top_part">Rodzice</span><br/>
+            <span id="rncpg_app_logo_small_text" class="rncpg_app_logo_bottom_part">naCzasie.pl</span></a>
+        </div>
+        <form id="rncpg_log_in_form" name="login">
+        <span class="rncpg_bolded">Masz konto?</span> <span>Zaloguj się:&nbsp;</span>
+        <input type="text" class="rncpg_input_text" name="user" id="username" ng-model="user" placeholder="Email" tabindex="1" autocomplete="off" required oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę użytkownika!')" />
+        <input type="password" class="rncpg_input_text" name="password" ng-model="password" id="password" placeholder="Hasło" tabindex="2" autocomplete="off" required oninvalid="this.setCustomValidity('Wprowadź poprawne hasło!')" />
+        <input type="submit" class="rncpg_button blue" name="rncpg_login_submit" id="rncpg_login_submit" tabindex="3" ng-click="processAuth()" value="Zaloguj" />
+        </form>
+        <a href="#" class="rncpg_a rncpg_forgot_pass_link" onclick="showForgotPassForm()">Zapomniałeś hasła?</a>
+        <form id="rncpg_forgot_pass_form" style="display: none;" ng-submit="requestNewPassword(formemailnewpass)">
+            <input type="text" class="rncpg_input_text float_left" autocomplete="off" name="forgotpass" id="forgotpass" ng-model="formemailnewpass.email" placeholder="Podaj email użyty podczas rejestracji" required oninvalid="this.setCustomValidity('Wprowadź poprawny adres email!')" />
+            <input type="submit" class="rncpg_button blue float_left" name="rncpg_forgotpass_submit" id="rncpg_forgotpass_submit" value="Przypomnij" />
+        </form>
+    </div>
+    <div id="rncpg_menu_positions">
+        <div class="rncpg_menu_position rncpg_menu_position_hover" id="rncpg_menu_position1" onclick="changeContent('home')">Strona główna</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position2" onclick="changeContent('about_rnc')">O Aplikacji</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position3" onclick="changeContent('terms')">Regulamin</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position4" onclick="changeContent('mobile')">Mobile</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position5" onclick="changeContent('contact')">Kontakt</div>
+    </div>
+</div>
+<div id="rncpg_subtopper" ng-hide="use_cookies_confirm == '1'">
+    <p align="center">
+        <span class="bold">UWAGA! TA STRONA UŻYWA COOKIE</span>.<br/>Więcej informacji o używanych przez nas plikach cookie, ich zastosowaniu i sposobie modyfikacji akceptacji plików cookie, można znaleźć <a onclick="changeContent('cookie')" class="rncpg_a_register">tutaj</a>. Korzystając ze strony wyrażasz zgodę na używanie cookie, zgodnie z aktualnymi ustawieniami przeglądarki.
+        <br/><a ng-click="confirmCookies()" class="bold rncpg_a_register">Zamknij</a>
+    </p>
+</div>
+     
+<div class="rncpg_wrapper">
+    
+    <div class="rncpg_main_middle_content" id="rncpg_content_home">
+        <div class="rncpg_main_header">
+            <div class="rncpg_main_title">Zbyt dużo spraw dotyczących Twojego dziecka?</div>
+            <div class="rncpg_main_title rncpg_main_title_right">Teraz możesz mieć wszystko pod kontrolą!</div>
+        </div>
+        <div id="rncpg_main_image">
+            <img src="/images/Fotolia_30676296_XS.png" width="402" height="298" />
+        </div>        
+        <div id="rncpg_dotted_middle">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div id="rncpg_page_logo">
+            <img src="/images/rnc_logo_120x92.png" align="left" />
+            <div><span id="rncpg_logo_big_text" class="rncpg_logo_top_part">Rodzice</span>
+            <span id="rncpg_logo_small_text" class="rncpg_logo_bottom_part">naCzasie.pl</span></div>
+            <div id="rncpg_registration_form">
+                <form ng-submit="completeRegistrationNewUser(formregisternewuser)" >
+                    <span class="rncpg_registration_form_info rncpg_bolded">Nie masz konta?</span> <span class="rncpg_registration_form_info">Zarejestruj się:</span>
+                    <div><input type="text" class="rncpg_input_registration" ng-model="formregisternewuser.first_name" placeholder="Imię" tabindex="5" autocomplete="off" required />&nbsp;
+                         <input type="text" class="rncpg_input_registration" ng-model="formregisternewuser.last_name" placeholder="Nazwisko" tabindex="6" autocomplete="off" required /></div>
+                    <div><input type="email" class="rncpg_input_registration rncpg_doubled" ng-model="formregisternewuser.email" placeholder="Email" tabindex="7" autocomplete="off" required /></div>
+                    <div><input type="password" class="rncpg_input_registration" placeholder="Hasło 8-znakowe" ng-model="formregisternewuser.pass1" tabindex="8" autocomplete="off" required />&nbsp;
+                         <input type="password" class="rncpg_input_registration" placeholder="Powtórz hasło" ng-model="formregisternewuser.pass2" tabindex="9" autocomplete="off" required /></div>
+                    <div><br/><span class="rncpg_register_terms_info"><input type="checkbox" name="register_rules" ng-model="formregisternewuser.checked" required /> Rejestrując się musisz zaakceptować <a href="#" class="rncpg_a_register">Regulamin</a> serwisu.</span><br/>
+                         <input type="submit" class="rncpg_button_bigger blue" name="rncpg_register_submit" id="rncpg_register_submit" tabindex="10" value="Zarejestruj" />
+                         <a href="/auth/google" onClick="authGoogle()" class="social_login">
+                             <img src="/images/Metro_Icons/Google_Services/Google_alt_46x46.png" title="Zaloguj przy pomocy Google+" border="0" width="32" align="right" />
+                         </a>
+                         <a href="/auth/facebook" onClick="authFacebook()" class="social_login">
+                             <img src="/images/Metro_Icons/Internet_Shortcuts/Facebook_alt_46x46.png" title="Zaloguj przy pomocy Facebook" border="0" width="32" align="right" />
+                         </a>
+                         </div>
+                </form>
+            </div>
+        </div>        
+    </div>
+
+
+    <div class="rncpg_main_middle_content" id="rncpg_content_about_rnc" style="display: none;">
+        <div class="rncpg_about_left">
+            <div id="rncpg_box_about_1" class="rncpg_box_about rncpg_content_left_1"><p class="rncpg_box_about_left"><span class="rncpg_box_about_title"><b class="rncpg_box_about_1">1.</b>&nbsp;Idea</span><br/><span class="rncpg_font_red">Czy</span> kiedykolwiek zabrakło Ci czasu na zebraniu klasowym, żeby spokojnie porozmawiać z nauczycielem na temat Twojego dziecka?<br/><span class="rncpg_font_red">Czy</span> zawsze wiesz o wszystkich wydarzeniach szkolnych i klasowych?<br><span class="rncpg_font_red">Czy</span> współpracujesz z nauczycielami i innymi rodzicami dla dobra Waszych dzieci?<br/><br/><span class="bold bigger">Czas to zmienić!</span>.</p></div>
+            <div id="rncpg_box_about_3" class="rncpg_box_about rncpg_content_left_2"><p class="rncpg_box_about_left"><span class="rncpg_box_about_title"><b class="rncpg_box_about_3">3.</b>&nbsp;Projekt</span><br/>Już nie musisz zapamiętywać wszystkich kontaktów do Rodziców z klas Twojego dziecka. Nie musisz się obawiać, że nie zostaniesz powiadomiony o ważnym klasowym wydarzeniu. Nie musisz pamiętać o zmianach w planie lekcji swojego dziecka. <br/><br/><span class="bold bigger">Serwis RodziceNaCzasie.pl dba o to za Ciebie</span>. </p></div>
+        </div>        
+        <div class="rncpg_dotted_middle_about">
+            <img src="/images/about_rnc_bg.png" />
+        </div>        
+        <div class="rncpg_about_right">
+            <div id="rncpg_box_about_2" class="rncpg_box_about rncpg_content_right_1"><p class="rncpg_box_about_right"><span class="rncpg_box_about_title"><b class="rncpg_box_about_2">2.</b>&nbsp;Analiza</span><br/><span class="bold">Rodzice i Nauczyciele potrzebują platformy wspólnej komunikacji</span>, gdzie będą mogli przedyskutować każdy pomysł związany z edukacją Waszych dzieci. Potrzebują miejsca, gdzie można tworzyć i głosować w ankietach dotyczących działań klasowych i gdzie można łatwo planować wydarzenia szkolne i klasowe.<br/><br/>Miejsca takie jak <span class="bold bigger">RodziceNaCzasie.pl</span></p></div>
+            <div id="rncpg_box_about_4" class="rncpg_box_about rncpg_content_right_2"><p class="rncpg_box_about_right"><span class="rncpg_box_about_title"><b class="rncpg_box_about_4">4.</b>&nbsp;Rozwój</span><br/>Zarejestrowałeś się w aplikacji <span class="bold">RodziceNaCzasie.pl</span>? Podoba Ci się? Nie podoba Ci się? Masz jakieś sugestie lub chciałbyś zgłosić błędy?<br/><br/><a class="bold" onclick="changeContent('contact')"><span class="font_darkblue">Napisz do nas o tym</span></a>. Chcemy rozwijać się tak, aby zapewnić przyjemność z użytkowania nawet najbardziej wymagającym Rodzicom i Nauczycielom.</p></div>
+        </div> 
+    </div>
+
+ 
+    <div class="rncpg_main_middle_content" id="rncpg_content_cantlogin" style="display: none;">
+        <div class="rncpg_main_header_contact">
+            <div class="rncpg_main_title_full">Dlaczego nie mogę się zalogować?</div>
+            <div class="rncpg_main_subtitle_full">
+                <br/><br/>
+                <span class="bold">RodziceNaCzasie.pl</span> to aplikacja korzystająca z najnowszych technologii w przeglądarkach internetowych. Wykryliśmy, że używasz starszej wersji przeglądarki lub korzystasz z takiej, która nie obsługuje wszystkich możliwości serwisu.<br/><br/>
+                Aby móc korzystać z serwisu <span class="bold">RodziceNaCzasie.pl</span>, rekomendujemy następujące przeglądarki:<br/><br/><br/>
+                <p align="center">
+                    <a href="http://www.mozilla.org"><img src="/images/ff_logo.png" height="40" border="0" title="Mozilla Firefox"></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.google.com/chrome/index.html"><img src="/images/chrome_logo_2x.png" height="40"  border="0" title="Goole Chrome"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="rncpg_main_middle_content" id="rncpg_content_contact" style="display: none;">
+        <form name="rncpg_open_contact">
+        <div class="rncpg_main_header_contact">
+            <div class="rncpg_main_title_full">Masz sugestię? Chcesz o coś spytać? Napisz do nas!</div>
+            <div class="rncpg_main_subtitle_full">Weźmiemy pod uwagę wszystkie zgłoszenia i sugestie.</div>
+        </div>
+        <div class="rncpg_content_left">
+            <textarea class="rncpg_contact_textarea" ng-model="contact_context" placeholder="Wpisz treść zgłoszenia"></textarea>
+        </div>        
+        <div class="rncpg_dotted_border">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div class="rncpg_content_right">
+            <input type="submit" class="rncpg_button_bigger blue" name="rncpg_contact_submit" id="rncpg_contact_submit" value="Wyślij" ng-click="contactSend()" /><br/>
+            <br/><br/><br/><br/>
+            <div class="rncpg_white_logo_contact">Lub wyślij do nas e-mail:<br/><br/><br/>
+                <a href="http://rnc.rodzicenaczasie.pl"><img src="/images/rnc_logo_54x42.png" border="0" align="left" /></a>
+                <span id="rncpg_app_logo_big_text_contact" class="rncpg_app_logo_top_part">Rodzice</span><br/>
+                <span id="rncpg_app_logo_small_text_contact" class="rncpg_app_logo_bottom_part">naCzasie.pl</span>
+            </div>
+            <div>
+                kontakt@rodzicenaczasie.pl
+            </div>
+        </div>        
+        </form>
+    </div>
+
+
+    <div class="rncpg_main_middle_content" id="rncpg_content_cookies" style="display: none;">
+        <div class="rncpg_main_header_contact">
+            <div class="rncpg_main_title_full">Dowiedz się więcej o stosowaniu cookie przez <span class="bold">RodziceNaCzasie.pl</span></div>
+        </div>
+        <p class="rncpg_p_title">Co to jest plik „Cookie”?</p>
+        <p>"Cookies" (Ciasteczka) są to pojedyncze, małe pliki tekstowe, wysyłane przez odwiedzane strony internetowe i pobierane na komputerze użytkownika. Informacje zawarte w tych plikach pozwalają na odczytanie informacji w nich zawartych jedynie przez stronę, która je utworzyła. Tym samym strona internetowa nie może mieć dostępu do innych plików znajdujących się na komputerze użytkownika.
+        <p class="rncpg_p_title">W jakim celu aplikacja RodziceNaCzasie.pl korzysta z plików cookie?</p>
+        <p>Pliki "cookie" umożliwiają odpowiednią personalizację wyświetlanych na stronie informacji i zaprezentowanie treści dostosowanej do potrzeb użytkownika, a także mierzenie interakcji użytkowników na stronach internetowych. Stosujemy Ciasteczka w celu dostosowywania i poprawiania sposobu działania witryny, pozwalają one dodatkowo badać upodobania użytkowników.</p>
+        <p class="rncpg_p_title">Przykłady wykorzystania plików cookies w serwisie RodziceNaCzasie.pl:</p>
+        <ul>
+            <li class="rncpg_li">mierzenie ruchu użytkownika na stronach za pomocą kodu Google Analytics  - więcej informacji o plikach cookies w Google Analytics można znaleźć na stronie: <a href="http://www.google.pl/intl/pl/analytics/privacyoverview.html" class="rncpg_a_register" target="_blank">http://www.google.pl/intl/pl/analytics/privacyoverview.html</a></li>
+            <li class="rncpg_li">zapamiętywanie braku zgody na wyświetlanie w przyszłości niektórych treści,</li>
+            <li class="rncpg_li">mierzenie skuteczności prowadzonych akcji i konkursów</li>
+        </ul>
+        </p>
+        <p class="rncpg_p_title">Więcej na temat obsługi cookie w przeglądarkach:</p>
+        <p>
+            <a class="rncpg_a_register" target="_blank" href="http://support.mozilla.org/pl/kb/W%C5%82%C4%85czanie%20i%20wy%C5%82%C4%85czanie%20obs%C5%82ugi%20ciasteczek">Dla przeglądarki Firefox</a><br/>
+            <a class="rncpg_a_register" target="_blank" href="http://support.google.com/chrome/bin/answer.py?hl=pl&answer=95647">Dla przeglądarki Google Chrome</a><br/>
+            <a class="rncpg_a_register" target="_blank" href="http://windows.microsoft.com/pl-PL/windows7/How-to-manage-cookies-in-Internet-Explorer-9">Dla przeglądarki Internet Explorer</a>
+        </p>
+    </div>
+
+
+
+    <div id="rncpg_content_mobile" style="display: none;">
+        <div class="rncpg_page_logo">
+        <a href="http://rnc.rodzicenaczasie.pl"><img src="/images/rnc_logo_120x92.png" align="left" /></a>
+        <div><span id="rncpg_logo_big_text" class="rncpg_logo_top_part">Rodzice</span>
+        <span id="rncpg_logo_small_text" class="rncpg_logo_bottom_part">naCzasie.pl</span></div>
+        </div>    
+        <br class="clear" />
+        <div class="rncpg_content_mobile_inside">
+            Wersja mobilna aplikacji już wkrótce!<br/><br/>Tymczasem prosimy o korzystanie <br/>z komputerów o rozdzielczości <br/>co najmniej <span class="bold">1024x768 px</span>
+        </div>
+        <br class="clear" />
+        <div class="rncpg_content_mobile_inside_violet">
+            <span class="rncpg_content_mobile_title">O aplikacji</span><br/><br/>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_1">1.</b>&nbsp;Idea</span><br/><span class="rncpg_font_red">Czy</span> kiedykolwiek zabrakło Ci czasu na zebraniu klasowym, żeby spokojnie porozmawiać z nauczycielem na temat Twojego dziecka?<br/><span class="rncpg_font_red">Czy</span> zawsze wiesz o wszystkich wydarzeniach szkolnych i klasowych?<br><span class="rncpg_font_red">Czy</span> współpracujesz z nauczycielami i innymi rodzicami dla dobra Waszych dzieci?<br/><br/><span class="bold">Czas to zmienić!</span>.<br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_2">2.</b>&nbsp;Analiza</span><br/><span class="bold">Rodzice i Nauczyciele potrzebują platformy wspólnej komunikacji</span>, gdzie będą mogli przedyskutować każdy pomysł związany z edukacją Waszych dzieci. Potrzebują miejsca, gdzie można tworzyć i głosować w ankietach dotyczących działań klasowych i gdzie można łatwo planować wydarzenia szkolne i klasowe.<br/><br/>Miejsca takie jak <span class="bold">RodziceNaCzasie.pl</span><br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_3">3.</b>&nbsp;Projekt</span><br/>Już nie musisz zapamiętywać wszystkich kontaktów do Rodziców z klas Twojego dziecka. Nie musisz się obawiać, że nie zostaniesz powiadomiony o ważnym klasowym wydarzeniu. Nie musisz pamiętać o zmianach w planie lekcji swojego dziecka. <br/><br/><span class="bold">Serwis RodziceNaCzasie.pl dba o to za Ciebie</span>. <br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_4">4.</b>&nbsp;Rozwój</span><br/>Zarejestrowałeś się w aplikacji <span class="bold">RodziceNaCzasie.pl</span>? Podoba Ci się? Nie podoba Ci się? Masz jakieś sugestie lub chciałbyś zgłosić błędy?<br/><br/><a class="bold" onclick="changeContent('contact')"><span class="font_darkblue">Napisz do nas o tym</span></a>. Chcemy rozwijać się tak, aby zapewnić przyjemność z użytkowania nawet najbardziej wymagającym Rodzicom i Nauczycielom.<br/><br/></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="rncpg_what_to_do" id="rncpg_to_do1" style="display: none;">Zrobić zakupy<br>na wycieczkę klasową&nbsp;<img src="/images/arrows__leftdownrightup_b.png" align="right" style="position: relative; top: -32px;" /></div>
+<div class="rncpg_what_to_do" id="rncpg_to_do2" style="display: none;"><img src="/images/arrows__rightupleftdown_b.png" align="left" />&nbsp;Zebranie klasowe</div>
+<div class="rncpg_what_to_do" id="rncpg_to_do3" style="display: none;"><img src="/images/arrows__rightdownleftup_b.png" align="left" style="position: relative; top: -44px;" />Wysłać zdjęcia<br>do wszystkich rodziców</div>
+<div class="rncpg_what_to_do" id="rncpg_to_do4" style="display: none;">Spotkanie<br>z nauczycielem<img src="/images/arrows__leftuprightdown_b.png" align="right" style="position: relative; top: -12px;" /></div>
+<div class="rncpg_what_to_do" id="rncpg_to_do5" style="display: none;">Wypożyczyć strój<br>na bal przebierańców&nbsp;<img src="/images/arrows__leftuprightdown_b.png" align="right" /></div>
+        
+
+
+<div id="rncpg_footer">
+    
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    //console.log($(window).width());
+    if($(window).width() < 1000) {
+        changeContent('mobile');
+    }
+    else
+        fitPageContent();
+});
+$(window).resize(function() {
+    if($(window).width() < 1000) {
+        changeContent('mobile');
+    }
+    else
+        fitPageContent();
+});
+
+
+function fitPageContent() {
+    var screen_height = $(window).height();
+    var screen_width = $(window).width();
+    
+    $(".rncpg_body").css('width', '100%');
+    $(".rncpg_body").css('height', '100%');
+    //$("#containers").hide();
+
+    if($("#rncpg_content_home").css('display') != 'none') {
+        var pos = $("#rncpg_main_image").position();
+        if(pos !== undefined) {
+            $("#rncpg_to_do1").css('position', 'absolute');    
+            $("#rncpg_to_do1").css('top', pos['top'] + 300 + 'px');    
+            $("#rncpg_to_do1").css('left', pos['left'] + 'px');    
+            $("#rncpg_to_do1").show();        
+    
+            $("#rncpg_to_do2").css('position', 'absolute');    
+            $("#rncpg_to_do2").css('top', pos['top'] - 26 + 'px');    
+            $("#rncpg_to_do2").css('left', pos['left'] + 260 + 'px');    
+            $("#rncpg_to_do2").show();    
+    
+            $("#rncpg_to_do3").css('position', 'absolute');    
+            $("#rncpg_to_do3").css('top', pos['top'] + 276 + 'px');    
+            $("#rncpg_to_do3").css('left', pos['left'] + 260 + 'px');    
+            $("#rncpg_to_do3").show();    
+    
+            $("#rncpg_to_do4").css('position', 'absolute');    
+            $("#rncpg_to_do4").css('top', pos['top'] + 120 + 'px');    
+            $("#rncpg_to_do4").css('left', pos['left'] - 72 + 'px');    
+            $("#rncpg_to_do4").show();    
+    
+            $("#rncpg_to_do5").css('position', 'absolute');    
+            $("#rncpg_to_do5").css('top', pos['top'] - 40 + 'px');    
+            $("#rncpg_to_do5").css('left', pos['left'] - 60 + 'px');    
+            $("#rncpg_to_do5").show();    
+        }
+    }
+
+
+    if($.browser.webkit) {
+        $("#rncpg_forgotpass_submit").css('margin-top', '1px');
+        $("#forgotpass").css('margin-left', '137px');
+        $("#rncpg_menu_positions").css("margin-top", "2px");
+    }
+
+}
+
+
+function fitAboutContent() {
+    var pos = $("#rncpg_content_about_rnc").position();
+    console.log(pos);
+}
+
+
+function showForgotPassForm() {
+    /*$("#rncpg_topper").animate({
+        height: 92
+    }, "fast", function() {
+        $("#rncpg_forgot_pass_form").fadeIn();
+    });*/
+    $("#rncpg_forgot_pass_form").fadeIn();
+}
+
+
+function authGoogle() {
+    console.log("authGoogle...");
+    window.location.href="/auth/google";
+}
+
+
+function authFacebook() {
+    console.log("authFacebook...");
+    window.location.href="/auth/facebook";
+}
+
+
+function changeContent(content) {
+    $(".rncpg_menu_position").each(function() {
+        $(this).removeClass('rncpg_menu_position_hover');
+    });
+
+    if(content == "home") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $("#rncpg_content_home").show();
+        $("#rncpg_content_mobile").hide();
+       $("#rncpg_content_cookies").hide();
+         $("#rncpg_content_cantlogin").hide();
+        $(".rncpg_what_to_do").show();
+
+        $("#rncpg_menu_position1").addClass('rncpg_menu_position_hover');
+
+    }
+    if(content == "about_rnc") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_home").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_about_rnc").show();
+        fitAboutContent();
+        $("#rncpg_menu_position2").addClass('rncpg_menu_position_hover');
+    }
+    if(content == "contact") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_contact").show();
+        $("#rncpg_menu_position5").addClass('rncpg_menu_position_hover');
+    }
+    if(content == "cookie") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_cookies").show();
+    }
+    if(content == "cantlogin") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_cookies").hide();
+        $("#rncpg_content_cantlogin").show();
+    }
+    if(content == "mobile") {
+        $("#rncpg_topper").hide();
+        $("#rncpg_footer").hide();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_cookies").hide();
+        $("#rncpg_content_mobile").show();
+        $("#rncpg_menu_position4").addClass('rncpg_menu_position_hover');
+    }
+    
+}
+
+
+//        $('#rncpg_login_submit').clone().attr('type','button').insertAfter('#rncpg_login_submit').prev().remove();
+//        //$("#rncpg_login_submit").attr("type", "button");
+//        $("#rncpg_login_submit").removeAttr("ng-click");
+//        $("#rncpg_login_submit").bind("click", function() {
+//            changeContent("cantlogin");
+//        });
+
+</script>
+
+</script><script type="text/ng-template" id="login_20130306.html"><div class="page_body" ng-controller="AuthCtrl">
+        
+
+
+
+     
+<div class="page_wrapper">
+    <div id="page_center_content">
+
+        <div class="content_box" style="position: absolute; top: 50px; left: 40%; width: 305px; height: 200px;"> 
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Zebrania klasowe są za krótkie, żeby zdążyć <span class="font_red">porozmawiać o wszystkim</span>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 140px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 190px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                <span class="font_red">Planuj wydarzenia w klasie</span> Twojego dziecka 
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 240px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 290px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                <span class="font_red">Dyskutuj z innymi rodzicami i nauczycielami</span> w klasie i szkole 
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 350px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 400px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Chcesz znać opinię Rodziców na temat klasowych inicjatyw? <span class="font_red">Spytaj!</span>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 490px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 540px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Możesz <span class="font_red">skutecznie powiadomić Rodziców o nowych planach</span> w szkole 
+            </div>
+        </div>
+
+        
+
+
+
+        <div id="page_logo">
+            <img src="/images/rnc_logo_180x138.png" /><br/>
+            <span id="logo_big_text" class="logo_top_part">Rodzice</span><br/>
+            <span id="logo_small_text" class="logo_bottom_part">naCzasie.pl</span>
+        </div>
+
+    </div>
+
+    <div id="page_login">
+    <div id="page_login_content">
+        <div id="content-login">
+        <h2 class="page_h2">Logowanie</h2>
+        <div class="page_login_inside_content">
+          <div id="showregister_div"><div class="slidelink" id="showregister">Nie masz konta? Zarejestruj się&nbsp;&nbsp;<img src="/images/arrow_right_15x24.png" border="0" align="right" /></div></div>
+          <form id="login" name="login" action="#" method="post">
+              <!--<input type="email" name="email" id="email" ng-model="user" placeholder="Użytkownik" class="txtfield" tabindex="1" autocomplete="off" /><br/>-->
+              <input type="text" name="user" id="username" ng-model="user" placeholder="Użytkownik" class="txtfield" tabindex="1" autocomplete="off" required oninvalid="this.setCustomValidity('1111')" /><br/>
+              <input type="password" name="password" ng-model="password" id="password" placeholder="Hasło" class="txtfield" tabindex="2" autocomplete="off" required oninvalid="this.setCustomValidity('2222')" /><br/>
+              <input type="submit" name="loginbtn" id="loginbtn" value="Zaloguj" ng-click="processAuth()" class="btn" tabindex="3" />
+          </form>
+          <div class="page_login_info">
+              <div id="showforgotpass">Zapomniałeś hasła?</div><br/><br/>
+              <input type="email" name="forgotpassemail" id="forgotpassemail" placeholder="Podaj email" class="txtfield forgotpass" tabindex="12" autocomplete="off" style="display: none;"><br/>
+              <input type="submit" name="forgotpassbtn" id="forgotpassbtn" value="Przypomnij hasło" class="btn forgotpass" tabindex="13" style="display: none;" />
+          </div>
+        </div>
+      </div><!-- /end #content-login -->
+      
+      
+      <div id="content-register">
+        <h2 class="page_h2">Rejestracja</h2>
+        <div class="page_login_inside_content">
+        <div id="showlogin_div"><div class="leftsidelink" id="showlogin"><img src="/images/arrow_left_15x24.png" border="0" align="left" />&nbsp;&nbsp;Masz już konto? Zaloguj się</div></div>
+        <form id="register" name="register" action="#" method="post">
+          <input type="text" name="fname" id="fname" placeholder="Imię" class="txtfield" tabindex="4" autocomplete="off" /><br/>
+          <input type="text" name="lname" id="lname" placeholder="Nazwisko" class="txtfield" tabindex="5" autocomplete="off" /><br/>
+          <input type="email" name="newemail" id="newemail" placeholder="Email" class="txtfield" tabindex="6" autocomplete="off" /><br/>
+          <input type="password" name="password1" id="password1" placeholder="Hasło" class="txtfield" tabindex="7" autocomplete="off" /><br/>
+          <input type="password" name="password2" id="password2" placeholder="Powtórz hasło" class="txtfield" tabindex="8" autocomplete="off" /><br/>
+          <input type="submit" name="registerbtn" id="registerbtn" value="Zarejestruj" class="btn" tabindex="9" />
+        </form>
+        <div class="page_registration_info">
+            <span>Lub zarejestruj przy użyciu</span><br/>
+            <a href="/auth/google" onClick="authGoogle()"><img src="/images/Metro_Icons/Google_Services/Google_alt_46x46.png" title="Używając konta Google" border="0" /></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/auth/facebook" onClick="authFacebook()"><img src="/images/Metro_Icons/Internet_Shortcuts/Facebook_alt_46x46.png" title="Używając konta Facebook" border="0" /></a>
+        </div>
+        
+        </div>
+      </div><!-- /end #content-register -->
+      
+    </div>
+    </div>
+    </div>
+
+    <div id="page_bottom">
+
+        <div id="page_bottom_menu">
+            <div class="box" id="box1">Witaj</div>
+            <div class="box" id="box2">Aplikacja</div>
+            <div class="box" id="box3">CośTam</div>
+            <div class="box" id="box4">CośTam</div>
+            <div class="box" id="box5">Kontakt</div>
+        </div>
+
+<!--
+    <div id="page_bottom_partners" style="display: none;">
+        Partnerzy <span class="huge">{</span>xxx<span class="huge">}</span>
+    </div>
+-->
+
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".jnotify-container").text();
+    clearTooltips();
+
+    fitPageContent();
+
+    $("form").submit(function(e) {
+        e.preventDefault();
+    });
+  
+    var clogin = $("#content-login");
+    var cregister = $("#content-register");
+  
+    /* display the register page */
+    $("#showregister").on("click", function(e){
+        e.preventDefault();
+        var newheight = cregister.height();
+        $(cregister).css("display", "block");
+    
+        $(clogin).stop().animate({
+            "left": "-880px"
+        }, 800, function(){ /* callback */ });
+    
+        $(cregister).stop().animate({
+            "left": "0px"
+        }, 800, function(){ $(clogin).css("display", "none"); });
+    
+        $("#page_login_content").stop().animate({
+            "height": newheight+"px"
+        }, 550, function(){ /* callback */ });
+    });
+  
+    /* display the login page */
+    $("#showlogin").on("click", function(e){
+        e.preventDefault();
+        var newheight = clogin.height();
+        $(clogin).css("display", "block");
+    
+        $(clogin).stop().animate({
+            "left": "0px"
+        }, 800, function() { /* callback */ });
+        $(cregister).stop().animate({
+            "left": "880px"
+        }, 800, function() { $(cregister).css("display", "none"); });
+    
+        $("#page_login_content").stop().animate({
+            "height": newheight+"px"
+        }, 550, function(){ /* callback */ });
+    });
+
+    $("#showforgotpass").on("click", function(e){
+        e.preventDefault();
+        $(".forgotpass").fadeIn();
+    });
+
+
+
+});
+$(window).resize(function() {
+    fitPageContent();
+});
+
+
+function fitPageContent() {
+    var screen_height = $(window).height();
+    var screen_width = $(window).width();
+    var page_bottom_height = $("#page_bottom").height();
+    var center_height = screen_height - page_bottom_height - 100;
+    $("#page_center_content").css('height', center_height + 'px');
+ 
+    /*if(screen_width < 1280) {
+        $("#page_center_content").css('position', 'relative');
+        $("#page_center_content").css('left', '-100px');
+    }*/
+}
+
+
+function authGoogle() {
+    console.log("authGoogle...");
+    window.location.href="/auth/google";
+}
+
+
+function authFacebook() {
+    console.log("authFacebook...");
+    window.location.href="/auth/facebook";
+}
+
+
+</script>
+   
+
+</div>
+
+     
+</script><script type="text/ng-template" id="login__old.html"><div ng-controller="AuthCtrl" id="login_wrapper_outside">
+    <div id="login_logo"><div class="l_logo"><img src="/images/logo.png" border="0" /><div>&nbsp;RodziceNaCzasie<span>.pl</span></div></div></div>
+    <div id="login_wrapper">
+
+
+        <form class="well" name="login_form">
+            <div class="login">ZALOGUJ</div>
+            <div class="username-field"><input placeholder="Użytkownik" autocomplete="off" type="text" name="user" ng-model="user" id="username" required /></div>
+            <div class="password-field"><input placeholder="Hasło" autocomplete="off" type="password" name="password" ng-model="password" id="password" required /></div>
+            <div class="forgot-usr-pwd"><a href="#">Zapomniałeś hasła</a>?</div>
+            <input class="login_submit" type="submit" name="submit" ng-click="processAuth()" value="Zaloguj" />
+        </form>
+
+<!--
+  <form class="well">
+    <h1>Zaloguj</h1>
+    <input placeholder="Użytkownik" class="input_text" type="text" name="user" ng-model="user" id="username" required><br/>
+    <input placeholder="Hasło" class="input_text" type="password" name="password" ng-model="password" id="password" required></br>
+    <input type="submit" class="btn" ng-click="processAuth()" value="Zaloguj" />
+  </form>
+  <span class="label label-important" ng-show="showError">{{errorMsg}}</span>
+-->
+
+        <div id="register_wrapper" align="center">
+            <p><span class="register question">NIE MASZ KONTA?</span><br/>
+               <span class="register">ZAREJESTRUJ SIĘ</span><br/>
+        	poprzez sieć społecznościową:
+        	<br/>
+        	<br/>
+               <!-- <a ng-click="onGoogleLogin()"><img src="/images/Metro_Icons/Google_Services/Google_alt_46x46.png" title="Używając konta Google" border="0"></a> -->
+               <a href="/auth/google" onClick="authGoogle()"><img src="/images/Metro_Icons/Google_Services/Google_alt_46x46.png" title="Używając konta Google" border="0"></a>
+               &nbsp;&nbsp;&nbsp;
+               <a href="/auth/facebook" onClick="authFacebook()"><img src="/images/Metro_Icons/Internet_Shortcuts/Facebook_alt_46x46.png" title="Używając konta Facebook" border="0"></a>
+               <br/><br/>
+               lub
+               <br/><br/>
+               <div id="register_form_link" onclick="$('#register_form_wrapper').slideDown();"><b class="font16 bold">Wypełnij formularz</b></div>
+               </p>
+        </div>
+
+    </div>
+
+    <div id="register_form_wrapper" style="display: none;">
+
+        <form class="well" name="register_form">
+            <div class="login">ZAREJESTRUJ</div>
+            <div class="register-field"><input placeholder="Użytkownik" autocomplete="off" type="text" name="register_user" ng-model="register_user" id="register_username" required /></div>
+            <div class="register-field"><input placeholder="Hasło" autocomplete="off" type="password" name="register_password" ng-model="register_password" id="register_password" required /></div>
+            <div class="register-field"><input placeholder="Powtórz hasło" autocomplete="off" type="password" name="register_confirm_password" ng-model="register_confirm_password" id="register_confirm_password" required /></div>
+            <div class="register-field margin_top48"><input placeholder="Imię" autocomplete="off" type="text" name="register_first_name" ng-model="register_first_name" id="register_first_name" required /></div>
+            <div class="register-field"><input placeholder="Nazwisko" autocomplete="off" type="text" name="register_last_name" ng-model="register_last_name" id="register_last_name" required /></div>
+            <div class="register-field"><input placeholder="Miasto" autocomplete="off" type="text" name="register_city" ng-model="register_city" id="register_city" required /></div>
+            <input class="login_submit" type="submit" name="submit" ng-click="processRegister()" value="Zarejestruj" />
+        </form>
+
+    </div>
+
+
+
+    <div id="login_page_content">
+        <div id="login_page_content_title">
+            <img src="/images/Metro_Icons/Other/Default_green_46x46.png" border="0" />
+            <div>&nbsp;Dlaczego warto się zarejestrować?</div>
+        </div>
+        <div id="login_page_content_text">
+            <span>Rejestrując się w serwisie RodziceNaCzasie.pl <br/>
+                <ul>
+                    <li> możesz w łatwy sposób uczestniczyć w życiu szkolnym Twojego dziecka,</li>
+                    <li> utrzymujesz kontakt z Nauczycielami i innymi Rodzicami,</li>
+                    <li> możesz planować wydarzenia, dyskutować oraz znaleźć informacje na temat szkolnych składek</li>
+                </ul>
+            </span>
+        </div>
+    </div>
+    
+</div>
+
+
+<script language=”javascript” type=”text/javascript”>
+function authGoogle() {
+console.log("authGoogle...");
+window.location.href="/auth/google";
+}
+
+function authFacebook() {
+console.log("authFacebook...");
+window.location.href="/auth/facebook";
+}
+
+</script>
+
+
+</script><script type="text/ng-template" id="news.html">    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_news').slideToggle(); $('#field_news_text').jScrollPane(); $('#hidden_forms_news').css('height', $('.form_add_news_left').height() + 100 + 'px');"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj wpis</span></div></div>
+    </div>
+
+    <div class="hidden_forms" id="hidden_forms_news" style="display: none;">
+        <form name="form_add_news" class="form_add_news" ng-submit="saveNews(newsform)">
+            <div class="form_add_news_title" id="form_add_news_title">Wprowadź nowy wpis:</div>
+            <div class="form_add_news_left">
+                <p><input type="text" class="input_text" maxlength="120" placeholder="Tytuł" autocomplete="off" id="field_news_title" ng-model="newsform.title" required oninvalid="this.setCustomValidity('Wprowadź tytuł wpisu!')" /></p>
+                <p><textarea class="input_text" placeholder="Treść" autocomplete="off" id="field_news_text" ng-model="newsform.text" required oninvalid="this.setCustomValidity('Wprowadź treść wpisu!')"></textarea></p>
+                <p class="form_add_news_title">Wpis będzie widoczny dla:<br/>
+                    <div class="new_post_form_kids float_left width_100">
+                        <input type="checkbox" ng-model="newsform.only_me" onclick="enableDisableGroups(this)" id="post_checkbox_for_me" /> <span>Tylko Ciebie</span>
+                    </div>
+                </p>
+                <p class="form_add_news_title font10 font_grey">Grup:<br/>
+                    <div class="new_post_form_kids float_left" ng-repeat="group in groups">
+                        <input type="checkbox" ng-model="group._id" id="new_post_group_{{group.id}}" class="post_checkbox_for_groups" /> <span>{{group.name}}</span>
+                    </div>
+                </p>
+                
+                <p><br class="clear" /><input type="button" class="button" value="Anuluj" ng-click="cancelNews()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div id="post_types">
+        <div class="post_type hover" id="post_type_ALL" ng-click="getPosts(limit, 0, 'all', [], 1); fitPostContents();">Wszystkie</div>
+        <div class="post_type" id="post_type_PRIVATE" ng-click="getPosts(limit, 0, 'private', [], 1); fitPostContents();">Tylko dla mnie</div>
+        <div class="post_type" id="post_type_GROUP_{{group.id}}" ng-repeat="group in groups" ng-click="getPosts(limit, 0, 'group', [group.id], 1); fitPostContents();"><span><b class="group_grey">Grupy&nbsp;&nbsp;</b>{{group.name}}</div>
+    </div>
+<br class="clear" />
+
+
+<ul id="post_list">
+    <li ng-repeat="post in posts" class="posts">
+
+        <!-- post wlasciwy -->
+        <div class="post_header" id="post_header_{{post.id}}">
+            <div class="post_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_title">
+                <span class="post_author">{{post.owner_obj.first_name}} {{post.owner_obj.last_name}}</span><br/>
+                <span class="post_created_text">{{post.created_text}}</span><br/>
+                {{post.title}}
+            </div>
+            <div class="float_right" ng-show="post.owner_obj.id == userInfo.id"><a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <!--<div class="post_header_arrow" style="display: none;"></div>-->
+        <div class="post_content" id="post_content_{{post.id}}">{{post.content}}</div>
+        <!--<div class="post_footer">
+            <span class="post_comments_counter">Komentarzy: {{post.comments_num}}&nbsp;</span>&nbsp;&nbsp;
+            <!--<a><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="0" height="24" /></a>
+            <a title="Edytuj wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="24" height="24" /></a>&nbsp;&nbsp;
+            <a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" border="0" width="24" height="24" /></a>-->
+        <!--</div>-->
+
+        <!-- komentarze -->
+        <div class="post_comments_show_all" ng-click="showAllComments(post.id)" ng-show="post.comments_num > 3" ng-hide="post.comments_num == post.comments_to_show.length">Pokaż wszystkie komentarze ({{post.comments_num}})</div>
+        <div class="post_comments comments_{{post.id}}" id="comments_{{comment.id}}" style="width: {{comment.comment_width}}px;" ng-repeat="comment in post.comments_to_show">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content"><span class="post_author">{{comment.owner.first_name}} {{comment.owner.last_name}}</span><span class="post_created_text float_right">{{comment.created_text}}</span><br/>{{comment.content}}</div>
+            <div class="float_right top-4 left4" ng-show="comment.owner.id == userInfo.id"><a ng-href="/newsCommentsDelete/{{comment.id}}" title="Usuń komentarz" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <div class="post_comments" style="width: {{comment.comment_width}}px;">
+            <form name="form_add_comment_{{post.id}}" class="form_add_comment" ng-submit="saveComment(commentform, post.id, comment)">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content">
+                <span class="post_author">{{userInfo.first_name}}&nbsp;{{userInfo.last_name}}</span>
+                <span class="post_created_text float_right"></span><br/>
+                <div class="float_left">
+                    <textarea style="width: {{comment.comment_textarea_width}}px;" id="post_comment_to_add_{{post.id}}" name="post_comment_to_add_{{post.id}}" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 80);" class="post_comment_textarea float_left" ng-model="comment" placeholder="Wpisz komentarz"></textarea>
+                    <!--<br class="clear" />-->
+                    <input type="submit" class="button margin_left4 top-12 float_right" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 26);" value="Zapisz" />            
+                </div>
+            </div>
+            </form>
+        </div>
+        <br class="clear"/>
+        
+    </li>
+</ul>
+
+<br class="clear" />
+<br/><br/>
+
+<div class="posts_more_button_div">
+    <div id="posts_more_button"><a ng-click="getPosts(limit, offset, filter, group_ids, 0)">Pokaż starsze wpisy</a></div>
+</div>
+<br class="clear" />
+<br/>
+
+
+
+
+</script><script type="text/ng-template" id="news_20130314.html">    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_news').slideToggle(); $('#field_news_text').jScrollPane(); $('#hidden_forms_news').css('height', $('.form_add_news_left').height() + 100 + 'px');"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj wpis</span></div></div>
+    </div>
+
+    <div class="hidden_forms" id="hidden_forms_news" style="display: none;">
+        <form name="form_add_news" class="form_add_news" ng-submit="saveNews(newsform)">
+            <div class="form_add_news_title" id="form_add_news_title">Wprowadź nowy wpis:</div>
+            <div class="form_add_news_left">
+                <p><input type="text" class="input_text" maxlength="120" placeholder="Tytuł" autocomplete="off" id="field_news_title" ng-model="newsform.title" required oninvalid="this.setCustomValidity('Wprowadź tytuł wpisu!')" /></p>
+                <p><textarea class="input_text" placeholder="Treść" autocomplete="off" id="field_news_text" ng-model="newsform.text" required oninvalid="this.setCustomValidity('Wprowadź treść wpisu!')"></textarea></p>
+                <p class="form_add_news_title">Wpis będzie widoczny dla:<br/>
+                    <div class="new_post_form_kids float_left">
+                        <input type="checkbox" ng-model="newsform.only_me" onclick="enableDisableGroups(this)" id="post_checkbox_for_me" /> <span>Tylko Ciebie</span>
+                    </div>
+                    <div class="new_post_form_kids float_left" ng-repeat="group in groups">
+                        <input type="checkbox" ng-model="group._id" id="new_post_group_{{group.id}}" class="post_checkbox_for_groups" /> <span><b class="group_grey">Grupy&nbsp;&nbsp;</b>{{group.name}}</span>
+                    </div>
+                </p>
+                
+                <p><br class="clear" /><input type="button" class="button" value="Anuluj" ng-click="cancelNews()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div id="post_types">
+        <div class="post_type hover" id="post_type_ALL" ng-click="getPosts(limit, 0, 'all', [], 1)">Wszystkie</div>
+        <div class="post_type" id="post_type_PRIVATE" ng-click="getPosts(limit, 0, 'private', [], 1)">Tylko dla mnie</div>
+        <div class="post_type" id="post_type_GROUP_{{group.id}}" ng-repeat="group in groups" ng-click="getPosts(limit, 0, 'group', [group.id], 1)"><span><b class="group_grey">Grupy&nbsp;&nbsp;</b>{{group.name}}</div>
+    </div>
+<br class="clear" />
+
+
+<ul id="post_list">
+    <li ng-repeat="post in posts" class="posts">
+
+        <!-- post wlasciwy -->
+        <div class="post_header">
+            <div class="post_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_title">
+                <span class="post_author">{{post.owner_obj.first_name}} {{post.owner_obj.last_name}}</span><br/>
+                <span class="post_created_text">{{post.created_text}}</span><br/>
+                {{post.title}}
+            </div>
+            <div class="float_right" ng-show="post.owner_obj.id == userInfo.id"><a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <div class="post_content">{{post.content}}</div>
+        <div class="post_footer">
+            <span class="post_comments_counter">Komentarzy: {{post.comments_num}}&nbsp;</span>&nbsp;&nbsp;
+            <!--<a><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="0" height="24" /></a>
+            <a title="Edytuj wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="24" height="24" /></a>&nbsp;&nbsp;
+            <a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" border="0" width="24" height="24" /></a>-->
+        </div>
+
+        <!-- komentarze -->
+        <div class="post_comments_show_all" ng-click="showAllComments(post.id)" ng-show="post.comments_num > 3" ng-hide="post.comments_num == post.comments_to_show.length">Pokaż wszystkie komentarze</div>
+        <div class="post_comments comments_{{post.id}}" ng-repeat="comment in post.comments_to_show">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content"><span class="post_author">{{comment.owner.first_name}} {{comment.owner.last_name}}</span><span class="post_created_text float_right">{{comment.created_text}}</span><br/>{{comment.content}}</div>
+            <div class="float_right top-4 left4" ng-show="comment.owner.id == userInfo.id"><a ng-href="/newsCommentsDelete/{{comment.id}}" title="Usuń komentarz" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <div class="post_comments">
+            <form name="form_add_comment_{{post.id}}" class="form_add_comment" ng-submit="saveComment(commentform, post.id, comment)">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content">
+                <span class="post_author">{{userInfo.first_name}}&nbsp;{{userInfo.last_name}}</span>
+                <span class="post_created_text float_right"></span><br/><textarea id="post_comment_to_add_{{post.id}}" name="post_comment_to_add_{{post.id}}" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 80);" class="post_comment_textarea" ng-model="comment" placeholder="Wpisz komentarz"></textarea>
+                <!--<br class="clear" />-->
+                <input type="submit" class="button margin_left4 top-12 float_right" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 26);" value="Zapisz" />            
+            </div>
+            </form>
+        </div>
+    </li>
+</ul>
+
+<br class="clear" />
+<br/><br/>
+
+<div class="posts_more_button_div">
+    <div id="posts_more_button"><a ng-click="getPosts(limit, offset, filter, group_ids, 0)">Pokaż starsze wpisy</a></div>
+</div>
+<br class="clear" />
+<br/>
+
+
+
+
+</script><script type="text/ng-template" id="news_backup.html">    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_news').slideToggle(); $('#field_news_text').jScrollPane();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj wpis</span></div></div>
+    </div>
+
+    <div class="hidden_forms" id="hidden_forms_news" style="display: none;">
+        <form name="form_add_news" class="form_add_news" ng-submit="saveNews(news)">
+            <div class="form_add_news_title" id="form_add_news_title">Wprowadź nowy wpis:</div>
+            <div class="form_add_news_left">
+                <p><input type="text" class="input_text" placeholder="Tytuł" autocomplete="off" id="field_news_title" ng-model="news.title" required /></p>
+                <p><textarea class="input_text" placeholder="Treść" autocomplete="off" id="field_news_text" ng-model="news.text" required></textarea></p>
+                <p><div class="selectstyled"><select ng-model="news.groups" placeholder="Grupy"><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelNews()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+
+
+<ul id="infinite_scroll">
+								<li><a href="">This is my some title and is at number 0</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 1</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 2</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 3</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 4</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 5</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 6</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 7</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 8</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 9</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+							</ul>
+
+
+
+<br class="clear">
+
+
+<div id="outsideTimeline">
+    <div id="timelineContainer">
+        <div class="timelineToggle"><p><a class="expandAll">+ rozwiń wszystko</a></p></div>
+        <br class="clear">
+
+        <div class="timelineMajor">
+	    <h2 class="timelineMajorMarker"><span>Listopad 2012</span></h2>
+	    <dl class="timelineMinor">
+                <dt id="2012111302"><div class="news_calendar_card"><span>13</span></div><a>Święto Niepodległości 2012</a></dt>
+	        <dd class="timelineEvent" id="2012111302EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>13 listopada, 9:27</h3>
+                    
+                    <!--<div class="media">			
+                        <a href="#inline-1955-08-282" class="CBmodal"><img src="http://img.youtube.com/vi/GU1wuqyOP98/0.jpg" width="240" height="180" alt="Related Video: The Emmett Till Murder"></a>
+                        <p class="mediaLink"><a href="#inline-1955-08-282" class="CBmodal" title="Related Video: The Emmett Till Murder">Watch: The Emmett Till Murder</a></p>
+                        <div style="display:none">
+                            <div id="inline-1955-08-282" class="modalBox">
+                                <! -- media - ->    
+                            </div>
+                        </div>
+                    </div>-->
+     
+                    <p>
+                        W minioną sobotę, 10. listopada, w naszej szkole odbyła się uroczystość z okazji 94 rocznicy Odzyskania Niepodległości. W jej przygotowanie włączyła się cała społeczność szkolna z kl. IV – VI.<br/>
+                        W trakcie przygotowań do uroczystości uczniowie z kl. IV i V opanowali (pod okiem nauczyciela muzyki) szeroki repertuar piosenek patriotycznych. Znalazły się wśród nich bardzo znane pieśni, jak np. "Przybyli ułani":, "Marsz Polonia", "Ostatni mazur", "Jak długo w sercach naszych", ale również nowsze opracowania piosenek, których treść nawiązuje do kart naszej historii, m.in. "Pamięć w nas" czy "Echo dawnej piosenki". Utwory wokalne, stanowiące trzon uroczystości, przeplatane były pięknymi, skłaniającymi do refleksji wierszami w wykonaniu uczniów z kl. VI, przygotowanych przez naszych polonistów.
+                    </p>
+                    
+                    <br class="clear">
+                
+                    <div class="news_comments_block">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">6 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Myślę, że to świetna idea. szej szkole odbyła się uroczystość z okazji 94 rocznicy Odzyskania Niepodległości. W jej przygotowanie włączyła się cała społeczność szkolna z kl. IV – VI.<br/>
+                        W trakcie przygotowań do uroczystości uczniowie z kl. IV i V opanowali (pod okiem nauczyciela muzyki) sze</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">16 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Ja też.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">60 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>I ja.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+
+                    <br class="clear">
+                </dd>
+            </dl>
+
+            <dl class="timelineMinor">
+                <dt id="2012110901"><div class="news_calendar_card"><span>13</span></div><a>Powiatowy Konkurs Piosenki Patriotycznej.</a></dt>
+                <dd class="timelineEvent" id="2012110901EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>13 listopada, 8:11</h3>
+                    <p>
+                        8. listopada, w przeddzień Święta Niepodległości, w Murowanej Goślinie odbył się II Powiatowy Konkurs Piosenki Patriotycznej. Naszą szkołę godnie reprezentowało siedmioro uczniów z klas III – VI (M. Groszewska, Z. Karolak, M. Lisiewska B. Piechel, Kamila Plank, H. Ratajczak
+                    </p>
+                    
+                    <br class="clear">
+                
+                    <div class="news_comments_block">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+
+                    <br class="clear">
+                </dd>
+            </dl>
+        </div>
+
+        <div class="timelineMajor">
+	    <h2 class="timelineMajorMarker"><span>Październik 2012</span></h2>
+	    <dl class="timelineMinor">
+                <dt id="19550825"><div class="news_calendar_card"><span>18</span></div><a>Międzynarodowy Miesiąc Bibliotek Szkolnych</a></dt>
+	        <dd class="timelineEvent" id="19550825EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>18 października</h3>
+     
+                    <p>
+                        Co roku w październik obchodzony jest Międzynarodowy Miesiąc Bibliotek Szkolnych. Z tej okazji biblioteka szkolna zorganizowała wystawę pt. "Nietypowe książki". Na wystawie znalazły się m.in. książki z planszą do grania, małe książeczki z wierszami dla mamy, książki z magnesami, audiobooki i książki z tablicami do pisania literek.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+
+            <dl class="timelineMinor">
+                <dt id="19551204"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551204EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551203"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551203EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551202"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551202EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551201"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551201EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+        </div>
+
+        <br class="clear">
+    </div>
+</div>
+    
+
+
+</script><script type="text/ng-template" id="polls.html">
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link"><img src="images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj ankietę</span></div></div>
+    </div>
+
+</script><script type="text/ng-template" id="registration.html">
+<div class="rncpg_body">
+        
+
+<div id="rncpg_topper_transparent">
+    <div id="rncpg_login_form">
+        <div class="rncpg_white_logo">
+            <a ng-click="redirectToMain()"><img src="/images/rnc_logo_54x42.png" border="0" align="left" /></a>
+            <span id="rncpg_app_logo_big_text" class="rncpg_app_logo_top_part color_dark_violet">Rodzice</span><br/>
+            <span id="rncpg_app_logo_small_text" class="rncpg_app_logo_bottom_part color_dark_violet">naCzasie.pl</span>
+        </div>
+    </div>
+</div>
+
+     
+<div class="rncpg_wrapper_violet">
+    
+    <div class="rncpg_registration_thanks"><br/>
+        Dziękujemy, <span id="rncpg_rgstr_username"></span>!<br/><br/>
+        <div id="rncpg_rgstr_message"></div><br/><br/><br/>
+        <a ng-click="redirectToMain()" class="rncpg_a_register_bigger">RodziceNaCzasie.pl</a>
+    </div>
+
+</div>
+
+
+<div id="rncpg_footer">
+    <div id="rncpg_menu_positions">
+        <div class="rncpg_menu_position">O Aplikacji</div>
+        <div class="rncpg_menu_position">Regulamin</div>
+        <div class="rncpg_menu_position">Kontakt</div>
+    </div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var location = parent.location.href;
+    var tmp1 = location.split("?");
+    var params = tmp1[1].split("&");
+    
+    for(var i=0; i<params.length; i++) {
+        if(params[i].indexOf("n=") > -1) {
+            $("#rncpg_rgstr_username").text(decodeURIComponent(params[i].replace("n=", "")));
+        }
+        if(params[i].indexOf("r=") > -1) {
+            var resp = params[i].replace("r=", "");
+            if(resp == "1") {
+                $("#rncpg_rgstr_message").html("Rejestracja została zakończona pomyślnie. Przejdź na stronę główną, żeby się zalogować.");
+            }
+            else {
+                $("#rncpg_rgstr_message").html("Niestety wystąpił błąd podczas rejestracji użytkownika w serwisie. Prosimy spróbować później.");
+                $("#rncpg_rgstr_message").css('color', '#dddddd');
+            }
+        }
+        
+
+    }
+});
+
+
+</script>
+
+</script><script type="text/ng-template" id="schoolclass_details.html">
+    <div class="options_panel">
+        <div class="option" id="schoolclassdetails_option1"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid2').slideUp(); $('#hidden_forms_schoolclass_kid3').slideUp(); $('#hidden_forms_schoolclass_kid1').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj swoje dziecko do klasy</span></div></div>
+        <div class="option" id="schoolclassdetails_option2" ng-show="i_am_teacher_in_this_class == 1"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid1').slideUp(); $('#hidden_forms_schoolclass_kid3').slideUp(); $('#hidden_forms_schoolclass_kid2').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Zaproponuj dziecko w klasie</span></div></div>
+        <div class="option" id="schoolclassdetails_option3"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid1').slideUp(); $('#hidden_forms_schoolclass_kid2').slideUp(); $('#hidden_forms_schoolclass_kid3').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dopisz wychowawcę do klasy</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid1" style="display: none;">
+        <form ng-submit="saveSchoolClass1(classform1)" name="classform1" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wybierz dziecko, które chcesz dopisać do klasy:</div>
+            <div class="schoolclass_details_form_kids_outside">
+                <div class="schoolclass_details_form_kids" ng-repeat="kid in kids" ng-hide="kid.in_this_class == 1">
+                    <input type="checkbox" ng-model="kid.checked"  />&nbsp;<img src="/images/avatar.png" align="left" /><span>{{kid.first_name}} {{kid.last_name}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass1()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid2" style="display: none;">
+        <form ng-submit="saveSchoolClass2(classform2)" name="classform2" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Jako Nauczyciel, możesz dodać dzieci do klasy jednocześnie wysyłając zaproszenie ich Rodzicom:</div>
+            <p><input type="text" class="input_text" placeholder="Imię dziecka" ng-model="classform2.first_name" required  /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko dziecka" ng-model="classform2.last_name" required  /></p>
+            <p><input type="email" class="input_text" placeholder="Adres email opiekuna" ng-model="classform2.parent_email" required  /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass2()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid3" style="display: none;">
+        <form ng-submit="saveSchoolClass3(classform3)" name="classform3" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wybierz szkolnego nauczyciela, którego chcesz dopisać jako wychowawcę klasy:</div>
+            <div class="schoolclass_details_form_teachers_outside">
+                <div class="schoolclass_details_form_teachers" ng-repeat="teacher in school_teachers">
+                    <input type="checkbox" ng-model="teacher.checked" />&nbsp;<img src="/images/avatar.png" align="left" /><span>{{teacher.first_name}} {{teacher.last_name}}</span>
+                </div>
+                <div class="schoolclass_details_form_teachers font_grey font14" ng-hide="school_teachers.length > 0">Brak nauczycieli przypisanych do szkoły {{school.name}}.<br/><br/>Aby wybrać wychowawcę klasy, musi on dołączyć do szkoły.</div>
+            </div>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass3()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" ng-hide="school_teachers.length == 0" /></p>
+        </form>
+    </div>
+
+
+
+    <div class="schoolclass_details_info">
+        <a ng-href="/schoolsDetails/{{school.id}}">&laquo; Podgląd szkoły<br/><span class="schoolclass_school_info_title">{{school.name}}</span></a><br/>
+        <span class="schoolclass_class_info_title margin_top8">klasa <span class="bold">{{schoolclass.name}}</span>, rocznik <span class="bold">{{schoolclass.school_year}}</span></span>
+    </div>
+
+    <div class="school_content_left">
+        <div class="school_classes_title">
+            <span><b>Uczniowie</b></span>
+        </div>
+        <div class="class_box" ng-repeat="student in students">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{student.first_name}} {{student.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <a ng-hide="student.parent_id == userInfo.id"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Rodzicem dziecka" /></a>
+                <a ng-href="/schoolClassStudentDelete/{{school.id}}/{{schoolclass.id}}/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scn={{schoolclass.name}}&sn={{school.name}}" class="schoolclass_contact_icon" ng-show="student.parent_id == userInfo.id"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="schoolclass_contact_icon" title="Usuń dziecko z klasy" /></a>
+                <a ng-href="/studentAbuse/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scid={{schoolclass.id}}&sid={{school.id}}&scn={{schoolclass.name}}&sn={{school.name}}" class="schoolclass_contact_icon"><img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest uczeń w tej klasie? Zgłoś nadużycie." /></a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="school_content_right">
+        <div class="school_classes_title">
+            <span><b>Wychowawca</b></span>
+        </div>
+        <div class="class_box" ng-repeat="teacher in teachers">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{teacher.first_name}} {{teacher.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Nauczycielem" />
+                <img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest Nauczyciel w tej klasie? Zgłoś nadużycie." />
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+</script><script type="text/ng-template" id="schools.html">
+    <p class="school_list_info"><b class="bolder">Twoje szkoły</b></p>
+    
+    <div id="myschool_close_schools_outside">
+        <div id="myschool_close_schools" onclick="$('#myschools_all_outside').slideToggle('fast');" title="Zwiń/rozwiń listę Twoich szkół"><img src="/images/collapse_expand_48x22.png" /></div>
+    </div>
+    <div class="myschool_vis_card" id="myschools_all_outside">
+        <div class="myschool_vis_card_inner" id="vis_card_inner_{{school.school_id}}" ng-repeat="school in my_schools">
+            <div class="myschool_vis_card_info" id="vis_card_info_{{school.school_id}}">
+                <span><b class="myschool_name" id="school_name_{{school.school_id}}"><b class="font_orange2">{{($index+1)}}.</b>&nbsp;<label>{{school.name}}</label></b></span><br/><br/>
+            </div>
+            <div class="myschool_vis_card_options">
+                <div class="bottom_box_options_icons" title="Zobacz szczegóły"><a ng-href="/schoolsDetails/{{school.school_id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+    <br class="clear" />
+    <br class="clear" />
+    
+
+    <p class="school_list_info"><b class="bolder">Znajdź szkołę</b></p>
+    
+    <div class="filter_forms" id="filter_form_find_school">
+        <form name="form_select_voivodeship" id="form_select_voivodeship" ng-submit="getCities(voivodeship)">Województwo:<br/>
+            <div class="selectstyled">
+                <select ng-change="getCities(voivodeship)" id="form_select_voivodeship_v" ng-model="voivodeship" ng-options="v.name for v in voivodeships"></select>
+            </div>
+        </form>
+        <form name="form_select_city" id="form_select_city" ng-submit="getListSchoolTypes(city)">Miasto:<br/>
+            <div class="selectstyled">
+                <select ng-change="getListSchoolTypes(city)" id="form_select_city_v" ng-model="city" ng-options="c.name for c in cities"></select>
+            </div>
+        </form>
+        <form name="form_select_schooltype" id="form_select_schooltype" ng-submit="getSchoolsByCityAndType()">Typ placówki:<br/>
+            <div class="selectstyled">
+                <select ng-change="getSchoolsByCityAndType()" ng-model="schooltype" id="form_select_schooltype_v" ng-options="t.name for t in schooltypes"></select>
+            </div>
+        </form>
+        <br class="clear" />
+        <br class="clear" />
+        <form name="form_select_schoolstreet" id="form_select_schoolstreet" ng-submit="getSchoolsByCityAndTypeAndStreet()">Filtruj dodatkowo wg adresu placówki:<br/>
+            <div class="selectstyled">
+                <select ng-change="getSchoolsByCityAndTypeAndStreet()" ng-model="schoolstreet" id="form_select_schoolstreet_v" ng-options="s for s in schoolstreets"></select>
+            </div>
+            <!--<input type="submit" class="button top-12" value="Pokaż" />-->
+        </form>
+        <br class="clear" />
+        
+    </div>
+    
+    <div class="vis_card">
+        <div class="school_vis_card_inner" id="vis_card_inner_{{school.id}}" ng-repeat="school in schools">
+            <div class="school_vis_card_info" id="vis_card_info_{{school.id}}">
+                <span><b class="school_name" id="school_name_{{school.id}}"><label>{{school.name}}</label></b></span><br/><br/>
+                <span><label class="font_grey">ul.</label> {{school.address}}</span><br/>
+                <span>{{school.city}}</span><br/>
+                <span ng-hide="school.phone == ''"><label class="font_grey">tel.</label> {{school.phone}}</span><br/>
+            </div>
+            <div class="contact_inside_box school_vis_card_bottom bottom_box_options">
+                <div class="bottom_box_options_icons" title="Zobacz szczegóły"><a ng-href="/schoolsDetails/{{school.id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+</script><script type="text/ng-template" id="schools_details.html">
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_schoolclass_teacher').slideUp(); $('#hidden_forms_schoolclass').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dopisz nową klasę</span></div></div>
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_schoolclass').slideUp(); $('#hidden_forms_schoolclass_teacher').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dołącz do szkoły jako Nauczyciel</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass" style="display: none;">
+        <form ng-submit="saveSchoolClass(classform)" name="classform" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wprowadź dane klasy:</div>
+            <p><input type="text" class="input_text" placeholder="Nazwa klasy" ng-model="classform.name" required autocomplete="off" oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę klasy!')" /></p>
+            <!--<p><input type="text" class="input_text" placeholder="Kierunek" ng-model="classform.specialization" required  /></p>
+            <p><input type="text" class="input_text" placeholder="Wychowawca" ng-model="classform.main_teacher" required  /></p>-->
+            <p><input type="text" class="input_text" placeholder="Rocznik" id="classform_field_start_year" ng-model="classform.start_year" autocomplete="off" required ng-pattern="start_year" oninvalid="this.setCustomValidity('Wprowadź poprawny rocznik!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_teacher" style="display: none;">
+        <form ng-submit="joinSchoolAsTeacher(formteacher)" name="formteacher" class="form_add_schoolclass">
+          <div class="form_teachers_left">            
+            <div class="form_add_kid_title">Jeśli jesteś Nauczycielem w tej szkole, dołącz do niej i podaj nazwę przedmiotu, którego uczysz:</div>
+            <div class="teacher_subject_list">
+                <div ng-repeat="MENSubject in MENSubjects">
+                    <input type="checkbox" value="{{MENSubject.id}}" ng-checked="MENSubject.checked" ng-model="MENSubject.checked" />
+                    <span>{{MENSubject.descr}}</span>
+                </div>
+            </div>
+            <div class="form_add_kid_title">Nie ma Twojego przedmiotu na liście powyżej? <span class="bold">Dopisz go</span>:</div>
+            <input type="text" class="input_text" placeholder="Nazwa przedmiotu" ng-model="formteacher.new_subject" />
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelJoinAsTeacher()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    
+    <div class="school_content_left">
+        <div class="school_details_info">
+            <span class="school_details_info_title">{{school.name}}</span><br/><br/>
+            <span>ul. <b class="font14">{{school.address}}</b></span><br/><br/>
+            <span>{{school.zip}}</span>&nbsp;<span><b>{{school.city}}</b></span>&nbsp;<span class="font_grey">, woj.{{school.voivodeship}}</span><br/><br/>
+            <span>tel: <b>{{school.phone}}</b></span><br/>
+            <span>email: <b>{{school.email}}</b></span>, <span>www: <b>{{school.www}}</b></span><br/>
+        </div>
+        <div class="school_teachers_content">
+            <div class="school_teachers_content_block">
+                <span>Nauczyciele</span><br/>
+                <div class="school_teachers" ng-show="teachers_confirmed.length == 0">Brak dopisanych nauczycieli do szkoły</div>
+                <div class="school_teachers" ng-repeat="teacher in teachers_confirmed">
+                    <div class="school_teachers_avatar"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="school_teachers_name"><b>{{teacher.first_name}} {{teacher.last_name}}</b><br/><span class="teacher_subject" ng-repeat="subject in teacher.subjects">{{subject.name}}, </span></div>
+                    <div class="school_teachers_icons">
+                        <a ng-click="teacherLeavesSchool()" ng-show="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="abuse" title="Odłącz od grona nauczycieli w szkole." width="24" /></a>
+                        <a ng-href="/teacherAbuse/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}&sid={{school.id}}&sn={{school.name}}" class="schoolclass_contact_icon"><img src="/images/important.gif" class="abuse" title="To nie jest Nauczyciel w tej szkole? Zgłoś nadużycie." /></a>
+                    </div>
+                </div>
+                
+            </div>
+            <br class="clear" />
+            <div class="school_teachers_content_block"><br/><br/><br/>
+                <span>Nauczyciele niepotwierdzeni</span><br/>
+                <div class="school_teachers" ng-show="teachers_unconfirmed.length == 0">Brak nauczycieli niepotwierdzonych w szkole</div>
+                <div class="school_teachers" ng-repeat="teacher in teachers_unconfirmed">
+                    <div class="school_teachers_avatar"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="school_teachers_name"><b>{{teacher.first_name}} {{teacher.last_name}}</b><br/><span class="teacher_subject" ng-repeat="subject in teacher.subjects">{{subject.name}}, </span></div>
+                    <div class="school_teachers_icons">
+                        <a ng-click="teacherLeavesSchool()" ng-show="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="abuse" title="Odłącz od grona nauczycieli w szkole." width="24" /></a>
+                        <a ng-click="confirmTeacher(teacher.id)" ng-hide="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/ok.png" class="abuse" title="Potwierdź, że ten Nauczyciel uczy w tej szkole" /></a>&nbsp;
+                        <a ng-href="/teacherAbuse/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}&sid={{school.id}}&sn={{school.name}}" ng-hide="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/important.gif" class="abuse" title="To nie jest Nauczyciel w tej szkole? Zgłoś nadużycie." /></a>
+                    </div>
+                </div>
+            </div>
+            <!--<div style="width: 236px; text-align: right; position: relative; top: 12px;"><a ng-click="setRoute('teachers')">Pokaż wszystkich</a></div>-->
+        </div>
+    </div>
+    <div class="school_content_right_overflow">
+        <div class="school_classes_title">
+            <span>
+            <a id="change_actual_start_year_previous_link" ng-click="setStartYear(previous_start_year)" title="Poprzedni rocznik"><img src="/images/arrow_left_15x24.png" /></a>
+            Rocznik <b>{{actual_start_years}}</b>
+            <a id="change_actual_start_year_next_link" ng-click="setStartYear(next_start_year)" title="Następny rocznik"><img src="/images/arrow_right_15x24.png" /></a>
+            </span>
+        </div>
+        <div class="class_box" ng-show="classes.length == 0">
+            <div>
+                <span class="class_box_name">Brak wprowadzonych klas w tym roczniku</span><br/>
+                <div class="pointer" onclick="$('#hidden_forms_schoolclass_teacher').slideUp(); $('#hidden_forms_schoolclass').slideToggle();"><span>Dopisz nową klasę</span></div>
+            </div>
+        </div>
+        <div class="class_box" ng-show="classes.length > 0" ng-repeat="class in classes">
+            <div>
+                <a ng-href="/schoolClassDetails/{{class.id}}"><span class="class_box_name">{{class.name}}</span></a>,&nbsp;&nbsp;&nbsp;
+                wych. <span class="main_teacher">{{class.main_teacher}}</span>
+            </div>
+            <div class="students_in_class_counter">uczniów&nbsp;<span>{{class.students.length}}</span></div>
+            <div class="class_box_right_options"><a ng-href="/schoolClassDetails/{{school.id}}/{{class.id}}" class="schoolclass_contact_icon" title="Pokaż klasę"><img src="/images/Metro_Icons/Other/More_24x24.png" class="schoolclass_contact_icon" title="Pokaż klasę" /></a></div>
+        </div>
+    </div>
+
+
+
+
+
+
+</script><script type="text/ng-template" id="search.html">
+    <div class="search_vis_card">
+        <div class="contact_vis_card_inner" id="vis_card_inner_{{searched_user.id}}" ng-repeat="searched_user in searched_users">
+            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="contact_vis_card_info" id="vis_card_info_{{searched_user.id}}">
+                <span><b class="contact_name" id="contact_name_{{searched_user.id}}">{{searched_user.first_name}} <label>{{searched_user.last_name}}</label></b></span><br/>
+                <div class="bottom_box_options_icons_search" title="Zaproś do znajomych" ng-show="searched_user.my_friend == '0'">
+                    <a ng-click="inviteUser(searched_user.id)"><img src="/images/Metro_Icons/System_Icons/Contacts_add_32x32.png" /></a>
+                </div>
+                <div class="bottom_box_options_icons_search" title="Twój znajomy" ng-show="searched_user.my_friend == '1'">
+                    <a><img src="/images/Metro_Icons/Other/Tasks_32x32.png" /></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</script><script type="text/ng-template" id="search_result.html">
+    <div class="vis_card">
+        <div class="vis_card_inner" id="vis_card_inner_{{contact.id}}" ng-repeat="contact in contacts">
+            <div class="vis_card_image"><img src="images/{{contact.avatar}}" width="60" align="left" /></div>
+            <div class="vis_card_info" id="vis_card_info_{{contact.id}}">
+                <span><b class="contact_name" id="contact_name_{{contact.id}}">{{contact.first_name}} <label>{{contact.last_name}}</label></b></span><br/>
+                <span>{{contact.city}}</span><br/>
+                <span>Dzieci: <i ng-repeat="kid in contact.kids">{{kid.kid_name}}, </i></span><br/><br/>
+                <span>Klasa: <b>{{contact.group_name}}</b></span>
+            </div>
+        </div>
+        
+    </div>
+
+
+</script><script type="text/ng-template" id="teachers.html">
+
+    <div id="teacher_schools">
+        <div class="school hover" id="school_ALL">Wszyscy</div>
+        <div class="school" id="school_1">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego1</div>
+        <div class="school" id="school_2">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego2</div>
+        <div class="school" id="school_3">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego3</div>
+    </div>
+
+
+    <div class="vis_card">
+        <div class="vis_card_inner" id="{{teacher.school_id}}_vis_card_inner_{{teacher.id}}" ng-repeat="teacher in teachers">
+            <div class="vis_card_image"><img src="images/{{teacher.avatar}}" width="60" align="left" /></div>
+            <div class="teacher_vis_card_info" id="vis_card_info_{{teacher.id}}">
+                <span><b class="teacher_name" id="teacher_name_{{teacher.id}}">{{teacher.first_name}} <label>{{teacher.last_name}}</label></b></span><br/>
+                <span>&nbsp;</span><br/>
+                <span>{{teacher.school_name}}</span><br/><br/>
+                <span class="subjects">Przedmioty: <i ng-repeat="subject in teacher.subjects">{{subject.subject_name}}, </i></span><br/>
+            </div>
+            <div class="teacher_inside_box teacher_vis_card_bottom bottom_box_options">
+                <div class="bottom_box_options_icons" title="Pokaż wszystkich członków grupy"><a ng-href="/groupsDetails/{{group.id}}"><img src="/images/Metro_Icons/System_Icons/Contacts_32x32.png" /></a></div>
+                <div class="bottom_box_options_icons" title="Usuń grupę"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+
+</script><script type="text/ng-template" id="user_details.html">
+<br/>
+user_detail
+<br/>
+search query:<br/>
+{{query}}<br/>
+<br/>
+search result:<br/>
+{{results}}<br/>
+</script><script type="text/ng-template" id="user_notifications.html">
+<div class="hidden_forms" id="hidden_forms_user_notifications">
+
+    <form name="form_user_notifications" class="form_user_profile" ng-controller="userNotificationsCtrl">
+        <span class="profile_title">Powiadomienia</span><br/>
+        <p><div ng:repeat="c in checklist">
+            <!--<input type="checkbox" ng:model="c.checked"> {{c.name}} - {{c.checked}}-->
+        </div></p>
+        <p><button ng:click="save()">Zapisz</button></p>
+    </form>
+
+</div>
+
+</script><script type="text/ng-template" id="user_privacy.html">
+<div class="hidden_forms" id="hidden_forms_user_privacy">
+
+    <form name="form_user_privacy" class="form_user_profile" ng-controller="userPrivacyCtrl">
+        <span class="profile_title">Prywatność mojego konta</span><br/>
+        <p><div ng:repeat="c in checklist">
+            <!--<input type="checkbox" ng:model="c.checked"> {{c.name}} - {{c.checked}}-->
+        </div></p>
+        <p><button ng:click="save()">Zapisz</button></p>
+    </form>
+
+</div>
+
+</script><script type="text/ng-template" id="user_profile.html">
+<div class="hidden_forms" id="hidden_forms_user_profile" style="display: none;">
+
+    <form name="form_user_profile" class="form_user_profile" ng-submit="updateUserInfo(profileform)">
+        <span class="profile_title bigger">Zmiana danych użytkownika</span><br/><br/>
+        <table border="0">
+        <tr><td>Imię:</td><td>Nazwisko:</td></tr>
+        <tr><td><input class="input_text" autocomplete="off" placeholder="Imię" ng-model="profileform.first_name" required oninvalid="this.setCustomValidity('Podaj prawidłowe imię!')" /></td>
+            <td><input class="input_text" autocomplete="off" placeholder="Nazwisko" ng-model="profileform.last_name" required oninvalid="this.setCustomValidity('Podaj prawidłowe nazwisko!')" /></td></tr>
+        <tr><td>Płeć:</td><td>&nbsp;</td></tr>
+        <tr><td><div class="selectstyled"><select ng-model="profileform.gender" data-placeholder="Płeć" id="user_form_genre_select"><option value="" disabled style="display: none;">Płeć</option><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td colspan="2">&nbsp;<br/><br/></td></tr>
+        <tr><td>Telefon:</td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text short" autocomplete="off" placeholder="Telefon" ng-model="profileform.phone" ng-pattern="pat_phone" id="f_profile_phone" required /></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Data urodzenia:</td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text very_short" autocomplete="off" placeholder="Data urodzenia" ng-model="profileform.born_date" id="f_profile_born_date" my-datepicker /></td>
+            <td>&nbsp;</td></tr>
+        <tr><td colspan="2">&nbsp;<br/><br/></td></tr>
+        <tr><td>Województwo:</td><td>&nbsp;</td></tr>
+        <tr><td><div name="form_select_voivodeship_profile" id="form_select_voivodeship_profile" ng-submit="getCities(profileform.voivodeship)">
+            <div class="selectstyled"><select data-placeholder="Województwo" placeholder="Województwo" ng-change="getCities(profileform.voivodeship)" id="form_select_voivodeship_profile_v" ng-model="profileform.voivodeship" ng-options="v.id as v.name for v in voivodeships"></select></div>
+            </div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Miasto:</td><td>&nbsp;</td></tr>
+            <td><div name="form_select_city_profile" id="form_select_city_profile">
+            <div class="selectstyled"><select data-placeholder="Miasto" placeholder="Miasto" id="form_select_city_profile_v" ng-model="profileform.city" ng-options="c.name for c in cities"></select></div>
+            </div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Kod pocztowy:</td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text short" autocomplete="off" placeholder="Kod pocztowy" ng-model="profileform.postcode" ng-pattern="pat_zipcode" id="f_profile_zipcode" /></td>
+            <td>&nbsp;</td></tr>
+        </table>
+        <br/>
+        <p><input type="button" class="button" value="Anuluj" ng-click="cancelChangeProfile()" />&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+    </form>
+</div>
+
+
+
+
+<div style="float: left; margin: 12px;">
+    <div style="float: left; margin: 12px;">
+        <img src="/images/avatar.png" id="my_avatar" width="100" />
+    </div>
+    <div style="float: left; margin: 12px;">
+        <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+        <p><span class="font_grey">ur. </span>{{profile.born_date_short}}</p>
+        <p ng-show="profile.gender == 'male'">Mężczyzna</p><p ng-show="profile.gender == 'female'">Kobieta</p>
+        <p>&nbsp;</p>
+        <p><span class="font_grey">Województwo: </span>{{profile.voiv_name}}</p>
+        <p><span class="font_grey">Miasto: </span>{{profile.city_name}}</p>
+        <p><span class="font_grey">Kod pocztowy: </span>{{profile.postcode}}</p>
+        <p>&nbsp;</p>
+        <p><span class="font_grey">Telefon: </span>{{profile.phone}}</p>
+        <p><span class="font_grey">Email: </span>{{profile.email}}</p>
+    </div>
+    <div style="float: left; margin: 12px; margin-left: 36px;">
+        <form name="profile_change_data">
+        <button ng-click="changeProfile()">Zmień dane</button>&nbsp;&nbsp;&nbsp;
+        <!--<button ng-click="changePassword()">Zmień hasło</button>&nbsp;&nbsp;&nbsp;-->
+        <button class="red" ng-click="delAccount()">Usuń konto</button>
+        </form>
+    </div>
+    
+</div>
+
+</script>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+</head>
+
+<body>
+
+<div ng-controller="convInvitCtrl" ng-view>
+
+</div>
+
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37173242-1']);
+_gaq.push(['_trackPageview']);
+      
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</body>
+</html>

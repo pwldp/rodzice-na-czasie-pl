@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="registrationApp">
+<head>
+    <title>RodziceNaCzasie.pl</title>
+    <meta charset="utf-8" />	
+    <link rel="icon" type="image/png" href="/images/rnc_logo_icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext" media="all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&subset=latin,latin-ext" media="all" rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->  
+        
+        <!--[if lte IE 8]>
+        <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+        </script>
+        <![endif]-->
+	<!--[if lt IE 8]>
+        <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+        <![endif]-->
+        
+    <SocketStream>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>    
+</head>
+
+<body>
+
+<div ng-controller="registrationCtrl" ng-view>
+
+</div>
+
+
+<script type="text/javascript">
+
+console.log("VIEW - parent.location.href");
+console.log(parent.location.href);
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37173242-1']);
+_gaq.push(['_trackPageview']);
+      
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</body>
+</html>

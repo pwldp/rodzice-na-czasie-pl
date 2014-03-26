@@ -1,0 +1,36 @@
+
+    <div class="hidden_forms" id="hidden_forms_kids_edit">
+        <form ng-submit="saveKid(kidformedit)" name="kidformedit" class="form_add_kid">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Zmień dane dziecka:</div>
+            <p><input type="text" class="input_text" placeholder="Imię" ng-model="kidformedit.kidFirstName" required oninvalid="this.setCustomValidity('Wprowadź poprawne imię!')" /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko" ng-model="kidformedit.kidLastName" required oninvalid="this.setCustomValidity('Wprowadź poprawne nazwisko!')" /></p>
+            <p><div class="selectstyled"><select ng-model="kidformedit.kidGender"><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+            <p><input type="text" class="input_text" placeholder="Data urodzenia" ng-model="kidformedit.kidBornDate" id="f_edit_kid_born_date" my-datepicker required oninvalid="this.setCustomValidity('Wprowadź poprawną datę urodzenia!')"  /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+            <!--<p><input type="text" class="input_text" placeholder="Telefon" ng-model="kidformedit.kidPhone" id="f_edit_kid_phone" /></p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidformedit.kidEmail"  /></p>
+            <p><input type="text" class="input_text" placeholder="Kod pocztowy" ng-model="kidformedit.kidZipcode" id="f_edit_kid_zipcode" /></p>
+            <div id="kid-fine-uploader"></div>-->
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+<!--<br/><br/><br/><br/>
+<tt>kidFirstName = {{kidform.kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidform.kidLastName}}</tt><br>
+<tt>kidSex = {{kidform.kidGender}}</tt><br>
+<tt>kidBornDate = {{kidform.kidBornDate}}</tt><br>
+<tt>kidform.input.$valid = {{kidform.input.$valid}}</tt><br>
+<tt>kidform.input.$error = {{kidform.input.$error}}</tt><br>
+<tt>kidform.$valid = {{kidform.$valid}}</tt><br>
+<tt>kidform.$error.required = {{!!kidform.$error.required}}</tt><br>-->
+        </form>
+
+
+    </div>
+
+
+
+

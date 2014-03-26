@@ -1,0 +1,102 @@
+#schools {
+    
+}
+
+#teacher_schools {
+    margin-left: 12px; 
+    margin-top: 12px;
+    display: block;
+    position: absolute;
+    top: 162px;
+    width: 55%;
+}
+
+.school {
+    float: left; 
+    padding-left: 6px; 
+    padding-right: 6px; 
+    font-size: 11px;
+    border-right: 1px solid #4e4646;
+    cursor: pointer;
+}
+
+.school:hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.school.hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.school:first-child {
+    margin-left: 0; 
+}
+
+
+
+.vis_card {
+    margin: 42px auto 0 auto;
+}
+
+.vis_card_inner {
+    margin-left: 18px; 
+    margin-top: 18px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 300px;
+    height: 180px;
+}
+
+.vis_card_inner:hover {
+    background-color: #26012f; 
+}
+
+.vis_card_image {
+    float: left;
+}
+
+.vis_card_info span {
+    position: relative; 
+    left: 12px; 
+    font-size: 12px;
+}
+
+.vis_card_info span.subjects {
+    position: relative; 
+    left: 0px; 
+    font-size: 12px;
+}
+
+.teacher_vis_card_info {
+    height: 120px;
+}
+
+.teacher_vis_card_info span {
+    position: relative; 
+    left: 12px; 
+    font-size: 12px;
+}
+
+.teacher_vis_card_info span.subjects {
+    position: relative; 
+    left: 0px; 
+    font-size: 12px;
+}
+
+
+
+.teacher_name {
+    font-size: 14px;
+}
+
+
+
+.teacher_inside_box {
+    margin-top: 12px;
+    float: left; width: 100%;
+}
+
+

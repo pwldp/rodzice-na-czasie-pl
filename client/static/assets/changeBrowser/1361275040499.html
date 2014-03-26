@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="kidsApp">
+<head>
+    <title> RodziceNaCzasie </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/images/rnc_logo_icon.png" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext" media="all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&subset=latin,latin-ext" media="all" rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+    
+</head>
+
+<body>
+
+
+
+<div class="rncpg_body" ng-controller="AuthCtrl">
+        
+
+<div id="rncpg_topper">
+    <div id="rncpg_login_form">
+        <div class="rncpg_white_logo">
+            <a href="http://rnc.rodzicenaczasie.pl/login"><img src="/images/rnc_logo_54x42.png" border="0" align="left" />
+            <span id="rncpg_app_logo_big_text" class="rncpg_app_logo_top_part">Rodzice</span><br/>
+            <span id="rncpg_app_logo_small_text" class="rncpg_app_logo_bottom_part">naCzasie.pl</span></a>
+        </div>
+        
+    </div>
+    <div id="rncpg_menu_positions">
+        <div class="rncpg_menu_position rncpg_menu_position_hover" id="rncpg_menu_position1" onclick="changeContent('home')">Strona główna</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position2" onclick="changeContent('about_rnc')">O Aplikacji</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position3" onclick="changeContent('terms')">Regulamin</div>
+        <div class="rncpg_menu_position" id="rncpg_menu_position5" onclick="changeContent('contact')">Kontakt</div>
+    </div>
+</div>
+    
+<div class="rncpg_wrapper">
+     
+    <div class="rncpg_main_middle_content" id="rncpg_content_home">
+        <div class="h2_title rncpg_font_red"><br/>Aby się zalogować, musisz zmienić przeglądarkę!</div>
+            <div class="rncpg_main_subtitle">
+                <span class="bold">RodziceNaCzasie.pl</span> to aplikacja korzystająca z najnowszych technologii w przeglądarkach internetowych. Wykryliśmy, że używasz starszej wersji przeglądarki lub korzystasz z takiej, która nie obsługuje wszystkich możliwości serwisu.<br/>
+                Aby móc korzystać z serwisu <span class="bold">RodziceNaCzasie.pl</span>, rekomendujemy następujące przeglądarki:<br/>
+                <p align="center">
+                    <a href="http://www.mozilla.org"><img src="/images/ff_logo.png" height="40" border="0" title="Mozilla Firefox"></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.google.com/chrome/index.html"><img src="/images/chrome_logo_2x.png" height="40"  border="0" title="Goole Chrome"></a>
+                </p><br/><br/>
+            </div>
+        <br class="clear" />
+        <div class="rncpg_main_header">
+            <div class="rncpg_main_title">Zbyt dużo spraw dotyczących Twojego dziecka?</div>
+            <div class="rncpg_main_title rncpg_main_title_right">Teraz możesz mieć wszystko pod kontrolą!</div>
+        </div>
+        <div id="rncpg_main_image">
+            <img src="/images/Fotolia_30676296_XS.png" width="402" height="298" />
+        </div>        
+        <div id="rncpg_dotted_middle">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div id="rncpg_page_logo">
+            <img src="/images/rnc_logo_120x92.png" align="left" />
+            <div><span id="rncpg_logo_big_text" class="rncpg_logo_top_part">Rodzice</span>
+            <span id="rncpg_logo_small_text" class="rncpg_logo_bottom_part">naCzasie.pl</span></div>
+            <div id="rncpg_registration_form">
+            </div>
+        </div>        
+    </div>
+
+
+    <div class="rncpg_main_middle_content" id="rncpg_content_about_rnc" style="display: none;">
+        <div class="rncpg_about_left">
+            <div id="rncpg_box_about_1" class="rncpg_box_about rncpg_content_left_1"><p class="rncpg_box_about_left"><span class="rncpg_box_about_title"><b class="rncpg_box_about_1">1.</b>&nbsp;Idea</span><br/><span class="rncpg_font_red">Czy</span> kiedykolwiek zabrakło Ci czasu na zebraniu klasowym, żeby spokojnie porozmawiać z nauczycielem na temat Twojego dziecka?<br/><span class="rncpg_font_red">Czy</span> zawsze wiesz o wszystkich wydarzeniach szkolnych i klasowych?<br><span class="rncpg_font_red">Czy</span> współpracujesz z nauczycielami i innymi rodzicami dla dobra Waszych dzieci?<br/><br/><span class="bold bigger">Czas to zmienić!</span>.</p></div>
+            <div id="rncpg_box_about_3" class="rncpg_box_about rncpg_content_left_2"><p class="rncpg_box_about_left"><span class="rncpg_box_about_title"><b class="rncpg_box_about_3">3.</b>&nbsp;Projekt</span><br/>Już nie musisz zapamiętywać wszystkich kontaktów do Rodziców z klas Twojego dziecka. Nie musisz się obawiać, że nie zostaniesz powiadomiony o ważnym klasowym wydarzeniu. Nie musisz pamiętać o zmianach w planie lekcji swojego dziecka. <br/><br/><span class="bold bigger">Serwis RodziceNaCzasie.pl dba o to za Ciebie</span>. </p></div>
+        </div>        
+        <div class="rncpg_dotted_middle_about">
+            <img src="/images/about_rnc_bg.png" />
+        </div>        
+        <div class="rncpg_about_right">
+            <div id="rncpg_box_about_2" class="rncpg_box_about rncpg_content_right_1"><p class="rncpg_box_about_right"><span class="rncpg_box_about_title"><b class="rncpg_box_about_2">2.</b>&nbsp;Analiza</span><br/><span class="bold">Rodzice i Nauczyciele potrzebują platformy wspólnej komunikacji</span>, gdzie będą mogli przedyskutować każdy pomysł związany z edukacją Waszych dzieci. Potrzebują miejsca, gdzie można tworzyć i głosować w ankietach dotyczących działań klasowych i gdzie można łatwo planować wydarzenia szkolne i klasowe.<br/><br/>Miejsca takie jak <span class="bold bigger">RodziceNaCzasie.pl</span></p></div>
+            <div id="rncpg_box_about_4" class="rncpg_box_about rncpg_content_right_2"><p class="rncpg_box_about_right"><span class="rncpg_box_about_title"><b class="rncpg_box_about_4">4.</b>&nbsp;Rozwój</span><br/>Zarejestrowałeś się w aplikacji <span class="bold">RodziceNaCzasie.pl</span>? Podoba Ci się? Nie podoba Ci się? Masz jakieś sugestie lub chciałbyś zgłosić błędy?<br/><br/><a class="bold" onclick="changeContent('contact')"><span class="font_darkblue">Napisz do nas o tym</span></a>. Chcemy rozwijać się tak, aby zapewnić przyjemność z użytkowania nawet najbardziej wymagającym Rodzicom i Nauczycielom.</p></div>
+        </div> 
+    </div>
+
+ 
+    <div class="rncpg_main_middle_content" id="rncpg_content_contact" style="display: none;">
+        <form name="rncpg_open_contact">
+        <div class="rncpg_main_header_contact">
+            <div class="rncpg_main_title_full">Masz sugestię? Chcesz o coś spytać? Napisz do nas!</div>
+            <div class="rncpg_main_subtitle_full">Weźmiemy pod uwagę wszystkie zgłoszenia i sugestie.</div>
+        </div>
+        <div class="rncpg_content_left">
+            <textarea class="rncpg_contact_textarea" placeholder="Wpisz treść zgłoszenia"></textarea>
+        </div>        
+        <div class="rncpg_dotted_border">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div class="rncpg_content_right">
+            <input type="submit" class="rncpg_button_bigger blue" name="rncpg_contact_submit" id="rncpg_contact_submit" value="Wyślij" /><br/>
+            <br/><br/><br/><br/>
+            <div class="rncpg_white_logo_contact">Lub wyślij do nas e-mail:<br/><br/><br/>
+                <a href="http://rnc.rodzicenaczasie.pl"><img src="/images/rnc_logo_54x42.png" border="0" align="left" /></a>
+                <span id="rncpg_app_logo_big_text_contact" class="rncpg_app_logo_top_part">Rodzice</span><br/>
+                <span id="rncpg_app_logo_small_text_contact" class="rncpg_app_logo_bottom_part">naCzasie.pl</span>
+            </div>
+            <div>
+                kontakt@rodzicenaczasie.pl
+            </div>
+        </div>        
+        </form>
+    </div>
+
+
+
+    <div id="rncpg_content_mobile" style="display: none;">
+        <div class="rncpg_page_logo">
+        <a href="http://rnc.rodzicenaczasie.pl"><img src="/images/rnc_logo_120x92.png" align="left" /></a>
+        <div><span id="rncpg_logo_big_text" class="rncpg_logo_top_part">Rodzice</span>
+        <span id="rncpg_logo_small_text" class="rncpg_logo_bottom_part">naCzasie.pl</span></div>
+        </div>    
+        <br class="clear" />
+        <div class="rncpg_content_mobile_inside">
+            Wersja mobilna aplikacji już wkrótce!<br/><br/>Tymczasem prosimy o korzystanie <br/>z komputerów o rozdzielczości <br/>co najmniej <span class="bold">1024x768 px</span>
+        </div>
+        <br class="clear" />
+        <div class="rncpg_content_mobile_inside_violet">
+            <span class="rncpg_content_mobile_title">O aplikacji</span><br/><br/>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_1">1.</b>&nbsp;Idea</span><br/><span class="rncpg_font_red">Czy</span> kiedykolwiek zabrakło Ci czasu na zebraniu klasowym, żeby spokojnie porozmawiać z nauczycielem na temat Twojego dziecka?<br/><span class="rncpg_font_red">Czy</span> zawsze wiesz o wszystkich wydarzeniach szkolnych i klasowych?<br><span class="rncpg_font_red">Czy</span> współpracujesz z nauczycielami i innymi rodzicami dla dobra Waszych dzieci?<br/><br/><span class="bold">Czas to zmienić!</span>.<br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_2">2.</b>&nbsp;Analiza</span><br/><span class="bold">Rodzice i Nauczyciele potrzebują platformy wspólnej komunikacji</span>, gdzie będą mogli przedyskutować każdy pomysł związany z edukacją Waszych dzieci. Potrzebują miejsca, gdzie można tworzyć i głosować w ankietach dotyczących działań klasowych i gdzie można łatwo planować wydarzenia szkolne i klasowe.<br/><br/>Miejsca takie jak <span class="bold">RodziceNaCzasie.pl</span><br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_3">3.</b>&nbsp;Projekt</span><br/>Już nie musisz zapamiętywać wszystkich kontaktów do Rodziców z klas Twojego dziecka. Nie musisz się obawiać, że nie zostaniesz powiadomiony o ważnym klasowym wydarzeniu. Nie musisz pamiętać o zmianach w planie lekcji swojego dziecka. <br/><br/><span class="bold">Serwis RodziceNaCzasie.pl dba o to za Ciebie</span>. <br/><br/></p>
+            <p><span class="rncpg_box_about_title"><b class="rncpg_box_about_4">4.</b>&nbsp;Rozwój</span><br/>Zarejestrowałeś się w aplikacji <span class="bold">RodziceNaCzasie.pl</span>? Podoba Ci się? Nie podoba Ci się? Masz jakieś sugestie lub chciałbyś zgłosić błędy?<br/><br/><a class="bold" onclick="changeContent('contact')"><span class="font_darkblue">Napisz do nas o tym</span></a>. Chcemy rozwijać się tak, aby zapewnić przyjemność z użytkowania nawet najbardziej wymagającym Rodzicom i Nauczycielom.<br/><br/></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="rncpg_what_to_do" id="rncpg_to_do1" style="display: none;">Zrobić zakupy<br>na wycieczkę klasową&nbsp;<img src="/images/arrows__leftdownrightup_b.png" align="right" style="position: relative; top: -32px;" /></div>
+<div class="rncpg_what_to_do" id="rncpg_to_do2" style="display: none;"><img src="/images/arrows__rightupleftdown_b.png" align="left" />&nbsp;Zebranie klasowe</div>
+<div class="rncpg_what_to_do" id="rncpg_to_do3" style="display: none;"><img src="/images/arrows__rightdownleftup_b.png" align="left" style="position: relative; top: -44px;" />Wysłać zdjęcia<br>do wszystkich rodziców</div>
+<div class="rncpg_what_to_do" id="rncpg_to_do4" style="display: none;">Spotkanie<br>z nauczycielem<img src="/images/arrows__leftuprightdown_b.png" align="right" style="position: relative; top: -12px;" /></div>
+<div class="rncpg_what_to_do" id="rncpg_to_do5" style="display: none;">Wypożyczyć strój<br>na bal przebierańców&nbsp;<img src="/images/arrows__leftuprightdown_b.png" align="right" /></div>
+        
+
+
+<div id="rncpg_footer">
+    
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    ////console.log($(window).width());
+    if($(window).width() < 1000) {
+        changeContent('mobile');
+    }
+    else
+        fitPageContent();
+});
+$(window).resize(function() {
+    if($(window).width() < 1000) {
+        changeContent('mobile');
+    }
+    else
+        fitPageContent();
+});
+
+
+function fitPageContent() {
+    var screen_height = $(window).height();
+    var screen_width = $(window).width();
+    
+    $(".rncpg_body").css('width', '100%');
+    $(".rncpg_body").css('height', '100%');
+    //$("#containers").hide();
+
+    if($("#rncpg_content_home").css('display') != 'none') {
+        var pos = $("#rncpg_main_image").position();
+        if(pos !== undefined) {
+            $("#rncpg_to_do1").css('position', 'absolute');    
+            $("#rncpg_to_do1").css('top', pos['top'] + 300 + 'px');    
+            $("#rncpg_to_do1").css('left', pos['left'] + 'px');    
+            $("#rncpg_to_do1").show();        
+    
+            $("#rncpg_to_do2").css('position', 'absolute');    
+            $("#rncpg_to_do2").css('top', pos['top'] - 26 + 'px');    
+            $("#rncpg_to_do2").css('left', pos['left'] + 260 + 'px');    
+            $("#rncpg_to_do2").show();    
+    
+            $("#rncpg_to_do3").css('position', 'absolute');    
+            $("#rncpg_to_do3").css('top', pos['top'] + 276 + 'px');    
+            $("#rncpg_to_do3").css('left', pos['left'] + 260 + 'px');    
+            $("#rncpg_to_do3").show();    
+    
+            $("#rncpg_to_do4").css('position', 'absolute');    
+            $("#rncpg_to_do4").css('top', pos['top'] + 120 + 'px');    
+            $("#rncpg_to_do4").css('left', pos['left'] - 72 + 'px');    
+            $("#rncpg_to_do4").show();    
+    
+            $("#rncpg_to_do5").css('position', 'absolute');    
+            $("#rncpg_to_do5").css('top', pos['top'] - 40 + 'px');    
+            $("#rncpg_to_do5").css('left', pos['left'] - 60 + 'px');    
+            $("#rncpg_to_do5").show();    
+        }
+    }
+
+
+    if(window.chrome) {
+        $("#rncpg_menu_positions").css("margin-top", "2px");
+    }
+
+}
+
+
+function fitAboutContent() {
+    var pos = $("#rncpg_content_about_rnc").position();
+    //console.log(pos);
+}
+
+
+
+function changeContent(content) {
+    $(".rncpg_menu_position").each(function() {
+        $(this).removeClass('rncpg_menu_position_hover');
+    });
+
+    if(content == "home") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $("#rncpg_content_home").show();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $(".rncpg_what_to_do").show();
+        $("#rncpg_menu_position1").addClass('rncpg_menu_position_hover');
+    }
+    if(content == "about_rnc") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_home").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_about_rnc").show();
+        fitAboutContent();
+        $("#rncpg_menu_position2").addClass('rncpg_menu_position_hover');
+    }
+    if(content == "contact") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_contact").show();
+        $("#rncpg_menu_position5").addClass('rncpg_menu_position_hover');
+    }
+    if(content == "cantlogin") {
+        $("#rncpg_topper").show();
+        $("#rncpg_footer").show();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_mobile").hide();
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_cantlogin").show();
+    }
+    if(content == "mobile") {
+        $("#rncpg_topper").hide();
+        $("#rncpg_footer").hide();
+        
+        $("#rncpg_content_home").hide();
+        $("#rncpg_content_about_rnc").hide();
+        $(".rncpg_what_to_do").hide();
+        $("#rncpg_content_contact").hide();
+        $("#rncpg_content_cantlogin").hide();
+        $("#rncpg_content_mobile").show();
+        $("#rncpg_menu_position4").addClass('rncpg_menu_position_hover');
+    }
+    
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37173242-1']);
+_gaq.push(['_trackPageview']);
+      
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<style type="text/css">
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.rncpg_contact_textarea {
+    width: 380px;
+    height: 340px;
+    border: 1px solid #BDC7D8;
+    border-radius: 2px 2px 2px 2px;
+    margin: 4px 0 0;
+    font-size: 13px;
+    padding: 8px 10px;
+    position: relative;
+    top: 14px;
+    resize: none;
+}
+
+#rncpg_contact_submit {
+    position: relative;
+    top: 14px;
+}
+
+.rncpg_body {
+    background: url(/images/bg_page.jpg) repeat #e8e6ed;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: #220022;
+    min-height: 860px;
+}
+
+.rncpg_a {
+    color: #FFFFFF;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.rncpg_a:hover {
+    color: #7dbadf;
+}
+
+.rncpg_a_register {
+    color: #220022 !important;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.rncpg_a_register_bigger {
+    color: #220022 !important;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.rncpg_a_register:hover {
+    color: #000000;
+}
+
+.rncpg_a_register_bigger:hover {
+    color: #000000;
+}
+
+.rncpg_forgot_pass_link {
+    left: 50%;
+    position: absolute;
+    top: 40px;
+}
+
+.rncpg_what_to_do {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 16px;
+}
+
+
+.rncpg_wrapper {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 0px;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.rncpg_wrapper_violet {
+    width: 100%;
+    margin: 140px auto 0;
+    padding: 0px;
+    height: 200px;
+    background-color: #55006A;
+}
+
+.rncpg_wrapper_violet_changepass {
+    width: 100%;
+    margin: 140px auto 0;
+    padding: 0px;
+    height: 260px;
+    background-color: #55006A;
+}
+
+.rncpg_main_middle_content {
+    margin: 140px auto;
+    padding: 0px 60px;
+}
+
+#rncpg_content_about_rnc {
+    padding: 0px 120px !important;
+    position: relative;
+    top: -40px;
+}
+
+#rncpg_content_about_rnc_graph {
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%:
+    background: url(/images/about_rnc_bg.png) no-repeat 0 0 transparent;
+}
+
+#rncpg_content_about_rnc__test {
+    padding: 0px 120px !important;
+    position: relative;
+    top: -60px;
+}
+
+#rncpg_page_logo {
+    /*float: left;*/
+    left: 42px;
+    position: relative;
+    top: 20px;
+}
+
+.rncpg_page_logo {
+    float: left;
+    margin: 0 auto;
+}
+
+#rncpg_content_mobile {
+    font-size: 20px;
+    text-align: justify;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #d9cfd0 !important;
+}
+
+.rncpg_content_mobile_inside {
+    font-size: 20px;
+    text-align: justify;
+    padding: 12px;
+    
+}
+
+.rncpg_content_mobile_inside_violet {
+    font-size: 20px;
+    text-align: justify;
+    background-color: #220022;
+    color: #e8e6ed;
+    padding: 12px;
+}
+
+.rncpg_content_mobile_title {
+    font-size: 24px;
+    text-align: justify;
+    
+}
+
+.rncpg_logo_top_part {
+    position: relative;
+    top: -4px;
+}
+
+.rncpg_logo_bottom_part {
+    left: 2px;
+    position: relative;
+    top: -18px;
+}
+
+#rncpg_logo_big_text {
+    font-size: 48px;
+}
+
+#rncpg_logo_verysmall_text {
+    font-size: 18px;
+}
+
+#rncpg_logo_small_text {
+    font-size: 33px;
+}
+
+#rncpg_logo_grey_text {
+    font-size: 38px;
+    color: #6b6b6b;
+}
+
+#rncpg_dotted_middle {
+    float: left;
+    width: 90px;
+    text-align: center;
+    position: relative;
+    top: -34px;
+}
+
+#rncpg_main_image {
+    float: left;
+    position: relative;
+    top: 32px;
+}
+
+
+.rncpg_main_header {
+    float: left;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    top: 12px;
+}
+
+.rncpg_main_header_contact {
+    float: left;
+    height: 60px;
+    width: 100%;
+}
+
+.h2_title {
+    color: #333333;
+    font-size: 20px;
+    text-align: left;
+    position: relative;
+    top: -40px;
+}
+
+.rncpg_main_title {
+    color: #333333;
+    float: left;
+    font-size: 20px;
+    width: 50%;
+    text-align: left;
+}
+
+.rncpg_main_title_full {
+    color: #333333;
+    float: left;
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.rncpg_main_subtitle {
+    color: #333333;
+    float: left;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    top: -40px;
+}
+
+.rncpg_main_subtitle_full {
+    color: #333333;
+    float: left;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+}
+
+.rncpg_main_title_right {
+    text-align: center;
+}
+
+.rncpg_content_left {
+    float: left;
+    width: 400px;
+}
+
+.rncpg_dotted_border {
+    float: left;
+    width: 80px;
+    text-align: center;
+}
+
+.rncpg_dotted_middle_about {
+    float: left;
+    left: -64px;
+    position: relative;
+    text-align: center;
+    top: 102px;
+    width: 20px;
+    display: none;
+}
+
+.rncpg_content_right {
+    float: left;
+    width: 200px;
+}
+
+.rncpg_about_left {
+    float: left;
+    width: 360px;
+}
+
+.rncpg_about_right {
+    float: left;
+    width: 360px;
+}
+
+#rncpg_topper {
+    position: absolute;
+    top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: #55006A;
+    padding-top: 14px;
+    border-bottom: 1px solid #220022;
+}
+
+
+#rncpg_topper_transparent {
+    position: absolute;
+    top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: transparent;
+    padding-top: 14px;
+}
+
+#rncpg_login_form {
+    margin: 0 auto;
+    color: #e8e6ed;
+}
+
+.rncpg_bolded {
+    font-weight: bold;
+}
+
+#rncpg_footer {
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    z-index: 1;
+    background-color: transparent;
+}
+
+#rncpg_menu_positions {
+    margin: 0px auto 0;
+    z-index: 1;
+    width: 520px;
+    text-align: center;
+}
+
+.rncpg_menu_position {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #999999;
+    border-color: #FFFFFF;
+    border-image: none;
+    border-radius: 0 0 4px 4px;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    color: #eeeeee;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    height: 24px;
+    margin-left: 2px;
+    position: relative;
+    top: 3px;
+    width: 120px;
+}
+
+.rncpg_menu_position:hover {
+    background-color: #333333;
+    
+}
+
+.rncpg_menu_position_hover {
+    background-color: #333333;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #FFFFFF;
+    border-image: none;
+    border-radius: 0 0 4px 4px;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    color: #eeeeee;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    height: 24px;
+    margin-left: 2px;
+    position: relative;
+    top: 3px;
+    width: 120px;
+}
+
+#rncpg_registration_form {
+    position: relative;
+    left: -22px;
+    top: 48px;
+}
+
+.rncpg_doubled {
+    width: 312px;
+}
+
+.rncpg_button {
+    background-color: #1E1E9F;
+    border: 1px solid #E8E6ED;
+    border-radius: 2px 2px 2px 2px;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    /*font-family: OpenSansLight,Helvetica,Verdana,sans-serif;*/
+    font-size: 11px;
+    margin: 0;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.rncpg_button_bigger2 {
+    background-color: #1E1E9F;
+    border: 1px solid #E8E6ED;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    /*font-family: OpenSansLight,Helvetica,Verdana,sans-serif;*/
+    font-size: 13px;
+    margin: 4px 0 0;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.rncpg_button_bigger {
+    background-color: #1E1E9F;
+    border: 1px solid #E8E6ED;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    /*font-family: OpenSansLight,Helvetica,Verdana,sans-serif;*/
+    font-size: 16px;
+    margin: 4px 0 0;
+    padding: 6px 10px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#rncpg_forgot_pass_form {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+}
+
+.rncpg_white_logo {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.rncpg_white_logo_contact {
+    margin: 20px auto 0;
+    width: 1000px;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.rncpg_app_logo_top_part {
+    position: relative;
+    top: -4px;
+    color: #e8e6ed;
+}
+
+.rncpg_app_logo_bottom_part {
+    position: relative;
+    top: -14px;
+    color: #e8e6ed;
+}
+
+
+#rncpg_app_logo_big_text {
+    font-size: 24px;
+}
+
+#rncpg_app_logo_small_text {
+    font-size: 17px;
+}
+
+
+#rncpg_app_logo_grey_text {
+    font-size: 22px;
+    color: #6b6b6b !important;
+}
+
+
+#rncpg_app_logo_big_text_contact {
+    font-size: 24px;
+    color: #6b6b6b !important;
+}
+
+#rncpg_app_logo_small_text_contact {
+    font-size: 17px;
+    color: #6b6b6b !important;
+}
+
+
+#rncpg_app_logo_grey_text_contact {
+    font-size: 22px;
+    color: #6b6b6b !important;
+}
+
+
+.color_dark_violet {
+    color: #220022;
+}
+
+
+#rncpg_rgstr_username {
+    display: inline;
+}
+
+#rncpg_rgstr_message {
+    font-size: 16px;
+}
+
+.rncpg_rgstr_message_small {
+    font-size: 12px;
+}
+
+.rncpg_change_password {
+    text-align: center;
+    color: #e8e6ed;
+    font-size: 18px;
+}
+
+
+#rncpg_content_contact {
+    position: relative;
+    top: -6px;
+}
+
+.rncpg_box_about {
+    height: 160px;
+    color: #333333;
+    margin: 12px;
+    padding: 24px;
+}
+
+.rncpg_box_about_left {
+    float: left;
+    text-align: justify;
+}
+
+.rncpg_box_about_left_1 {
+    width: 360px;
+}
+
+.rncpg_box_about_left_2 {
+    width: 260px;
+}
+
+.rncpg_box_about_right {
+    float: right;
+    text-align: justify;
+}
+
+.rncpg_box_about_right_1 {
+    width: 260px;
+}
+
+.rncpg_box_about_right_2 {
+    width: 360px;
+}
+
+
+.rncpg_box_about_title {
+    font-size: 18px;
+}
+
+#rncpg_box_about_1 {
+    margin-top: 30px; 
+    border-bottom: 2px solid #0bdb1e;
+    border-right: 2px solid #0bdb1e;
+    width: 360px;
+    height: 180px;
+    margin-left: -88px;
+    /*background-color: #0bdb1e;
+    background: url(/images/about_1.png) no-repeat 0 0 transparent;*/
+}
+
+.rncpg_box_about_1 {
+    color: #0bdb1e;
+    font-size: 20px;
+}
+
+#rncpg_box_about_2 {
+    margin-top: 30px; 
+    border-bottom: 2px solid #960fff;
+    border-left: 2px solid #960fff;
+    width: 300px;
+    height: 220px;
+    /*background-color: #960fff;
+    background: url(/images/about_2.png) no-repeat 0 0 transparent;*/
+    text-align: right;
+}
+
+.rncpg_box_about_2 {
+    color: #960fff;
+    font-size: 20px;
+}
+
+#rncpg_box_about_3 {
+    margin-top: 16px; 
+    border-top: 2px solid #f3302b;
+    border-right: 2px solid #f3302b;
+    width: 300px;
+    height: 220px;
+    margin-left: -30px;
+    /*background-color: #f3302b;
+    background: url(/images/about_3.png) no-repeat 0 0 transparent;*/
+}
+
+.rncpg_box_about_3 {
+    color: #f3302b;
+    font-size: 20px;
+}
+
+#rncpg_box_about_4 {
+    margin-top: 16px;
+    border-top: 2px solid #2b6bc1;
+    border-left: 2px solid #2b6bc1;
+    width: 360px;
+    height: 180px;
+    /*background-color: #2b6bc1;
+    background: url(/images/about_4.png) no-repeat 0 0 transparent;*/
+    text-align: right;
+}
+
+.rncpg_box_about_4 {
+    color: #2b6bc1;
+    font-size: 20px;
+}
+
+.bigger {
+    font-size: 14px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.rncpg_font_red {
+    color: #cc0000;
+    font-weight: bold;
+}
+</style>
+
+</body>
+</html>

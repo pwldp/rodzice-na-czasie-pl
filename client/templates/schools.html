@@ -1,0 +1,73 @@
+
+    <p class="school_list_info"><b class="bolder">Twoje szkoły</b></p>
+    
+    <div id="myschool_close_schools_outside">
+        <div id="myschool_close_schools" onclick="$('#myschools_all_outside').slideToggle('fast');" title="Zwiń/rozwiń listę Twoich szkół"><img src="/images/collapse_expand_48x22.png" /></div>
+    </div>
+    <div class="myschool_vis_card" id="myschools_all_outside">
+        <div class="myschool_vis_card_inner" id="vis_card_inner_{{school.id}}" ng-repeat="school in my_schools">
+            <div class="myschool_vis_card_info" id="vis_card_info_{{school.id}}">
+                <span><b class="myschool_name" id="school_name_{{school.id}}"><b class="font_orange2">{{($index+1)}}.</b>&nbsp;<label>{{school.name}}</label></b><span class="font10 font_grey">&nbsp;&nbsp;{{school.city}}</span></span><br/><br/>
+            </div>
+            <div class="myschool_vis_card_options">
+                <div class="bottom_box_options_icons" title="Zobacz szczegóły"><a ng-href="/schoolsDetails/{{school.id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+            </div>
+        </div>
+        <div class="myschool_vis_card_inner" ng-show="userInfo.schools.length == 0">
+            <div class="myschool_vis_card_info">
+                <span><b class="myschool_name">&nbsp;<label style="font_grey">Brak szkół. Zapisz dziecko do klasy lub dołącz do szkoły jako Nauczyciel.</label></b></span><br/><br/>
+            </div>
+        </div>
+    </div>
+    <br class="clear" />
+    <br class="clear" />
+    
+
+    <p class="school_list_info"><b class="bolder">Znajdź szkołę</b></p>
+    
+    <div class="filter_forms" id="filter_form_find_school">
+        <form name="form_select_voivodeship" id="form_select_voivodeship" ng-submit="getCities(voivodeship)">Województwo:<br/>
+            <div class="selectstyled">
+                <select ng-change="getCities(voivodeship)" id="form_select_voivodeship_v" ng-model="voivodeship" ng-options="v.name for v in voivodeships"></select>
+            </div>
+        </form>
+        <form name="form_select_city" id="form_select_city" ng-submit="getListSchoolTypes(city)">Miasto:<br/>
+            <div class="selectstyled">
+                <select ng-change="getListSchoolTypes(city)" id="form_select_city_v" ng-model="city" ng-options="c.name for c in cities"></select>
+            </div>
+        </form>
+        <form name="form_select_schooltype" id="form_select_schooltype" ng-submit="getSchoolsByCityAndType()">Typ placówki:<br/>
+            <div class="selectstyled">
+                <select ng-change="getSchoolsByCityAndType()" ng-model="schooltype" id="form_select_schooltype_v" ng-options="t.name for t in schooltypes"></select>
+            </div>
+        </form>
+        <br class="clear" />
+        <br class="clear" />
+        <form name="form_select_schoolstreet" id="form_select_schoolstreet" ng-submit="getSchoolsByCityAndTypeAndStreet()">Filtruj dodatkowo wg adresu placówki:<br/>
+            <div class="selectstyled">
+                <select ng-change="getSchoolsByCityAndTypeAndStreet()" ng-model="schoolstreet" id="form_select_schoolstreet_v" ng-options="s for s in schoolstreets"></select>
+            </div>
+            <!--<input type="submit" class="button top-12" value="Pokaż" />-->
+        </form>
+        <br class="clear" />
+        
+    </div>
+    
+    <div class="vis_card">
+        <div class="school_vis_card_inner" id="vis_card_inner_{{school.id}}" ng-repeat="school in schools">
+            <div class="school_vis_card_info" id="vis_card_info_{{school.id}}">
+                <span><b class="school_name" id="school_name_{{school.id}}"><label>{{school.name}}</label></b></span><br/><br/>
+                <span>{{school.city}}, {{school.address}}</span><br/>
+                <span><b class="font_grey">woj.</b> {{school.voivodeship}}</span><br/>
+                <span ng-hide="school.phone == ''"><label class="font_grey">tel.</label> {{school.phone}}</span><br/>
+            </div>
+            <div class="contact_inside_box school_vis_card_bottom bottom_box_options">
+                <div class="bottom_box_options_icons" title="Zobacz szczegóły"><a ng-href="/schoolsDetails/{{school.id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+

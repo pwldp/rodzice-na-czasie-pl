@@ -1,0 +1,59 @@
+<div class="rncpg_body" ng-controller="convInvitCtrl">
+        
+
+<div id="rncpg_topper">
+    <div id="rncpg_login_form">
+        &nbsp;
+    </div>
+</div>
+
+
+
+<div class="rncpg_main_middle_content rncpg_content_home">
+        <div class="rncpg_main_image">
+            <img src="/images/rnc_logo_120x92.png" align="left" />
+            <div><span class="rncpg_logo_big_text" class="rncpg_logo_top_part">Rodzice</span>
+            <span class="rncpg_logo_small_text rncpg_logo_bottom_part">naCzasie.pl</span></div>
+        </div>        
+        <div id="rncpg_dotted_middle">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div class="rncpg_page_logo">
+            <div class="rncpg_change_password top-37">
+                <p ng-show="type == 'kidclass'">
+                    Zostałeś zaproszony do serwisu <span class="bold">RodziceNaCzasie.pl</span> przez Nauczyciela,<br/>który zaproponował przypisanie Twojego dziecka do swojej klasy.<br/><br/>
+                    Jeśli wyrażasz na to zgodę, zmień swoje hasło tymczasowe korzystając z poniższego formularza.<br/>Jeśli nie wyrażasz zgody lub nie chcesz się zarejestrować, zignoruj tą wiadomość.<br/>
+                </p>
+                <p ng-show="type == 'kidparent'">
+                    Zostałeś zaproszony do serwisu <span class="bold">RodziceNaCzasie.pl</span> przez użytkownika,<br/>który wskazał Ciebie jako innego opiekuna swojego dziecka.<br/><br/>
+                    Jeśli wyrażasz na to zgodę, zmień swoje hasło tymczasowe korzystając z poniższego formularza.<br/>Jeśli nie wyrażasz zgody lub nie chcesz się zarejestrować, zignoruj tą wiadomość.<br/>
+                </p>
+            </div>
+            <div class="rncpg_registration_form">
+                <span class="rncpg_registration_form_info rncpg_bolded">Wprowadź nowe hasło i potwierdź je:</span><br/>
+                <!--<form name="rncpg_change_password_form" id="rncpg_change_password_form" ng-submit="resetPassword(passform)">
+                <p align="left" class="rncpg_rgstr_message">Twój login: <span class="bold">{{your_email}}</span><br/>Hasło powinno mieć co najmniej 8 znaków</p><br/>
+                <input type="password" name="new_pass1" id="new_pass1" class="rncpg_input_registration" ng-model="passform.new_pass" placeholder="Nowe hasło" style="width: 180px;" required /><br/>
+                <input type="password" name="new_pass2" id="new_pass2" class="rncpg_input_registration" ng-model="passform.new_pass2" placeholder="Powtórz nowe hasło" style="width: 180px;" required /><br/>
+                <input type="submit" class="rncpg_button_bigger2 blue" name="rncpg_change_password_submit" id="rncpg_change_password_submit" value="Zmień hasło" /><br/><br/>
+                <button class="button rncpg_button_bigger2" id="resetpass_goto_main_button" ng-click="redirectToMain()" style="display: none; position: relative; top: 24px;">Przejdź do strony głównej serwisu</button>
+                </form>-->
+                <form name="rncpg_change_password_form" id="rncpg_change_password_form" ng-submit="confirmInvitation(passform)">
+                    <p align="left" class="rncpg_rgstr_message_small">Twój login: <span class="bold">{{your_email}}</span><br/>Hasło powinno mieć co najmniej 8 znaków</p><br/>
+                    <input type="password" name="new_pass1" id="new_pass1" class="rncpg_input_registration" ng-model="passform.new_pass" placeholder="Nowe hasło" style="width: 180px;" required /><br/>
+                    <input type="password" name="new_pass2" id="new_pass2" class="rncpg_input_registration" ng-model="passform.new_pass2" placeholder="Powtórz nowe hasło" style="width: 180px;" required /><br/>
+                    <br/><span class="rncpg_register_terms_info font14"><input type="checkbox" name="register_rules" ng-model="passform.checked" required /> Rejestrując się musisz zaakceptować <a href="#" class="rncpg_a_register">Regulamin</a> serwisu.</span><br/>
+                    <input type="submit" class="rncpg_button_bigger2 blue" name="rncpg_change_password_submit" id="rncpg_change_password_submit" value="Zmień hasło" /><br/>
+                    <button class="button rncpg_button_bigger2" id="coninv_goto_main_button" ng-click="redirectToMain()" style="display: none; position: relative; top: 24px;">Przejdź do strony głównej serwisu</button>
+                </form>
+            </div>
+        </div>        
+    </div>
+
+     
+
+</div>
+
+
+
+</div>

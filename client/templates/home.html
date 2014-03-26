@@ -1,0 +1,109 @@
+
+<div id="homepage">
+
+    <div class="homepage_left">
+        <div style="height: 60px; background-color: #2B0135; font-size: 24px;" id="common_cases_title"><span style="position: relative; top: 12px; left: 24px;">Twoje bieżące sprawy</span></div>
+        <div class="common_case" ng-hide="common_cases.length >= 1">
+            <span class="font14 font_grey">Brak bieżących spraw</span>
+        </div>
+        <div class="common_case" ng-repeat="case in common_cases">
+            <img src="{{case.icon}}" align="left" />
+            {{case.text}}<br/>
+            <div align="right" class="buttons_{{case.id}}" ng-show="case.more == 'buttons'"><button class="button_small" ng-click="confirmNotification(case)">Zatwierdź</button>&nbsp;<button class="button_small red" ng-click="rejectNotification(case)">Odrzuć</button></div>
+            <div align="right" class="buttons_{{case.id}}" ng-show="case.more == 'link'"><button class="button_small" ng-click="setRoute(case.link)">Więcej</button></div>
+            <div id="case_{{case.id}}" style="display: none;"><br/><br/>
+                Czy <span class="bold">{{case_detail.kid_first_name}} {{case_detail.kid_last_name}}</span> znajduje się na liście Twoich dzieci? Jeśli tak - zaznacz odpowiednie dziecko, jeśli nie - wybierz ostatnią opcję a dziecko zostanie dopisane do Twojej listy. 
+                <table border="0">
+                <tr ng-repeat="kid in kids">
+                    <td class="case_kids" width="30"><input type="radio" name="case_kid_radio" class="case_kid_radio" id="case_kid_radio_{{kid.id}}" /></td>
+                    <td class="case_kids" width="48"><img src="/images/avatar.png" width="32" class="float_left" /></td>
+                    <td class="case_kids"><span class="float_left">{{kid.first_name}}&nbsp;{{kid.last_name}}</span></td>
+                </tr>
+                <tr><td class="case_kids"><input type="radio" name="case_kid_radio" class="case_kid_radio" id="case_kid_radio_0" checked /></td><td colspan="2">{{case_detail.kid_first_name}} {{case_detail.kid_last_name}} nie znajduje się na Twojej liście dzieci</td></tr>
+                </table>
+                <br class="clear"/>
+                <div align="right" class="buttons2_{{case.id}}"><button class="button_small" ng-click="confirmNotification2(case)">Zatwierdź</button>&nbsp;<button class="button_small red" ng-click="rejectNotification(case)">Odrzuć</button></div>
+            </div>
+        </div>
+
+        <br class="clear" />
+
+        <div id="home_last_poll" ng-show="polls.length > 0" ng-hide="userInfo.username != 'demo1' && userInfo.username != 'demo2' && userInfo.username != 'demo3'">
+            <div class="home_title"><span>Aktualne ankiety</span></div>
+            <div ng-repeat="poll in polls">
+                <div class="poll_title padding6"><label>{{poll.question}}</label><span class="font_grey float_right home_voted" ng-show="poll.i_voted == 1" title="Oddanych głosów">&nbsp;&nbsp;&nbsp;(<b class="bold">{{poll.vote_counter}}</b>)</span></div>
+            </div>
+        </div>
+        <div class="home_posts_more"><a ng-click="setRoute('polls')"><span>więcej &raquo;</span></a></div>        
+
+    </div>
+
+    <div class="homepage_right">
+        <div class="home_title"><span>Aktualne dyskusje</span></div>
+        <ul id="home_post_list">
+            <li ng-repeat="post in posts" class="home_posts">
+                <div class="home_post_header" id="home_post_header_{{post.id}}">
+                    <div class="home_post_image"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="home_post_title">
+                        <span class="home_post_author">{{post.owner_obj.first_name}} {{post.owner_obj.last_name}}</span>&nbsp;
+                        <span class="home_post_created_text">{{post.created_text}}</span><br/>
+                        {{post.title}}<br/>
+                        <span class="home_post_content">{{post.content_short}}</span>
+                    </div>
+                </div>
+                <br class="clear"/>
+            </li>
+        </ul>
+        <div class="home_posts_more"><a ng-click="setRoute('news')"><span>więcej &raquo;</span></a></div>
+        <br class="clear" />
+
+        <div id="home_invite_friends_div">
+            <form name="invite_friends" id="invite_friends_form">
+            <p><span class="font16 font_grey">Twoi znajomi nie mają jeszcze konta? <span style="color: #ffffff;">Zaproś ich!</span></span><br />
+            <span class="font16 font_grey"><input class="input_text" type="email" ng-model="invite.email" placeholder="Podaj email znajomego" required />&nbsp;
+            <button ng:click="sendExternalInvitation(invite)">Zaproś</button></p>
+            </form>
+        </div>
+
+        <br class="clear" />
+
+    </div>
+    
+    <!--<div style="background-color: #2B0135; margin: 12px 0; height: 100px; float: left; width: 100%;">
+            <p style="font-size: 16px; color: #7DBADF; position: relative; top: 12px; left: 12px;">Twoi znajomi online</p>
+            <p style="position: relative; top: 12px; left: 12px;">
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+                <img src="images/avatar.png" width="32" align="left" style="margin-right: 12px;" />
+            </p>
+        </div>-->
+    
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

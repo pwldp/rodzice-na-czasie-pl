@@ -1,0 +1,13 @@
+
+<div class="hidden_forms" id="hidden_forms_user_notifications">
+
+    <form name="form_user_notifications" class="form_user_profile" ng-controller="userNotificationsCtrl">
+        <span class="profile_title">Powiadomienia</span><br/>
+        <p><div ng:repeat="c in checklist">
+            <!--<input type="checkbox" ng:model="c.checked"> {{c.name}} - {{c.checked}}-->
+        </div></p>
+        <p><button ng:click="save()">Zapisz</button></p>
+    </form>
+
+</div>
+

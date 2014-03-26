@@ -1,0 +1,112 @@
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_schoolclass_teacher').slideUp(); $('#hidden_forms_schoolclass').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dopisz nową klasę</span></div></div>
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_schoolclass').slideUp(); $('#hidden_forms_schoolclass_teacher').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dołącz do szkoły jako Nauczyciel</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass" style="display: none;">
+        <form ng-submit="saveSchoolClass(classform)" name="classform" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wprowadź dane klasy:</div>
+            <p><input type="text" class="input_text" placeholder="Nazwa klasy" ng-model="classform.name" required autocomplete="off" oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę klasy!')" /></p>
+            <!--<p><input type="text" class="input_text" placeholder="Kierunek" ng-model="classform.specialization" required  /></p>
+            <p><input type="text" class="input_text" placeholder="Wychowawca" ng-model="classform.main_teacher" required  /></p>-->
+            <p><input type="text" class="input_text" placeholder="Rocznik" id="classform_field_start_year" ng-model="classform.start_year" autocomplete="off" required ng-pattern="start_year" oninvalid="this.setCustomValidity('Wprowadź poprawny rocznik!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_teacher" style="display: none;">
+        <form ng-submit="joinSchoolAsTeacher(formteacher)" name="formteacher" class="form_add_schoolclass">
+          <div class="form_teachers_left">            
+            <div class="form_add_kid_title">Jeśli jesteś Nauczycielem w tej szkole, dołącz do niej i podaj nazwę przedmiotu, którego uczysz:</div>
+            <div class="teacher_subject_list">
+                <div ng-repeat="MENSubject in MENSubjects">
+                    <input type="checkbox" value="{{MENSubject.id}}" ng-checked="MENSubject.checked" ng-model="MENSubject.checked" />
+                    <span>{{MENSubject.descr}}</span>
+                </div>
+            </div>
+            <div class="form_add_kid_title">Nie ma Twojego przedmiotu na liście powyżej? <span class="bold">Dopisz go</span>:</div>
+            <input type="text" class="input_text" placeholder="Nazwa przedmiotu" ng-model="formteacher.new_subject" />
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelJoinAsTeacher()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    
+    <div class="school_content_left">
+        <div class="school_details_info">
+            <span class="school_details_info_title">{{school.name}}</span><br/><br/>
+            <span class="font14">{{school.city}}, <b class="font14">{{school.address}}</b></span><br/><br/>
+            <span class="font_grey">kod poczt:</span> {{school.zip}}&nbsp;<span class="font_grey">, woj.</span> {{school.voivodeship}}<br/><br/>
+            <span>tel: <b>{{school.phone}}</b></span><br/>
+            <span>email: <b>{{school.email}}</b></span>, <span>www: <b>{{school.www}}</b></span><br/>
+        </div>
+        <div class="school_teachers_content">
+            <div class="school_teachers_content_block">
+                <span>Nauczyciele</span><br/>
+                <div class="school_teachers" ng-show="teachers_confirmed.length == 0">Brak dopisanych nauczycieli do szkoły</div>
+                <div class="school_teachers" ng-repeat="teacher in teachers_confirmed">
+                    <div class="school_teachers_avatar"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="school_teachers_name"><b>{{teacher.first_name}} {{teacher.last_name}}</b><br/><span class="teacher_subject" ng-repeat="subject in teacher.subjects">{{subject.name}}, </span></div>
+                    <div class="school_teachers_icons">
+                        <a ng-hide="teacher.id == userInfo.id" ng-href="/chat/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Nauczycielem" width="24" /></a>
+                        <a ng-click="teacherLeavesSchool()" ng-href="#" ng-show="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="abuse" title="Odłącz od grona nauczycieli w szkole." width="24" /></a>
+                        <a ng-href="/teacherAbuse/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}&sid={{school.id}}&sn={{school.name}}" class="schoolclass_contact_icon"><img src="/images/important.gif" class="abuse" title="To nie jest Nauczyciel w tej szkole? Zgłoś nadużycie." /></a>
+                    </div>
+                </div>
+                
+            </div>
+            <br class="clear" />
+            <div class="school_teachers_content_block"><br/><br/><br/>
+                <span>Nauczyciele niepotwierdzeni</span><br/>
+                <div class="school_teachers" ng-show="teachers_unconfirmed.length == 0">Brak nauczycieli niepotwierdzonych w szkole</div>
+                <div class="school_teachers" ng-repeat="teacher in teachers_unconfirmed">
+                    <div class="school_teachers_avatar"><img src="/images/avatar.png" align="left" /></div>
+                    <div class="school_teachers_name"><b>{{teacher.first_name}} {{teacher.last_name}}</b><br/><span class="teacher_subject" ng-repeat="subject in teacher.subjects">{{subject.name}}, </span></div>
+                    <div class="school_teachers_icons">
+                        <a ng-hide="teacher.id == userInfo.id" ng-href="/chat/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Nauczycielem" width="24" /></a>
+                        <a ng-click="teacherLeavesSchool()" ng-href="#" ng-show="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="abuse" title="Odłącz od grona nauczycieli w szkole." width="24" /></a>
+                        <a ng-click="confirmTeacher(teacher.id)" ng-href="#" ng-hide="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/ok.png" class="abuse" title="Potwierdź, że ten Nauczyciel uczy w tej szkole" /></a>&nbsp;
+                        <a ng-href="/teacherAbuse/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}&sid={{school.id}}&sn={{school.name}}" ng-hide="teacher.id == userInfo.id" class="schoolclass_contact_icon"><img src="/images/important.gif" class="abuse" title="To nie jest Nauczyciel w tej szkole? Zgłoś nadużycie." /></a>
+                    </div>
+                </div>
+            </div>
+            <!--<div style="width: 236px; text-align: right; position: relative; top: 12px;"><a ng-click="setRoute('teachers')">Pokaż wszystkich</a></div>-->
+        </div>
+    </div>
+    <div class="school_content_right_overflow">
+        <div class="school_classes_title">
+            <span>
+            <a id="change_actual_start_year_previous_link" ng-click="setStartYear(previous_start_year)" ng-href="#" title="Poprzedni rocznik"><img src="/images/arrow_left_15x24.png" /></a>
+            Rocznik <b>{{actual_start_years}}</b>
+            <a id="change_actual_start_year_next_link" ng-click="setStartYear(next_start_year)" ng-href="#" title="Następny rocznik"><img src="/images/arrow_right_15x24.png" /></a>
+            </span>
+        </div>
+        <div class="class_box" ng-show="classes.length == 0">
+            <div>
+                <span class="class_box_name">Brak wprowadzonych klas w tym roczniku</span><br/>
+                <div class="pointer" onclick="$('#hidden_forms_schoolclass_teacher').slideUp(); $('#hidden_forms_schoolclass').slideToggle();"><span>Dopisz nową klasę</span></div>
+            </div>
+        </div>
+        <div class="class_box" ng-show="classes.length > 0" ng-repeat="class in classes">
+            <div>
+                <a ng-href="/schoolClassDetails/{{school.id}}/{{class.id}}"><span class="class_box_name">{{class.name}}</span></a>,&nbsp;&nbsp;&nbsp;
+               <span class="main_teacher">&nbsp;</span>
+            </div>
+            <div class="students_in_class_counter">uczniów&nbsp;<span>{{class.students.length}}</span></div>
+            <div class="class_box_right_options"><a ng-href="/schoolClassDetails/{{school.id}}/{{class.id}}" class="schoolclass_contact_icon" title="Pokaż klasę"><img src="/images/Metro_Icons/Other/More_24x24.png" class="schoolclass_contact_icon" title="Pokaż klasę" /></a></div>
+        </div>
+    </div>
+
+
+
+
+
+

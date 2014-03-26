@@ -1,0 +1,294 @@
+.kid_timetable {
+    margin: 0 auto;
+}
+
+.timetable_legend {
+    border-bottom: 1px solid #220022;
+    margin-left: 16px;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    width: 90%;
+}
+
+.subject_box_legend  {
+    width: 12px;
+    height: 12px;
+    float: left;
+    position: relative;
+    top: 3px;
+    margin-right: 4px;
+}
+
+#subjects_navigation {
+    margin-top: 12px;
+    border-top: 1px solid #333333;
+    height: 24px;
+    width: 100%;
+}
+
+#subjects_navigation span {
+    margin-left: 16px;
+    
+}
+
+#subjects_all_outside {
+    border-bottom: 1px solid #220022;
+    float: left;
+    margin: 18px 12px 12px 16px;
+    width: 90%;
+}
+
+.subjects {
+    width: 90%;
+    float: left;
+}
+
+#subject_trash {
+    background-color: #220022;
+    float: right;
+    min-height: 48px;
+    margin-top: -18px;
+    text-align: center;
+    width: 48px;
+}
+
+#subject_trash img {
+    margin-top: 22px;
+}
+
+.subject_box {
+    float: left;
+    width: 56px;
+    height: 36px;
+    margin: 4px;
+    text-align: center;
+    cursor: move;
+}
+
+.subject_box span {
+    position: relative;
+    top: 10px;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+#timetable {
+    padding: 0;
+    width: 96%;
+    border: 1px solid #aaaaaa;
+    margin: 12px auto 12px 12px;
+    float: left;
+}
+
+#timetable thead th {
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    height: 32px;
+    background-color: #741c95;
+    border-right: 1px solid #aaaaaa;
+}
+
+#timetable thead th:last-child {
+    border-right: 0px;
+}
+
+#timetable thead th.hours {
+    width: 50px !important;
+}
+
+#timetable tbody td {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.hours_row {
+    text-align: center;
+    border-top: 1px solid #666666;
+    border-right: 1px solid #666666;
+}
+
+.hours_row div {
+    display: inline;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+}
+
+
+.days_cell {
+    border-right: 1px solid #666666;
+    border-top: 1px solid #666666;
+    height: 46px;
+    text-align: center;
+}
+
+.days_cell:last-child {
+    border-right: 0px;
+}
+
+.remove_position {
+    float: right;
+    margin-right: 4px;
+    margin-top: 4px;
+    position: relative;
+    width: 12px;
+    cursor: pointer;
+    opacity:0.4;
+    filter:alpha(opacity=40);
+}
+
+.remove_position:hover {
+    opacity:1.0;
+    filter:alpha(opacity=100);
+}
+
+#timetable_legend_subject {
+    border-top: 1px solid #2b0136;
+}
+
+#timetable_close_subjects {
+    background-color: #220022;
+    border: 1px solid #220022;
+    height: 16px;
+    margin: 0 44%;
+    position: relative;
+    top: 76px;
+    width: 48px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+}
+
+#timetable_close_subjects:hover {
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+}
+
+#timetable_close_subjects img {
+    width: 26px;
+    
+}
+
+
+#tt_kids_chooser_outside {
+    width: 90%;
+    height: 80px;
+    /*overflow: hidden;*/
+    margin: 12px;
+}
+
+#tt_kids_chooser {
+    /*width: 5000px;*/
+    height: 80px;
+    float: left;
+}
+
+.tt_kid_choose_box {
+    background-color: #690394;
+    float: left;
+    height: 32px;
+    margin: 2px;
+    width: 140px;
+}
+
+.tt_kid_choose_box:hover {
+    background-color: #220022;
+}
+
+.tt_kid_choose_box.hover {
+    background-color: #220022;
+}
+
+.tt_kid_choose_box img {
+    width: 32px;
+    height: 32px;
+}
+
+.tt_kid_choose_box span {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    
+}
+
+
+
+
+
+/* FORM */
+
+#hidden_forms_kidtimetable {
+    /*margin-top: 6px;*/
+    height: 180px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+.form_add_kidtimetable {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_add_kidtimetable p {
+    display: block;
+    width: 500px;
+    margin-top: 12px;
+}
+
+.form_add_kidtimetable_title {
+    font-size: 16px;
+}
+
+.form_kidtimetable_left {
+    float: left;
+    width: 320px;
+}
+
+.form_add_kidtimetable .input_text {
+    background-color: #1F0127;
+    border: 0 none;
+    color: #E8E6ED;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 12px;
+}
+
+#field_subject_shortcut {
+    font-weight: normal;
+    color: #dddddd;
+}
+
+#field_subject_shortcut span {
+    font-weight: bold;
+    color: #E8E6ED;
+}
+
+.input_text_tt_hours {
+    width: 60px;
+}
+
+.btn_change_hours {
+    margin: 12px;
+    font-size: 14px;
+    padding: 6px;
+}
+
+.btn_change_hours bold {
+    font-weight: bold;
+}
+
+#btn_save_timetable {
+    float: right;
+    margin-right: 28px;
+    font-size: 13px;
+}
+
+#timetable_change_info {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}

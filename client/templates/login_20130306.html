@@ -1,0 +1,232 @@
+<div class="page_body" ng-controller="AuthCtrl">
+        
+
+
+
+     
+<div class="page_wrapper">
+    <div id="page_center_content">
+
+        <div class="content_box" style="position: absolute; top: 50px; left: 40%; width: 305px; height: 200px;"> 
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Zebrania klasowe są za krótkie, żeby zdążyć <span class="font_red">porozmawiać o wszystkim</span>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 140px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 190px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                <span class="font_red">Planuj wydarzenia w klasie</span> Twojego dziecka 
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 240px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 290px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                <span class="font_red">Dyskutuj z innymi rodzicami i nauczycielami</span> w klasie i szkole 
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 350px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 400px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Chcesz znać opinię Rodziców na temat klasowych inicjatyw? <span class="font_red">Spytaj!</span>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 490px; left: 40%; width: 305px; height: 18px; text-align: center;"> 
+            <img src="/images/rnc_logo_80x62_white.png" border="0" align="center" style="width: 30px; height: 20px; opacity: 0.1;" />
+        </div>
+
+        <div class="content_box" style="position: absolute; top: 540px; left: 40%; width: 305px; height: 200px;">
+            <div style="font-size: 22px; position: absolute; left: 0px; top: -14px; font-family: Open Sans, sans-serif; text-align: justify;" class="font_lightgrey">
+                Możesz <span class="font_red">skutecznie powiadomić Rodziców o nowych planach</span> w szkole 
+            </div>
+        </div>
+
+        
+
+
+
+        <div id="page_logo">
+            <img src="/images/rnc_logo_180x138.png" /><br/>
+            <span id="logo_big_text" class="logo_top_part">Rodzice</span><br/>
+            <span id="logo_small_text" class="logo_bottom_part">naCzasie.pl</span>
+        </div>
+
+    </div>
+
+    <div id="page_login">
+    <div id="page_login_content">
+        <div id="content-login">
+        <h2 class="page_h2">Logowanie</h2>
+        <div class="page_login_inside_content">
+          <div id="showregister_div"><div class="slidelink" id="showregister">Nie masz konta? Zarejestruj się&nbsp;&nbsp;<img src="/images/arrow_right_15x24.png" border="0" align="right" /></div></div>
+          <form id="login" name="login" action="#" method="post">
+              <!--<input type="email" name="email" id="email" ng-model="user" placeholder="Użytkownik" class="txtfield" tabindex="1" autocomplete="off" /><br/>-->
+              <input type="text" name="user" id="username" ng-model="user" placeholder="Użytkownik" class="txtfield" tabindex="1" autocomplete="off" required oninvalid="this.setCustomValidity('1111')" /><br/>
+              <input type="password" name="password" ng-model="password" id="password" placeholder="Hasło" class="txtfield" tabindex="2" autocomplete="off" required oninvalid="this.setCustomValidity('2222')" /><br/>
+              <input type="submit" name="loginbtn" id="loginbtn" value="Zaloguj" ng-click="processAuth()" class="btn" tabindex="3" />
+          </form>
+          <div class="page_login_info">
+              <div id="showforgotpass">Zapomniałeś hasła?</div><br/><br/>
+              <input type="email" name="forgotpassemail" id="forgotpassemail" placeholder="Podaj email" class="txtfield forgotpass" tabindex="12" autocomplete="off" style="display: none;"><br/>
+              <input type="submit" name="forgotpassbtn" id="forgotpassbtn" value="Przypomnij hasło" class="btn forgotpass" tabindex="13" style="display: none;" />
+          </div>
+        </div>
+      </div><!-- /end #content-login -->
+      
+      
+      <div id="content-register">
+        <h2 class="page_h2">Rejestracja</h2>
+        <div class="page_login_inside_content">
+        <div id="showlogin_div"><div class="leftsidelink" id="showlogin"><img src="/images/arrow_left_15x24.png" border="0" align="left" />&nbsp;&nbsp;Masz już konto? Zaloguj się</div></div>
+        <form id="register" name="register" action="#" method="post">
+          <input type="text" name="fname" id="fname" placeholder="Imię" class="txtfield" tabindex="4" autocomplete="off" /><br/>
+          <input type="text" name="lname" id="lname" placeholder="Nazwisko" class="txtfield" tabindex="5" autocomplete="off" /><br/>
+          <input type="email" name="newemail" id="newemail" placeholder="Email" class="txtfield" tabindex="6" autocomplete="off" /><br/>
+          <input type="password" name="password1" id="password1" placeholder="Hasło" class="txtfield" tabindex="7" autocomplete="off" /><br/>
+          <input type="password" name="password2" id="password2" placeholder="Powtórz hasło" class="txtfield" tabindex="8" autocomplete="off" /><br/>
+          <input type="submit" name="registerbtn" id="registerbtn" value="Zarejestruj" class="btn" tabindex="9" />
+        </form>
+        <div class="page_registration_info">
+            <span>Lub zarejestruj przy użyciu</span><br/>
+            <a href="/auth/google" onClick="authGoogle()"><img src="/images/Metro_Icons/Google_Services/Google_alt_46x46.png" title="Używając konta Google" border="0" /></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/auth/facebook" onClick="authFacebook()"><img src="/images/Metro_Icons/Internet_Shortcuts/Facebook_alt_46x46.png" title="Używając konta Facebook" border="0" /></a>
+        </div>
+        
+        </div>
+      </div><!-- /end #content-register -->
+      
+    </div>
+    </div>
+    </div>
+
+    <div id="page_bottom">
+
+        <div id="page_bottom_menu">
+            <div class="box" id="box1">Witaj</div>
+            <div class="box" id="box2">Aplikacja</div>
+            <div class="box" id="box3">CośTam</div>
+            <div class="box" id="box4">CośTam</div>
+            <div class="box" id="box5">Kontakt</div>
+        </div>
+
+<!--
+    <div id="page_bottom_partners" style="display: none;">
+        Partnerzy <span class="huge">{</span>xxx<span class="huge">}</span>
+    </div>
+-->
+
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".jnotify-container").text();
+    clearTooltips();
+
+    fitPageContent();
+
+    $("form").submit(function(e) {
+        e.preventDefault();
+    });
+  
+    var clogin = $("#content-login");
+    var cregister = $("#content-register");
+  
+    /* display the register page */
+    $("#showregister").on("click", function(e){
+        e.preventDefault();
+        var newheight = cregister.height();
+        $(cregister).css("display", "block");
+    
+        $(clogin).stop().animate({
+            "left": "-880px"
+        }, 800, function(){ /* callback */ });
+    
+        $(cregister).stop().animate({
+            "left": "0px"
+        }, 800, function(){ $(clogin).css("display", "none"); });
+    
+        $("#page_login_content").stop().animate({
+            "height": newheight+"px"
+        }, 550, function(){ /* callback */ });
+    });
+  
+    /* display the login page */
+    $("#showlogin").on("click", function(e){
+        e.preventDefault();
+        var newheight = clogin.height();
+        $(clogin).css("display", "block");
+    
+        $(clogin).stop().animate({
+            "left": "0px"
+        }, 800, function() { /* callback */ });
+        $(cregister).stop().animate({
+            "left": "880px"
+        }, 800, function() { $(cregister).css("display", "none"); });
+    
+        $("#page_login_content").stop().animate({
+            "height": newheight+"px"
+        }, 550, function(){ /* callback */ });
+    });
+
+    $("#showforgotpass").on("click", function(e){
+        e.preventDefault();
+        $(".forgotpass").fadeIn();
+    });
+
+
+
+});
+$(window).resize(function() {
+    fitPageContent();
+});
+
+
+function fitPageContent() {
+    var screen_height = $(window).height();
+    var screen_width = $(window).width();
+    var page_bottom_height = $("#page_bottom").height();
+    var center_height = screen_height - page_bottom_height - 100;
+    $("#page_center_content").css('height', center_height + 'px');
+ 
+    /*if(screen_width < 1280) {
+        $("#page_center_content").css('position', 'relative');
+        $("#page_center_content").css('left', '-100px');
+    }*/
+}
+
+
+function authGoogle() {
+    console.log("authGoogle...");
+    window.location.href="/auth/google";
+}
+
+
+function authFacebook() {
+    console.log("authFacebook...");
+    window.location.href="/auth/facebook";
+}
+
+
+</script>
+   
+
+</div>
+
+     

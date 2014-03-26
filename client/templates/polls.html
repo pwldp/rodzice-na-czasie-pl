@@ -1,0 +1,85 @@
+
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_polls').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj ankietę</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_polls" style="display: none;">
+        <form ng-submit="savePoll(pollform)" name="pollform" class="form_add_poll">
+          <div class="form_poll_left">            
+            <div class="form_add_kid_title">Wprowadź dane ankiety:</div>
+            <p><input type="text" class="input_text_poll" placeholder="Pytanie w ankiecie" ng-model="pollform.question" required /></p>
+            <p><input type="text" class="input_text_small_poll" placeholder="Ważna od" ng-model="pollform.startDate" id="poll_start_date" my-datepicker required />&nbsp;
+               <input type="text" class="input_text_small_poll" placeholder="Ważna do" ng-model="pollform.endDate" id="poll_end_date" my-datepicker required /></p><br/><br/>
+            <div class="form_add_poll_subtitle">Odpowiedzi <span class="font_grey">(wymagane minimum 2 odpowiedzi)</span>:</div>
+            <div ng-repeat="answer in answers" id="poll_answer_{{$index}}" class="poll_form_answer margin_left12"><input type="text" class="input_text poll_form_input_answer" autocomplete="off" id="poll_answer_input_{{$index}}" placeholder="Odpowiedź" ng-model="answer" />&nbsp;
+               <input type="button" class="button red margin_top-12" ng-click="delAnswer($index)" value="Usuń" ng-hide="$index < 2" />&nbsp;</div>
+            <p><input type="button" class="button" ng-click="addAnswer()" value="Dodaj odpowiedź" /></p>
+            <p class="form_add_poll_subtitle">Ankieta dotyczy grup:<br/>
+                <div class="new_poll_form_group" ng-repeat="group in groups">
+                    <input type="checkbox" ng-model="group._id" id="new_poll_group_{{group.id}}" class="post_checkbox_for_groups" /> <span>{{group.name}}</span>
+                </div>
+            </p>
+            <br class="clear" />
+          </div>
+          <p><br/><input type="button" class="button" ng-click="cancelPoll()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+
+
+    </div>
+
+
+    <p class="school_list_info"><b class="bolder">Aktualne ankiety</b></p>
+    <div class="poll_card">
+        <div class="poll_card_inner" id="vis_card_inner_{{poll.id}}" ng-show="polls.length == 0">
+            <div class="poll_card_info" id="vis_card_info_{{poll.id}}">
+                <div class="align_center font_grey left12 top-6">Brak aktualnych ankiet</div>
+            </div>
+        </div>
+        <div class="poll_card_inner" id="vis_card_inner_{{poll.id}}" ng-repeat="poll in polls">
+            <div ng-show="poll.i_voted == 0" class="poll_card_info" id="vis_card_info_{{poll.id}}">
+                <div class="poll_title font14"><label>{{poll.question}}</label><div class="float_right del_poll pointer" title="Usuń ankietę" ng-show="userInfo.id == poll.author" ng-click="delPoll(poll.id)"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" align="right" /></div>
+                  <br/><span class="font10">Ważna do <span class="bold">{{poll.dtstop}}</span></span></div>
+                  <form name="poll_vote_{poll.id}"><table>
+                  <tr ng-repeat="choice in poll.choices">
+                  <td width="140">{{choice.choice}}</td>
+                  <td><div ng-click="vote(poll.id, choice)" title="Głosuj" class="vote_poll pointer"><img src="/images/vote_24x24.png" border="0" /></div></td>
+                  </tr>
+                </table></form>
+            </div>
+            <div ng-show="poll.i_voted == 1" class="poll_card_info" id="vis_card_info_{{poll.id}}">
+                <div class="poll_title font14"><label>{{poll.question}}</label><div class="float_right del_poll pointer" title="Usuń ankietę" ng-show="userInfo.id == poll.author" ng-click="delPoll(poll.id)"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" align="right" /></div>
+                  <br/><span class="font10">Ważna do <span class="bold">{{poll.dtstop}}</span></span></div>
+                  <table id="{{poll.id}}_results" class="margin_top24" style="padding-top: 12px">
+                  <tr ng-repeat="choice in poll.choices">
+                  <td width="140">{{choice.choice}}</td>
+                  <td><div class="float_left font_grey">({{choice.counter}})&nbsp;&nbsp;</div><div class="float_left {{choice.color}}" style="width: {{choice.width}}px; height: 20px;">&nbsp;</div></td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <p class="school_list_info"><b class="bolder">Archiwalne ankiety</b></p>
+    <div class="poll_card">
+        <div class="poll_card_inner" id="vis_card_inner_{{poll.id}}" ng-show="polls_archive.length == 0">
+            <div class="poll_card_info" id="vis_card_info_{{poll.id}}">
+                <div class="align_center font_grey left12 top-6">Brak zakończonych ankiet</div>
+            </div>
+        </div>
+        <div class="poll_card_inner" id="vis_card_inner_{{poll.id}}" ng-repeat="poll in polls_archive">
+            <div class="poll_card_info" id="vis_card_info_{{poll.id}}">
+                <div class="poll_title"><label>{{poll.question}}&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" ng-click="showPollResults(poll.id)" class="font12 font_lightblue2 inline pointer">&nbsp;&nbsp;&nbsp;&nbsp;Wyniki</a></label><div class="float_right del_poll pointer" ng-show="userInfo.id == poll.author" title="Usuń ankietę" ng-click="delPoll(poll.id)"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" align="right" /></div></div>
+                  <table id="{{poll.id}}_results" class="margin_top24" style="display: none; padding-top: 12px">
+                  <tr ng-repeat="choice in poll.choices">
+                  <td width="140">{{choice.choice}}</td>
+                  <td><div class="float_left font_grey">({{choice.counter}})&nbsp;&nbsp;</div><div class="float_left {{choice.color}}" style="width: {{choice.width}}px; height: 20px;">&nbsp;</div></td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br class="clear" />
+    <br class="clear" />
+

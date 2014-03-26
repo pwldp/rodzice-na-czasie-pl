@@ -1,0 +1,19 @@
+
+    <div class="search_vis_card">
+        <div class="contact_vis_card_inner" id="vis_card_inner_{{searched_user.id}}" ng-repeat="searched_user in searched_users">
+            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="contact_vis_card_info" id="vis_card_info_{{searched_user.id}}">
+                <span><b class="contact_name" id="contact_name_{{searched_user.id}}">{{searched_user.first_name}} <label>{{searched_user.last_name}}</label></b></span><br/>
+                <div class="bottom_box_options_icons_search" title="Skontaktuj się z użytkownikiem">
+                    <a ng-href="/chat/{{searched_user.id}}?n={{searched_user.first_name}} {{searched_user.last_name}}"><img src="/images/Metro_Icons/Other/Mail_32x32.png" /></a>
+                </div>
+                <div class="bottom_box_options_icons_search" title="Zaproś do znajomych" ng-show="searched_user.my_friend == '0'">
+                    <a ng-click="inviteUser(searched_user.id)"><img src="/images/Metro_Icons/System_Icons/Contacts_add_32x32.png" /></a>
+                </div>
+                <div class="bottom_box_options_icons_search" title="Twój znajomy" ng-show="searched_user.my_friend == '1'">
+                    <a><img src="/images/Metro_Icons/Other/Tasks_32x32.png" /></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<p>
+Witaj!
+</p>
+
+<p>
+Ten email został wysłany z serwisu <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a>.
+<br>
+Nadawcą jest nauczyciel {{sender}}, który zaprasza Cię do zarejestrowania się w serwisie
+i dodania do klasy Twojeg odziecka: {{kid}}.
+</p>
+
+<p>
+Kliknij na poniższy link i przyłącz się do nas!
+<br>
+{{reg_url}}
+</p>
+
+<p>
+Jeżeli ta wiadomość nie jest skierowana do Ciebie skasuj ją. Twój adres email zostanie automatycznie skasowany z serwisu po 7 dniach od daty wysłania tej wiadomości.
+</p>
+
+{% endblock %}

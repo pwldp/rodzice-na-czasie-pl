@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="kidsApp">
+<head>
+    <title>Dzieciaki</title>
+    <meta charset="utf-8" />	
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->  
+        
+        <!--[if lte IE 8]>
+        <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+        </script>
+        <![endif]-->
+	<!--[if lt IE 8]>
+        <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+        <![endif]-->
+        
+    <SocketStream>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+  
+
+</head>
+
+<body ng-controller="AuthCtrl">
+
+
+<div id="login_wrapper_outside">
+    <div id="login_wrapper">
+
+
+        <form class="well" name="login_form">
+            <div class="login">ZALOGUJ SIĘ</div>
+            <div class="username-field"><input placeholder="Użytkownik" autocomplete="off" type="text" name="user" ng-model="user" id="username" required /></div>
+            <div class="password-field"><input placeholder="Hasło" autocomplete="off" type="password" name="password" ng-model="password" id="password" required /></div>
+            <div class="forgot-usr-pwd"><a href="#">Zapomniałeś hasła</a>?</div>
+            <input class="login_submit" type="submit" name="submit" ng-click="processAuth()" value="Zaloguj się" />
+        </form>
+
+        <div id="register_wrapper">
+            <p><span class="register">LUB ZAREJESTRUJ SIĘ</span><br/><br/>
+               <a href="">Używając konta Google</a><br/>
+               <a href="/auth/facebook">Używając konta Facebook</a><br/>
+               <a href="">Wpisując ręcznie dane</a></p>
+        </div>
+
+
+        <div id="login_logo"><div class="logo"><img src="/images/logo.png" border="0" /><div>&nbsp;Sprawy-Dzieci<span>.pl</span></div></div></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37173242-1']);
+_gaq.push(['_trackPageview']);
+      
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

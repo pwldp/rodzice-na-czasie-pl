@@ -1,0 +1,68 @@
+
+<div class="hidden_forms" id="hidden_forms_user_profile" style="display: none;">
+
+    <form name="form_user_profile" class="form_user_profile" ng-submit="updateUserInfo(profileform)">
+        <span class="profile_title bigger">Zmiana danych użytkownika</span><br/><br/>
+        <table border="0">
+        <tr><td>Imię:</td><td>Nazwisko:</td></tr>
+        <tr><td><input class="input_text" autocomplete="off" placeholder="Imię" ng-model="profileform.first_name" required oninvalid="this.setCustomValidity('Podaj prawidłowe imię!')" /></td>
+            <td><input class="input_text" autocomplete="off" placeholder="Nazwisko" ng-model="profileform.last_name" required oninvalid="this.setCustomValidity('Podaj prawidłowe nazwisko!')" /></td></tr>
+        <tr><td>Płeć:</td><td>&nbsp;</td></tr>
+        <tr><td><div class="selectstyled"><select ng-model="profileform.gender" data-placeholder="Płeć" id="user_form_genre_select"><option value="" disabled style="display: none;">Płeć</option><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td colspan="2">&nbsp;<br/><br/></td></tr>
+        <tr><td>Telefon:&nbsp;<span class="little_red_star" title="Pole wymagane; Format XXXXXXXXX">*<span></td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text short" autocomplete="off" placeholder="Telefon" ng-model="profileform.phone" ng-pattern="pat_phone" id="f_profile_phone" required /></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Data urodzenia:&nbsp;<span class="little_red_star" title="Pole wymagane">*<span></td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text very_short" autocomplete="off" placeholder="Data urodzenia" ng-model="profileform.born_date" id="f_profile_born_date" my-datepicker required /></td>
+            <td>&nbsp;</td></tr>
+        <tr><td colspan="2">&nbsp;<br/><br/></td></tr>
+        <tr><td>Województwo:</td><td>&nbsp;</td></tr>
+        <tr><td><div name="form_select_voivodeship_profile" id="form_select_voivodeship_profile" ng-submit="getCities(profileform.voivodeship)">
+            <div class="selectstyled"><select data-placeholder="Województwo" placeholder="Województwo" ng-change="getCities(profileform.voivodeship)" id="form_select_voivodeship_profile_v" ng-model="profileform.voivodeship" ng-options="v.id as v.name for v in voivodeships"></select></div>
+            </div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Miasto:</td><td>&nbsp;</td></tr>
+            <td><div name="form_select_city_profile" id="form_select_city_profile">
+            <div class="selectstyled"><select data-placeholder="Miasto" placeholder="Miasto" id="form_select_city_profile_v" ng-model="profileform.city" ng-options="c.name for c in cities"></select></div>
+            </div></td>
+            <td>&nbsp;</td></tr>
+        <tr><td>Kod pocztowy:&nbsp;<span class="little_red_star" title="Pole wymagane; Format XX-XXX">*<span></td><td>&nbsp;</td></tr>
+        <tr><td><input class="input_text short" autocomplete="off" placeholder="Kod pocztowy" ng-model="profileform.postcode" ng-pattern="pat_zipcode" id="f_profile_zipcode" /></td>
+            <td>&nbsp;</td></tr>
+        </table>
+        <br/>
+        <p><input type="button" class="button" value="Anuluj" ng-click="cancelChangeProfile()" />&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+    </form>
+</div>
+
+
+
+
+<div style="float: left; margin: 12px;">
+    <div style="float: left; margin: 12px;">
+        <img src="/images/avatar.png" id="my_avatar" width="100" />
+    </div>
+    <div style="float: left; margin: 12px;">
+        <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+        <p><span class="font_grey">ur. </span>{{profile.born_date_short}}</p>
+        <p ng-show="profile.gender == 'male'">Mężczyzna</p><p ng-show="profile.gender == 'female'">Kobieta</p>
+        <p>&nbsp;</p>
+        <p><span class="font_grey">Województwo: </span>{{profile.voiv_name}}</p>
+        <p><span class="font_grey">Miasto: </span>{{profile.city_name}}</p>
+        <p><span class="font_grey">Kod pocztowy: </span>{{profile.postcode}}</p>
+        <p>&nbsp;</p>
+        <p><span class="font_grey">Telefon: </span>{{profile.phone}}</p>
+        <p><span class="font_grey">Email: </span>{{profile.email}}</p>
+    </div>
+    <div style="float: left; margin: 12px; margin-left: 36px;">
+        <form name="profile_change_data">
+        <button ng-click="changeProfile()">Zmień dane</button>&nbsp;&nbsp;&nbsp;
+        <!--<button ng-click="changePassword()">Zmień hasło</button>&nbsp;&nbsp;&nbsp;-->
+        <button class="red" ng-click="delAccount()">Usuń konto</button>
+        </form>
+    </div>
+    
+</div>
+

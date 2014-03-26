@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="exampleApp">
+  <head>
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->  
+        
+        <!--[if lte IE 8]>
+        <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+        </script>
+        <![endif]-->
+	<!--[if lt IE 8]>
+        <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+        <![endif]-->
+        
+    <SocketStream>
+    <meta charset="utf-8"/>
+    <title>SPRAWY DZIECI2</title>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+  </head>
+  <body>
+  
+    <p>
+    <a target="_self" href="/chat">Przejście do CHAT</a>
+    </p>
+  
+    <div ng-view></div>
+  </body>
+</html>

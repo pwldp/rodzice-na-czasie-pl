@@ -1,0 +1,20 @@
+
+    
+
+    <div class="chat_content_form">
+        <span class="font14" ng-show="parent_kid == 0">Napisz wiadomość do użytkownika <b class="bold">{{user_name}}</b></span>
+        <span class="font14" ng-show="parent_kid == 1">Napisz wiadomość do rodzica dziecka <b class="bold">{{user_name}}</b></span>
+        <form name="chat_new_message">
+            <textarea class="chat_textarea" placeholder="Wpisz treść wiadomości" ng-model="message_content"></textarea>
+            <br class="clear" />
+            <br class="clear" />
+            <button ng-click="sendMessage()">Wyślij wiadomość</button>
+        </form>
+        
+    </div>
+    
+
+
+
+
+

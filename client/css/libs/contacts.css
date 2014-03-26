@@ -1,0 +1,84 @@
+#letters {
+    
+}
+
+#contact_letters {
+    margin-left: 4px; 
+    margin-top: 12px;
+    display: block;
+    position: absolute;
+    top: 142px;
+}
+
+.letter {
+    float: left; 
+    padding-left: 6px; 
+    padding-right: 6px; 
+    font-size: 11px;
+    border-right: 1px solid #4e4646;
+    cursor: pointer;
+}
+
+.letter:hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.letter.hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.letter:first-child {
+    margin-left: 0; 
+}
+
+.search_vis_card {
+    margin: 12px auto 0 auto;
+}
+
+.contact_vis_card {
+    margin: 42px auto 0 auto;
+}
+
+.contact_vis_card_inner {
+    margin-left: 18px; 
+    margin-top: 18px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 270px;
+}
+
+.contact_vis_card_inner:hover {
+    background-color: #26012f; 
+}
+
+.contact_vis_card_image {
+    float: left;
+}
+
+
+.contact_vis_card_info span {
+    position: relative; 
+    left: 12px; 
+    font-size: 12px;
+}
+
+.contact_vis_card_info span.subjects {
+    position: relative; 
+    left: 0px; 
+    font-size: 12px;
+}
+
+.contact_name {
+    font-size: 14px;
+}
+
+
+.contact_inside_box {
+    margin-top: 12px;
+    float: left; width: 100%;
+}
+
+

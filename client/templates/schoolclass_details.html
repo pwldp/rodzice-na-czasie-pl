@@ -1,0 +1,114 @@
+
+    <div class="options_panel">
+        <div class="option" id="schoolclassdetails_option1"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid2').slideUp(); $('#hidden_forms_schoolclass_kid3').slideUp(); $('#hidden_forms_schoolclass_kid1').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj swoje dziecko do klasy</span></div></div>
+        <div class="option" id="schoolclassdetails_option2" ng-show="i_am_teacher_in_this_school == 1"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid1').slideUp(); $('#hidden_forms_schoolclass_kid3').slideUp(); $('#hidden_forms_schoolclass_kid2').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Zaproponuj dziecko w klasie</span></div></div>
+        <div class="option" id="schoolclassdetails_option3"><div class="option_link" onclick="$('#hidden_forms_schoolclass_kid1').slideUp(); $('#hidden_forms_schoolclass_kid2').slideUp(); $('#hidden_forms_schoolclass_kid3').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dopisz wychowawcę do klasy</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid1" style="display: none;">
+        <form ng-submit="saveSchoolClass1(classform1)" name="classform1" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Wybierz dziecko, które chcesz dopisać do klasy:</div>
+            <div class="schoolclass_details_form_kids_outside">
+                <div class="schoolclass_details_form_kids" ng-repeat="kid in kids" ng-hide="kid.in_this_class == 1">
+                    <input type="checkbox" ng-model="kid.checked"  />&nbsp;<img src="/images/avatar.png" align="left" /><span>{{kid.first_name}} {{kid.last_name}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass1()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid2" style="display: none;">
+        <form ng-submit="saveSchoolClass2(classform2)" name="classform2" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Jako Nauczyciel, możesz zaproponować rodzicom przypisanie ich dzieci do klasy. Po wypełnieniu formularza zostanie wysłane zaproszenie dla Rodzica na wpisany adres email.</div>
+            <p><input type="text" class="input_text" placeholder="Imię dziecka" ng-model="classform2.first_name" required  /></p>
+            <p><input type="text" class="input_text" placeholder="Nazwisko dziecka" ng-model="classform2.last_name" required  /></p>
+            <p><input type="email" class="input_text" placeholder="Adres email opiekuna" ng-model="classform2.parent_email" required  /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass2()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_schoolclass_kid3" style="display: none;">
+        <form ng-submit="saveSchoolClass3(classform3)" name="classform3" class="form_add_schoolclass">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title" ng-show="i_am_teacher_in_this_school == 1">
+            Jesteś wychowawcą w tej klasie?<br/><input type="button" class="button" ng-click="saveMeAsMainTeacher()" value="Dopisz siebie jako wychowawcę" />
+            <br/></div>
+            <br class="clear" />
+            <div class="form_add_kid_title">Lub możesz wybrać szkolnego nauczyciela, którego chcesz dopisać jako wychowawcę:</div>
+            <div class="schoolclass_details_form_teachers_outside">
+                <div class="schoolclass_details_form_teachers" ng-hide="teacher.id == userInfo.id" ng-repeat="teacher in school_teachers">
+                    <input type="checkbox" ng-model="teacher.checked" />&nbsp;<img src="/images/avatar.png" align="left" /><span>{{teacher.first_name}} {{teacher.last_name}}</span>
+                </div>
+                <div class="schoolclass_details_form_teachers font_grey font14" ng-hide="school_teachers.length > 0">Brak nauczycieli przypisanych do szkoły {{school.name}}.<br/><br/>Aby wybrać wychowawcę klasy, musi on dołączyć do szkoły.</div>
+            </div>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelSchoolClass3()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" ng-hide="school_teachers.length == 0" /></p>
+        </form>
+    </div>
+
+
+
+    <div class="schoolclass_details_info">
+        <a ng-href="/schoolsDetails/{{school.id}}">&laquo; Podgląd szkoły<br/><span class="schoolclass_school_info_title">{{school.name}}</span></a><br/>
+        <span class="schoolclass_class_info_title margin_top8">klasa <span class="bold">{{schoolclass.name}}</span>, rocznik <span class="bold">{{schoolclass.school_year}}</span></span>
+    </div>
+
+    <div class="school_content_left">
+        <div class="school_classes_title">
+            <span><b>Uczniowie</b></span>
+        </div>
+        <div class="class_box" ng-show="i_have_children_in_class == 1" ng-repeat="student in students">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{student.first_name}} {{student.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <a ng-hide="student.parent_id == userInfo.id" ng-href="/chat/{{student.parent_id}}?n={{student.first_name}} {{student.last_name}}&kid=1"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Rodzicem dziecka" /></a>
+                <a ng-href="/schoolClassStudentDelete/{{school.id}}/{{schoolclass.id}}/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scn={{schoolclass.name}}&sn={{school.name}}" class="schoolclass_contact_icon" ng-show="student.parent_id == userInfo.id"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" class="schoolclass_contact_icon" title="Usuń dziecko z klasy" /></a>
+                <a ng-hide="student.parent_id == userInfo.id" ng-href="/studentAbuse/{{student._id}}?n={{student.first_name}} {{student.last_name}}&scid={{schoolclass.id}}&sid={{school.id}}&scn={{schoolclass.name}}&sn={{school.name}}" class="schoolclass_contact_icon"><img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest uczeń w tej klasie? Zgłoś nadużycie." /></a>
+            </div>
+        </div>
+        <div class="class_box" ng-show="i_have_children_in_class == 0">
+            <div class="align_center">
+                Listę dzieci zobaczysz po dopisaniu dziecka do klasy
+            </div>
+            
+        </div>
+    </div>
+    <div class="school_content_right">
+        <div class="school_classes_title">
+            <span><b>Wychowawca</b></span>
+        </div>
+        <div class="class_box" ng-repeat="teacher in schoolclass.class_teachers">
+            <div>
+                <img src="/images/avatar.png" align="left" width="46" />&nbsp;
+                <span class="class_box_name">{{teacher.first_name}} {{teacher.last_name}}</span>
+            </div>
+            <div class="students_in_class_counter">&nbsp;</div>
+            <div class="class_box_right_options">
+                <a ng-hide="teacher.id == userInfo.id" ng-href="/chat/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z Nauczycielem" /></a>
+                <a ng-hide="teacher.id == userInfo.id" ng-href="/teacherAbuse/{{teacher.id}}?n={{teacher.first_name}} {{teacher.last_name}}&sid={{school.id}}&sn={{school.name}}" class="schoolclass_contact_icon"><img src="/images/important.gif" class="schoolclass_contact_icon abuse" title="To nie jest Nauczyciel w tej klasie? Zgłoś nadużycie." /></a>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+
+<br/>
+<!--<div id="thumbnail-fine-uploader"></div>
+<div id="triggerUpload" class="button" style="margin-top: 10px; width: 140px; text-align: center;">
+    <i class="icon-upload icon-white"></i> Rozpocznij przesyłanie
+</div>-->
+<br/><br/><br/><br/>
+
+
+<form class="form-horizontal well-small" id="detail-form-doc" name="documents" ng-submit="submit()">
+     <div class="control-group" ng-controller="AttachmentCtrl">
+	<label class="control-label" for="Dokumente">Documents</label>
+	<div class="controls">
+		<div class="row-fluid">
+	        <div id="dropbox" class="span3">
+	        	<span class="btn fileinput-button">
+                    <i class="icon-plus"></i>
+                    <span>Add</span>
+                    <input type="file" name="files[]" multiple>
+                </span>
+	        </div>
+	        <div class="span3" ng-show="toUpload">
+	            <button id="startupload" type="button" class="btn btn-primary" ng-click="uploadFile()">
+	                <i class="icon-upload icon-white"></i>
+	                <span>Upload</span>
+	            </button>
+	        </div>
+	        <div class="form-horizontal span6 pull-left" ng-show="progressVisible">
+	            <div class="percent" ng-show="percentVisible">{{progress}}%</div>
+	            <div class="progress progress-striped active">
+	                <div class="bar" ng-style="{'width': progress+'%'}"></div>
+	                <div class="bar bar-danger" ng-show="!percentVisible" style="width: 20%;"></div>
+	            </div>
+	        </div>
+	    </div>
+	    <div ng-show="files.length" class="row-fluid">
+ 
+	    	<table class="table table-striped">
+	    		<tbody>
+	            	<tr ng-repeat="file in files" class="template-upload fade in">
+				        <td class="preview"><span class="fade in"><canvas width="40" height="24"></canvas></span></td>
+				        <td class="name">
+				        	<a ng-show="file.loaded" href="{{file.url}}" target="{{file.name}}">{{file.webkitRelativePath || file.name}}</a>
+				        	<span ng-show="!file.loaded">{{file.webkitRelativePath || file.name}}</span>
+				        </td>
+				        <td class="size"><span>{{file.size/1024 | number:2}} KB</span></td>
+				        <td class="cancel">
+				        	<button ng-show="file.loaded" type="button" class="btn" ng-click="deleteCurrentAttachment(file.id)">
+				                <i class="icon-ban-circle"></i>
+				            </button>
+				            <button ng-show="!file.loaded" type="button" class="btn" ng-click="deleteCurrentAttachment()">
+				                <i class="icon-ban-circle"></i>
+				            </button>
+				        </td>
+				    </tr>
+			    </tbody>
+		    </table>
+	    </div>
+	</div>
+</div>
+
+</form>

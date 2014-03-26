@@ -1,0 +1,50 @@
+// My SocketStream app
+
+var http = require('http'),
+    ss = require('socketstream')
+    , conf = require('./conf')
+    ;
+
+// Define a single-page client
+ss.client.define('main', {
+  view: 'index.html',
+  css:  ['libs', 'app.less'],
+  code: ['libs', 'app'], //requires you to make a symlink from ../lib to libs
+  tmpl: '*'
+});
+//
+// Obsluga sesji w DB
+ss.session.options.maxAge = 2.6*Math.pow(10,9);
+/*
+var	connect = ss.http.connect
+    , MongoStore = require('connect-mongo')(connect);
+ss.session.store.use(new MongoStore({db: conf.db.name, host: conf.db.host, port: conf.db.port, username: conf.db.username, password: conf.db.password}));
+*/
+ss.session.store.use('redis', {host: conf.redis.host, port: conf.redis.port});
+//
+//
+ss.publish.transport.use('redis', {host: conf.redis.host, port: conf.redis.port});
+//
+// Serve this client on the root URL
+ss.http.route('/', function(req, res){
+  res.serveClient('main');
+});
+
+// Code Formatters
+ss.client.formatters.add(require('ss-less'));
+ss.client.templateEngine.use('angular');
+
+//responders
+ss.responders.add(require('ss-angular'),{pollFreq: 1000});
+// Minimize and pack assets if you type: SS_ENV=production node app.js
+if (ss.env == 'production') ss.client.packAssets();
+
+// Start web server
+var server = http.Server(ss.http.middleware);
+server.listen(3000);
+
+// Start SocketStream
+ss.start(server);
+//
+// EOF
+//

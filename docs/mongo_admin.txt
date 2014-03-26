@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/5064004/while-creating-new-user-in-mongodb-it-has-to-be-created-under-admin

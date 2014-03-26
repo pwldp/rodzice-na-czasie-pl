@@ -1,0 +1,22 @@
+
+    <div class="abuse_box">
+        <form name="abuse">
+        <div class="delete_box_inner">
+            Czy na pewno chcesz zgłosić nadużycie wobec {{type}} <b>{{name}}</b>?
+        </div>
+        <div class="delete_box_buttons">
+            <button ng-click="confirmAbuse()" class="delete_button">Tak, chcę</button>&nbsp;&nbsp;
+            <button ng-click="cancelAbuse()" class="delete_button red">Nie, nie chcę</button>&nbsp;&nbsp;
+        </div>
+        <div class="delete_box_outside_textarea">
+            Możesz dopisać własną treść zgłoszenia:<br/>
+            <textarea placeholder="Wpisz treść zgłoszenia" ng-model="abuse_context" ng-show="studentName.length > 1">Informuję, że {{studentName}} nie jest uczniem klasy {{schoolclassName}} w szkole {{schoolName}}.</textarea>
+            <textarea placeholder="Wpisz treść zgłoszenia" ng-model="abuse_context" ng-show="teacherName.length > 1">Informuję, że {{teacherName}} nie jest nauczycielem w szkole {{schoolName}}.</textarea>
+        </div>
+        </form>
+    </div>
+
+
+
+
+

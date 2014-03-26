@@ -1,0 +1,160 @@
+
+.kid_card {
+    width: 268px; 
+    float: left; 
+    margin-left: 12px; 
+    margin-right: 24px; 
+    margin-top: 18px;
+}
+
+.kid_card_inner {
+    width: 100%; 
+    margin-left: 6px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+}
+
+.kid_card_image {
+    float: left;
+}
+
+.kid_card_info {
+    font-size: 14px;
+}
+
+.kid_name {
+    position: relative; 
+    left: 12px; 
+    color: #7DBADF;
+}
+
+.kid_age {
+    position: relative; 
+    left: 12px; 
+}
+
+.kid_class {
+    position: relative; 
+    left: 6px;
+}
+
+.kid_school {
+    position: relative; 
+    left: 6px;
+}
+
+.kid_pie_graph {
+    float: left;
+}
+
+.kid_graph {
+    position: relative;
+    left: 12px;
+    font-size: 14px; 
+    text-align: left;
+}
+
+.kid_blue_info {
+    font-size: 18px; 
+    color: #a43ae3;
+}
+
+
+/* FORM */
+
+#hidden_forms_kids {
+    /*margin-top: 6px;*/
+    height: 300px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_kids_edit {
+    /*margin-top: 6px;*/
+    height: 300px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_kids_second_parent {
+    height: 300px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+.form_add_kid {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_add_kid p {
+    display: block;
+    width: 200px;
+    margin-top: 12px;
+}
+
+.form_add_kid_sec_parent {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_add_kid_sec_parent p {
+    display: block;
+    width: 400px;
+    margin-top: 12px;
+}
+
+.form_add_kid_title {
+    font-size: 16px;
+}
+
+#kid_sex {
+    width: 140px;
+}
+
+.form_kid_left {
+    float: left;
+    width: 420px;
+}
+
+.form_kid_right {
+    float: right;
+    width: 310px;
+    position: relative;
+    top: 22px;
+    left: -28px;
+    
+}
+
+.form_add_kid_bottom p {
+    float: left;
+    width: 90px;
+    margin-top: 4px;
+    margin-left: 36px;    
+}
+
+.form_add_kid_bottom div {
+    margin-top: 4px;
+    margin-left: 36px;
+    width: 90px;
+    height: 90px;
+    background-color: #1f0127;
+    float: left;
+}
+
+
+.form_add_kid .input_text {
+    background-color: #1F0127;
+    border: 0 none;
+    color: #E8E6ED;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 12px;
+}
+
+
+
+

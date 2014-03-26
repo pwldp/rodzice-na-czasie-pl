@@ -1,0 +1,197 @@
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_news').slideToggle(); $('#field_news_text').jScrollPane();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj wpis</span></div></div>
+    </div>
+
+    <div class="hidden_forms" id="hidden_forms_news" style="display: none;">
+        <form name="form_add_news" class="form_add_news" ng-submit="saveNews(news)">
+            <div class="form_add_news_title" id="form_add_news_title">Wprowadź nowy wpis:</div>
+            <div class="form_add_news_left">
+                <p><input type="text" class="input_text" placeholder="Tytuł" autocomplete="off" id="field_news_title" ng-model="news.title" required /></p>
+                <p><textarea class="input_text" placeholder="Treść" autocomplete="off" id="field_news_text" ng-model="news.text" required></textarea></p>
+                <p><div class="selectstyled"><select ng-model="news.groups" placeholder="Grupy"><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></div></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelNews()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+
+
+<ul id="infinite_scroll">
+								<li><a href="">This is my some title and is at number 0</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 1</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 2</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 3</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 4</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 5</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 6</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 7</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 8</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+									<li><a href="">This is my some title and is at number 9</a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></li>
+							</ul>
+
+
+
+<br class="clear">
+
+
+<div id="outsideTimeline">
+    <div id="timelineContainer">
+        <div class="timelineToggle"><p><a class="expandAll">+ rozwiń wszystko</a></p></div>
+        <br class="clear">
+
+        <div class="timelineMajor">
+	    <h2 class="timelineMajorMarker"><span>Listopad 2012</span></h2>
+	    <dl class="timelineMinor">
+                <dt id="2012111302"><div class="news_calendar_card"><span>13</span></div><a>Święto Niepodległości 2012</a></dt>
+	        <dd class="timelineEvent" id="2012111302EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>13 listopada, 9:27</h3>
+                    
+                    <!--<div class="media">			
+                        <a href="#inline-1955-08-282" class="CBmodal"><img src="http://img.youtube.com/vi/GU1wuqyOP98/0.jpg" width="240" height="180" alt="Related Video: The Emmett Till Murder"></a>
+                        <p class="mediaLink"><a href="#inline-1955-08-282" class="CBmodal" title="Related Video: The Emmett Till Murder">Watch: The Emmett Till Murder</a></p>
+                        <div style="display:none">
+                            <div id="inline-1955-08-282" class="modalBox">
+                                <! -- media - ->    
+                            </div>
+                        </div>
+                    </div>-->
+     
+                    <p>
+                        W minioną sobotę, 10. listopada, w naszej szkole odbyła się uroczystość z okazji 94 rocznicy Odzyskania Niepodległości. W jej przygotowanie włączyła się cała społeczność szkolna z kl. IV – VI.<br/>
+                        W trakcie przygotowań do uroczystości uczniowie z kl. IV i V opanowali (pod okiem nauczyciela muzyki) szeroki repertuar piosenek patriotycznych. Znalazły się wśród nich bardzo znane pieśni, jak np. "Przybyli ułani":, "Marsz Polonia", "Ostatni mazur", "Jak długo w sercach naszych", ale również nowsze opracowania piosenek, których treść nawiązuje do kart naszej historii, m.in. "Pamięć w nas" czy "Echo dawnej piosenki". Utwory wokalne, stanowiące trzon uroczystości, przeplatane były pięknymi, skłaniającymi do refleksji wierszami w wykonaniu uczniów z kl. VI, przygotowanych przez naszych polonistów.
+                    </p>
+                    
+                    <br class="clear">
+                
+                    <div class="news_comments_block">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">6 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Myślę, że to świetna idea. szej szkole odbyła się uroczystość z okazji 94 rocznicy Odzyskania Niepodległości. W jej przygotowanie włączyła się cała społeczność szkolna z kl. IV – VI.<br/>
+                        W trakcie przygotowań do uroczystości uczniowie z kl. IV i V opanowali (pod okiem nauczyciela muzyki) sze</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">16 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>Ja też.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">60 minut temu</div>
+                            <div class="news_comment_text"><br class="clear"><span>I ja.</span></div>
+                        </div>
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+
+                    <br class="clear">
+                </dd>
+            </dl>
+
+            <dl class="timelineMinor">
+                <dt id="2012110901"><div class="news_calendar_card"><span>13</span></div><a>Powiatowy Konkurs Piosenki Patriotycznej.</a></dt>
+                <dd class="timelineEvent" id="2012110901EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>13 listopada, 8:11</h3>
+                    <p>
+                        8. listopada, w przeddzień Święta Niepodległości, w Murowanej Goślinie odbył się II Powiatowy Konkurs Piosenki Patriotycznej. Naszą szkołę godnie reprezentowało siedmioro uczniów z klas III – VI (M. Groszewska, Z. Karolak, M. Lisiewska B. Piechel, Kamila Plank, H. Ratajczak
+                    </p>
+                    
+                    <br class="clear">
+                
+                    <div class="news_comments_block">
+                        <div class="news_comment">
+                            <div class="news_comment_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                            <div class="news_comment_date">&nbsp;</div>
+                            <div class="news_comment_text"><br class="clear"><span><input type="text" class="input_text" name="f_comment" id="f_comment" value="Skomentuj..." /></span></div>
+                        </div>
+                    </div>
+
+                    <br class="clear">
+                </dd>
+            </dl>
+        </div>
+
+        <div class="timelineMajor">
+	    <h2 class="timelineMajorMarker"><span>Październik 2012</span></h2>
+	    <dl class="timelineMinor">
+                <dt id="19550825"><div class="news_calendar_card"><span>18</span></div><a>Międzynarodowy Miesiąc Bibliotek Szkolnych</a></dt>
+	        <dd class="timelineEvent" id="19550825EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>18 października</h3>
+     
+                    <p>
+                        Co roku w październik obchodzony jest Międzynarodowy Miesiąc Bibliotek Szkolnych. Z tej okazji biblioteka szkolna zorganizowała wystawę pt. "Nietypowe książki". Na wystawie znalazły się m.in. książki z planszą do grania, małe książeczki z wierszami dla mamy, książki z magnesami, audiobooki i książki z tablicami do pisania literek.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+
+            <dl class="timelineMinor">
+                <dt id="19551204"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551204EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551203"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551203EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551202"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551202EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+            <dl class="timelineMinor">
+                <dt id="19551201"><div class="news_calendar_card"><span>9</span></div><a>Radio Merkury przyjmuje uczniów</a></dt>
+                <dd class="timelineEvent" id="19551201EX" style="display: none; ">
+                    <div class="news_avatar"><img src="/images/avatar.png" align="left" /><span>&nbsp;&nbsp;Mariusz Wróbel</span></div>
+                    <h3>9 października</h3>
+                    <p>
+                        Klasa 3d z wizytą przy ul. Berwińskiego w Poznaniu 30 października br. uczniowie  klasy 3d udali się na spotkanie z pracownikami Radia Merkury. Zaprosił ich, dobrze znany słuchaczom tego radia, dziennikarz p. Jacek Cerkaski, prywatnie ojciec jednej z uczennic.
+                    </p>
+                    <br class="clear">
+                </dd>
+            </dl>
+        
+        </div>
+
+        <br class="clear">
+    </div>
+</div>
+    
+
+

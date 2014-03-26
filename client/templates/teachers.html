@@ -1,0 +1,28 @@
+
+
+    <div id="teacher_schools">
+        <div class="school hover" id="school_ALL">Wszyscy</div>
+        <div class="school" id="school_1">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego1</div>
+        <div class="school" id="school_2">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego2</div>
+        <div class="school" id="school_3">Szkoła Podstawowa nr 141 im. Mjr Henryka Sucharskiego3</div>
+    </div>
+
+
+    <div class="vis_card">
+        <div class="vis_card_inner" id="{{teacher.school_id}}_vis_card_inner_{{teacher.id}}" ng-repeat="teacher in teachers">
+            <div class="vis_card_image"><img src="images/{{teacher.avatar}}" width="60" align="left" /></div>
+            <div class="teacher_vis_card_info" id="vis_card_info_{{teacher.id}}">
+                <span><b class="teacher_name" id="teacher_name_{{teacher.id}}">{{teacher.first_name}} <label>{{teacher.last_name}}</label></b></span><br/>
+                <span>&nbsp;</span><br/>
+                <span>{{teacher.school_name}}</span><br/><br/>
+                <span class="subjects">Przedmioty: <i ng-repeat="subject in teacher.subjects">{{subject.subject_name}}, </i></span><br/>
+            </div>
+            <div class="teacher_inside_box teacher_vis_card_bottom bottom_box_options">
+                <div class="bottom_box_options_icons" title="Pokaż wszystkich członków grupy"><a ng-href="/groupsDetails/{{group.id}}"><img src="/images/Metro_Icons/System_Icons/Contacts_32x32.png" /></a></div>
+                <div class="bottom_box_options_icons" title="Usuń grupę"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+

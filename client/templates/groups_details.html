@@ -1,0 +1,75 @@
+    <div class="options_panel">
+        <div class="option"><div class="option_link" ng-hide="group.group_type == 'friends'" onclick="$('#hidden_forms_groups_details').slideToggle(); $('#form_add_groups_details_bottom').jScrollPane();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj członków do grupy</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_groups_details" style="display: none;">
+        <form name="form_add_groups_details" class="form_add_groups_details" ng-submit="saveGroupNewMembers(members)">
+            <div class="form_add_groups_left">
+                <div class="c_letters">
+                    <div class="c_letter" id="c_letter_ALL"><span>*</span></div>
+                    <div class="c_letter" id="c_letter_AB"><span>A</span>&nbsp;<span>B</span></div>
+                    <div class="c_letter" id="c_letter_CĆ"><span>C</span>&nbsp;<span>Ć</span></div>
+                    <div class="c_letter" id="c_letter_DE"><span>D</span>&nbsp;<span>E</span></div>
+                    <div class="c_letter" id="c_letter_FG"><span>F</span>&nbsp;<span>G</span></div>
+                    <div class="c_letter" id="c_letter_HI"><span>H</span>&nbsp;<span>I</span></div>
+                    <div class="c_letter" id="c_letter_JK"><span>J</span>&nbsp;<span>K</span></div>
+                    <div class="c_letter" id="c_letter_LŁ"><span>L</span>&nbsp;<span>Ł</span></div>
+                    <div class="c_letter" id="c_letter_MN"><span>M</span>&nbsp;<span>N</span></div>
+                    <div class="c_letter" id="c_letter_OP"><span>O</span>&nbsp;<span>P</span></div>
+                    <div class="c_letter" id="c_letter_RS"><span>R</span>&nbsp;<span>S</span></div>
+                    <div class="c_letter" id="c_letter_ŚT"><span>Ś</span>&nbsp;<span>T</span></div>
+                    <div class="c_letter" id="c_letter_UW"><span>U</span>&nbsp;<span>W</span></div>
+                    <div class="c_letter" id="c_letter_ZŹ"><span>Z</span>&nbsp;<span>Ź</span></div>
+                    <div class="c_letter" id="c_letter_Ż"><span>Ż</span></div>
+                </div>
+            </div>
+            <div id="form_add_groups_details_bottom">
+                <div class="form_add_groups_title">Zaznacz znajomych, których chcesz dodać do grupy</div>
+                <div id="gd_contacts_container">
+                    <p><div class="group_details_contact" ng-repeat="contact in contacts" id="gd_contact_{{contact.id}}" title="{{contact.first_name}} {{contact.last_name}}"><img src="/images/avatar.png" /><br/>{{contact.first_name}} {{contact.last_name}}</div></p>
+                </div>
+                <!--<p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>-->
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+    <p id="groups_change_info" style="display: none;">Zaznaczono nowych członków do dodania do grupy. Zapisz zmiany aby ich dodać.</p>
+    <div id="btn_save_group_members" style="display: none;"><button type="button" ng-click="saveGroupMembers();" class="btn_save_group_members">ZAPISZ ZMIANY</button></div>
+    
+    
+    
+
+    <div class="group_details_box">
+        <div class="group_details_box_inner">
+            <div class="group_vis_card_info">
+                <div class="group_details_members_title">Szczegóły grupy <span class="bold">{{group.name}}</span></div><br/>
+                
+                <div class="group_details_top_options">
+                    <div class="group_details_top_option lightblue2" title="Dyskusje w grupie"><a ng-href="/news/{{group.id}}"><img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" align="left" />&nbsp;&nbsp;<span>Dyskusje w grupie</span></a></div>
+                    <div class="group_details_top_option red4" title="Opuść grupę" ng-show="group.group_type == 'private'"><a ng-href="/groupsLeave/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" align="left" />&nbsp;&nbsp;<span>Opuść grupę</span></a></div>
+                    <div class="group_details_top_option red3" title="Usuń grupę" ng-show="group.can_delete == '1'"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" align="left" />&nbsp;&nbsp;<span>Usuń grupę</span></a></div>
+                </div>
+                <br class="clear"/><br/>
+
+                <div class="group_details_members_title">Aktualni członkowie grupy</div>
+                <div class="group_details_members_container" id="group_members_container_{{group.id}}">
+                    <div class="group_details_members" id="group_members_{{group.id}}">
+                        <div class="group_details_vis_card_inner" id="vis_card_inner_{{member.id}}" ng-repeat="member in group.members">
+                            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+                            <div class="contact_vis_card_info" id="vis_card_info_{{member.id}}">
+                                <span><b class="contact_name" id="contact_name_{{member.id}}">{{member.first_name}} <label>{{member.last_name}}</label></b></span><br/>
+                                <span class="font_lightblue2 bold" ng-show="member.id == group.moderator">MODERATOR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

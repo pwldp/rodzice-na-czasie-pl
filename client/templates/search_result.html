@@ -1,0 +1,15 @@
+
+    <div class="vis_card">
+        <div class="vis_card_inner" id="vis_card_inner_{{contact.id}}" ng-repeat="contact in contacts">
+            <div class="vis_card_image"><img src="images/{{contact.avatar}}" width="60" align="left" /></div>
+            <div class="vis_card_info" id="vis_card_info_{{contact.id}}">
+                <span><b class="contact_name" id="contact_name_{{contact.id}}">{{contact.first_name}} <label>{{contact.last_name}}</label></b></span><br/>
+                <span>{{contact.city}}</span><br/>
+                <span>Dzieci: <i ng-repeat="kid in contact.kids">{{kid.kid_name}}, </i></span><br/><br/>
+                <span>Klasa: <b>{{contact.group_name}}</b></span>
+            </div>
+        </div>
+        
+    </div>
+
+

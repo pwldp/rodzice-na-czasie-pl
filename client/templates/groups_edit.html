@@ -1,0 +1,21 @@
+
+    <div class="hidden_forms" id="hidden_forms_groups_edit">
+        <form name="form_add_groups_edit" class="form_add_kidtimetable" ng-submit="saveGroup(groupformedit)">
+            <div class="form_add_groups_title">Zmień nazwę grupy:</div>
+            <div class="form_add_groups_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa grupy" autocomplete="off" id="field_edit_group_name" ng-model="groupformedit.name" required oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę grupy!')" /></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+
+

@@ -1,0 +1,69 @@
+
+<div class="rncpg_body">
+        
+
+<div id="rncpg_topper">
+    <div id="rncpg_login_form">
+        &nbsp;
+    </div>
+</div>
+
+
+<div class="rncpg_main_middle_content rncpg_content_home">
+        <div class="rncpg_main_image">
+            <img src="/images/rnc_logo_120x92.png" align="left" />
+            <div><span class="rncpg_logo_big_text rncpg_logo_top_part">Rodzice</span>
+            <span class="rncpg_logo_small_text rncpg_logo_bottom_part">naCzasie.pl</span></div>
+        </div>        
+        <div id="rncpg_dotted_middle">
+            <img src="/images/border_dotted.png" />
+        </div>        
+        <div class="rncpg_page_logo">
+            <div class="rncpg_registration_form">
+                <div class="rncpg_registration_thanks">
+                    <span class="rncpg_registration_form_info rncpg_bolded">Dziękujemy, <span id="rncpg_rgstr_username"></span>!</span><br/><br/>
+                    <div id="rncpg_rgstr_message"></div><br/><br/><br/>
+                    <button class="button" ng-click="redirectToMain()" style="position: relative; top: 24px;">Przejdź do strony głównej serwisu</button>
+                </div>
+                
+            </div>
+        </div>        
+    </div>
+
+     
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var location = parent.location.href;
+    var tmp1 = location.split("?");
+    var params = tmp1[1].split("&");
+    
+    for(var i=0; i<params.length; i++) {
+        if(params[i].indexOf("n=") > -1) {
+            $("#rncpg_rgstr_username").text(decodeURIComponent(params[i].replace("n=", "")));
+        }
+        if(params[i].indexOf("r=") > -1) {
+            var resp = params[i].replace("r=", "");
+            if(resp == "1") {
+                $("#rncpg_rgstr_message").html("Rejestracja została zakończona pomyślnie. Przejdź na stronę główną, żeby się zalogować.");
+            }
+            else {
+                $("#rncpg_rgstr_message").html("Niestety wystąpił błąd podczas rejestracji użytkownika w serwisie. Prosimy spróbować później.");
+                $("#rncpg_rgstr_message").css('color', '#220022');
+            }
+        }
+        
+
+    }
+});
+
+
+</script>
+

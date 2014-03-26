@@ -1,0 +1,190 @@
+
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_kidtimetable').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj przedmiot dodatkowy</span></div></div>
+    <!--    <div class="option"><div class="option_link"><img src="/images/Dusseldorf_icons/16x16_white/print.png" align="left" />&nbsp;<span>Wydrukuj</span></div></div>-->
+    </div>
+    <div class="hidden_forms" id="hidden_forms_kidtimetable" style="display: none;">
+        <form name="form_add_kidtimetable" class="form_add_kidtimetable" ng-submit="saveSubject(subject)">
+            <div class="form_add_kidtimetable_title" id="form_add_kidtimetable_title">Wprowadź nowy przedmiot:</div>
+            <div class="form_add_kidtimetable_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa przedmiotu" id="field_subject_name" ng-model="subject.name" required autocomplete="off"oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę przedmiotu!')" />&nbsp;&nbsp;&nbsp;
+                   <span id="field_subject_shortcut">Skrót:&nbsp;<span></span></span>
+                </p>
+                <!--<p><input type="text" class="input_text" placeholder="Skrót" id="field_subject_shortcut" ng-model="subject.abbr" readonly maxlength="5" required /></p>-->
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelSubject()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>kidFirstName = {{kidFirstName}}</tt><br>
+<tt>kidLastName = {{kidLastName}}</tt><br>
+<tt>kidSex = {{kidSex}}</tt><br>
+<tt>kidBornDate = {{kidBornDate}}</tt><br>
+<tt>form_add_kid.input.$valid = {{form_add_kid.input.$valid}}</tt><br>
+<tt>form_add_kid.input.$error = {{form_add_kid.input.$error}}</tt><br>
+<tt>form_add_kid.$valid = {{form_add_kid.$valid}}</tt><br>
+<tt>form_add_kid.$error.required = {{!!form_add_kid.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+
+    <div class="kid_timetable">
+        <div class="timetable_legend">Pokaż plan lekcji dla dziecka:</div>
+        <div id="tt_kids_chooser_outside">
+            <div id="tt_kids_chooser">
+            <!--    <div ng-repeat="kid in kids" class="tt_kid_choose_box" id="tt_kid_choose_{{kid.id}}">
+                    <a ng-href="/kidsTimetable/{{kid.id}}"><img src="/images/avatar.png" align="left" /><span>{{kid.first_name}}</span></a>
+                </div>-->
+                <a ng-href="/kidsTimetable/{{kid.id}}" ng-repeat="kid in kids"><div class="tt_kid_choose_box" id="tt_kid_choose_{{kid.id}}">
+                    <img src="/images/avatar.png" align="left" /><span>{{kid.first_name}}</span>
+                </div></a>
+            </div>
+        </div>
+        <br class="clear"/>
+
+        <div id="timetable_close_subjects" onclick="$('#subjects_all_outside').slideToggle('fast');" title="Zwiń/rozwiń listę przedmiotów"><img src="/images/collapse_expand_48x22.png" /></div>
+        <div class="timetable_legend">
+            <div><div class="subject_box_legend orange2"></div> - Przedmioty programowe&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div><div class="subject_box_legend lightblue2"></div> - Twoje przedmioty dodatkowe</div>
+            <div><div class="subject_box_legend yellow"></div> - Posiłki</div>
+        </div>
+
+        <!--<div class="subjects_navigation" id="subjects_navigation"><span>Zwiń listę przedmiotów</span></div>-->
+        <div id="subjects_all_outside">
+            <div class="subjects" id="subjects_all">
+                <div class="subjects_normal" ng-repeat="MENSubject in MENSchoolSubjectsList">
+                    <div class="subject_box orange2" title="{{MENSubject.descr}}"><span>{{MENSubject.abbr}}</span></div>
+                </div>
+                <div class="subjects_normal" ng-repeat="eatSubject in eatSubjectsList">
+                    <div class="subject_box yellow" title="{{eatSubject.descr}}"><span>{{eatSubject.abbr}}</span></div>
+                </div>
+
+                
+                <div class="subjects_additional" ng-repeat="userSubject in additionalSubjects">
+                    <div class="subject_box lightblue2" title="{{userSubject.name}}"><span>{{userSubject.abbr}}</span></div>
+                </div>
+                <!--<div class="subjects_additional">
+                    <div class="subject_box yellow" title="Śniadanie"><img src="/images/timetable/breakfast.png" border="0" /></div>
+                    <div class="subject_box yellow" title="Obiad"><img src="/images/timetable/lunch.png" border="0" /></div>
+                    <div class="subject_box yellow" title="Podwieczorek"><img src="/images/timetable/fruits.png" border="0" /></div>
+                </div>-->
+            </div>
+            <div id="subject_trash" class="opacity7" title="Przeciągnij tutaj przedmiot dodatkowy aby go usunąć" ng-hide="isKid == 0"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png"/></div>
+        </div>
+        <br class="clear"/><br/>
+
+        <form ng-submit="saveHours(hours)" name="hoursform">
+        <button ng-hide="isKid == 0" type="button" ng-click="saveTimetable();" class="btn_change_hours" id="btn_save_timetable">ZAPISZ PLAN LEKCJI</button>
+        <button ng-hide="isKid == 0" type="button" ng-click="changeHours();" class="btn_change_hours" id="btn_change_hours">Zmień godziny zajęć</button>
+        <button type="button" ng-click="cancelChangeHours();" class="btn_change_hours" id="btn_change_hours_cancel" style="display: none;">Anuluj</button>
+        <button type="submit" class="btn_change_hours bold" id="btn_change_hours_submit" style="display: none;">Zapisz godziny zajęć</button>
+        <p id="timetable_change_info" style="display: none;">Dokonano zmian w planie lekcji. Zapisz plan aby je zachować.</p>
+        <table id="timetable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="hours">Godz</th>
+                    <th>Pon</th>
+                    <th>Wto</th>
+                    <th>Śro</th>
+                    <th>Czw</th>
+                    <th>Pią</th>
+                    <th>Sob</th>
+                    <th>Nie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="hours_row"><div id="hour1_start">{{hour1_start}}</div><br/><div id="hour1_stop">{{hour1_stop}}</div></td>
+                    <td class="days_cell" id="day_1_1"></td><td class="days_cell" id="day_2_1"></td><td class="days_cell" id="day_3_1"></td>
+                    <td class="days_cell" id="day_4_1"></td><td class="days_cell" id="day_5_1"></td><td class="days_cell" id="day_6_1"></td>
+                    <td class="days_cell" id="day_7_1"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour2_start">{{hour2_start}}</div><br/><div id="hour2_stop">{{hour2_stop}}</div></td>
+                    <td class="days_cell" id="day_1_2"></td><td class="days_cell" id="day_2_2"></td><td class="days_cell" id="day_3_2"></td>
+                    <td class="days_cell" id="day_4_2"></td><td class="days_cell" id="day_5_2"></td><td class="days_cell" id="day_6_2"></td>
+                    <td class="days_cell" id="day_7_2"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour3_start">{{hour3_start}}</div><br/><div id="hour3_stop">{{hour3_stop}}</div></td>
+                    <td class="days_cell" id="day_1_3"></td><td class="days_cell" id="day_2_3"></td><td class="days_cell" id="day_3_3"></td>
+                    <td class="days_cell" id="day_4_3"></td><td class="days_cell" id="day_5_3"></td><td class="days_cell" id="day_6_3"></td>
+                    <td class="days_cell" id="day_7_3"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour4_start">{{hour4_start}}</div><br/><div id="hour4_stop">{{hour4_stop}}</div></td>
+                    <td class="days_cell" id="day_1_4"></td><td class="days_cell" id="day_2_4"></td><td class="days_cell" id="day_3_4"></td>
+                    <td class="days_cell" id="day_4_4"></td><td class="days_cell" id="day_5_4"></td><td class="days_cell" id="day_6_4"></td>
+                    <td class="days_cell" id="day_7_4"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour5_start">{{hour5_start}}</div><br/><div id="hour5_stop">{{hour5_stop}}</div></td>
+                    <td class="days_cell" id="day_1_5"></td><td class="days_cell" id="day_2_5"></td><td class="days_cell" id="day_3_5"></td>
+                    <td class="days_cell" id="day_4_5"></td><td class="days_cell" id="day_5_5"></td><td class="days_cell" id="day_6_5"></td>
+                    <td class="days_cell" id="day_7_5"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour6_start">{{hour6_start}}</div><br/><div id="hour6_stop">{{hour6_stop}}</div></td>
+                    <td class="days_cell" id="day_1_6"></td><td class="days_cell" id="day_2_6"></td><td class="days_cell" id="day_3_6"></td>
+                    <td class="days_cell" id="day_4_6"></td><td class="days_cell" id="day_5_6"></td><td class="days_cell" id="day_6_6"></td>
+                    <td class="days_cell" id="day_7_6"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour7_start">{{hour7_start}}</div><br/><div id="hour7_stop">{{hour7_stop}}</div></td>
+                    <td class="days_cell" id="day_1_7"></td><td class="days_cell" id="day_2_7"></td><td class="days_cell" id="day_3_7"></td>
+                    <td class="days_cell" id="day_4_7"></td><td class="days_cell" id="day_5_7"></td><td class="days_cell" id="day_6_7"></td>
+                    <td class="days_cell" id="day_7_7"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour8_start">{{hour8_start}}</div><br/><div id="hour8_stop">{{hour8_stop}}</div></td>
+                    <td class="days_cell" id="day_1_8"></td><td class="days_cell" id="day_2_8"></td><td class="days_cell" id="day_3_8"></td>
+                    <td class="days_cell" id="day_4_8"></td><td class="days_cell" id="day_5_8"></td><td class="days_cell" id="day_6_8"></td>
+                    <td class="days_cell" id="day_7_8"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour9_start">{{hour9_start}}</div><br/><div id="hour9_stop">{{hour9_stop}}</div></td>
+                    <td class="days_cell" id="day_1_9"></td><td class="days_cell" id="day_2_9"></td><td class="days_cell" id="day_3_9"></td>
+                    <td class="days_cell" id="day_4_9"></td><td class="days_cell" id="day_5_9"></td><td class="days_cell" id="day_6_9"></td>
+                    <td class="days_cell" id="day_7_9"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour10_start">{{hour10_start}}</div><br/><div id="hour10_stop">{{hour10_stop}}</div></td>
+                    <td class="days_cell" id="day_1_10"></td><td class="days_cell" id="day_2_10"></td><td class="days_cell" id="day_3_10"></td>
+                    <td class="days_cell" id="day_4_10"></td><td class="days_cell" id="day_5_10"></td><td class="days_cell" id="day_6_10"></td>
+                    <td class="days_cell" id="day_7_10"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour11_start">{{hour11_start}}</div><br/><div id="hour11_stop">{{hour11_stop}}</div></td>
+                    <td class="days_cell" id="day_1_11"></td><td class="days_cell" id="day_2_11"></td><td class="days_cell" id="day_3_11"></td>
+                    <td class="days_cell" id="day_4_11"></td><td class="days_cell" id="day_5_11"></td><td class="days_cell" id="day_6_11"></td>
+                    <td class="days_cell" id="day_7_11"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour12_start">{{hour12_start}}</div><br/><div id="hour12_stop">{{hour12_stop}}</div></td>
+                    <td class="days_cell" id="day_1_12"></td><td class="days_cell" id="day_2_12"></td><td class="days_cell" id="day_3_12"></td>
+                    <td class="days_cell" id="day_4_12"></td><td class="days_cell" id="day_5_12"></td><td class="days_cell" id="day_6_12"></td>
+                    <td class="days_cell" id="day_7_12"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour13_start">{{hour13_start}}</div><br/><div id="hour13_stop">{{hour13_stop}}</div></td>
+                    <td class="days_cell" id="day_1_13"></td><td class="days_cell" id="day_2_13"></td><td class="days_cell" id="day_3_13"></td>
+                    <td class="days_cell" id="day_4_13"></td><td class="days_cell" id="day_5_13"></td><td class="days_cell" id="day_6_13"></td>
+                    <td class="days_cell" id="day_7_13"></td>
+                </tr>
+                <tr>
+                    <td class="hours_row"><div id="hour14_start">{{hour14_start}}</div><br/><div id="hour14_stop">{{hour14_stop}}</div></td>
+                    <td class="days_cell" id="day_1_14"></td><td class="days_cell" id="day_2_14"></td><td class="days_cell" id="day_3_14"></td>
+                    <td class="days_cell" id="day_4_14"></td><td class="days_cell" id="day_5_14"></td><td class="days_cell" id="day_6_14"></td>
+                    <td class="days_cell" id="day_7_14"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br class="clear" />
+        </form>
+    </div>
+
+
+
+
+
+

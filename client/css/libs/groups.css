@@ -1,0 +1,420 @@
+#group_types {
+    margin-left: 4px; 
+    margin-top: 12px;
+    /*display: block;
+    position: absolute;
+    top: 168px;*/
+    height: 32px;
+}
+
+.group_type {
+    float: left; 
+    padding-left: 6px; 
+    padding-right: 6px; 
+    font-size: 11px;
+    border-right: 1px solid #4e4646;
+    cursor: pointer;
+}
+
+.group_type:hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.group_type.hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.group_type:first-child {
+    margin-left: 0; 
+}
+
+.group_type:last-child {
+    border-right: 0px; 
+}
+
+
+.group_vis_card {
+    margin: 6px auto 0 auto;
+}
+
+.group_vis_card_inner {
+    margin-left: 12px; 
+    margin-top: 18px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 300px;
+    height: 220px;
+}
+
+
+.group_vis_card_bottom {
+    margin: 12px auto 0;
+    padding: 12px 0 0 0;
+    width: 90%;
+    float: left;
+}
+
+.group_vis_card_inner:hover {
+    background-color: #26012f; 
+}
+
+.group_vis_card_image {
+    float: left;
+}
+
+.group_vis_card_info {
+    display: block;
+}
+
+.group_vis_card_info span {
+    /*position: relative; 
+    left: 12px;*/ 
+}
+
+.group_name {
+    font-size: 14px;
+}
+
+.group_name label {
+    cursor: pointer;
+}
+
+.group_title {
+    border-bottom: 1px solid #333333;
+    cursor: pointer;
+    height: 40px;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.group_title:hover {
+    color: #7dbadf !important;
+}
+
+.group_members_container {
+    float: right;
+    min-height: 76px;
+    padding-bottom: 12px;
+}
+
+.group_members {
+    background-color: #220022;
+    float: left;
+    height: 65px;
+    width: 128px;
+    overflow: hidden;
+}
+
+.group_members_more {
+    background-color: #220022;
+    color: #E8E6ED;
+    float: right;
+    font-size: 11px;
+    margin-top: -22px;
+    text-align: center;
+    width: 128px;
+}
+
+.members_title {
+    color: #7DBADF;
+    float: right;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: left;
+    width: 128px;
+}
+
+.members {
+    position: relative;
+    top: 6px;
+    float: left;
+}
+
+.members img {
+    float: left;
+    height: 30px;
+    margin: 1px;
+    width: 30px;
+    position: relative;
+    top: -6px;
+}
+
+.add_member {
+    border: 1px solid #b1aac4;
+    background-color: transparent;
+    position: relative;
+    top: 6px;
+    width: 38px;
+    height: 38px;
+    margin: 6px 6px 6px 2px;
+    float: left;
+}
+
+.add_member span {
+    color: #DDDDDD;
+    font-size: 26px;
+}
+
+#contacts_list {
+    border: 1px solid #741C95;
+    float: right;
+    width: 302px;
+    margin-right: 12px;
+    min-height: 520px;
+}
+
+.contacts_title {
+    border-right: 1px solid #741C95;
+    color: #FFFFFF;
+    font-size: 18px;
+    position: relative;
+    text-align: center;
+    width: 302px;
+}
+
+.contacts_info {
+    height: 54px;
+    position: relative;
+    text-align: center;
+    top: 8px;
+}
+
+.contact {
+    text-align: center;
+    z-index: 9999;
+    padding: 12px 0;
+    width: 100px;
+    float: left;
+    cursor: move;
+}
+
+.contact img {
+    width: 32px;
+    height: 32px;
+    
+}
+
+.c_letters {
+    float: left;
+}
+
+.c_letter {
+    float: left;
+    width: 34px;
+    height: 34px;
+    border-radius: 2px 2px 0px 0px;
+    background-color: #4A2357;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.c_letter:hover {
+    background-color: #741C95 !important;
+}
+
+.c_letter.hover {
+    background-color: #741C95 !important;
+}
+
+.c_letter span {
+    position: relative;
+    top: 8px;
+}
+
+
+#hidden_forms_groups {
+    /*margin-top: 6px;*/
+    height: 180px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_groups_details {
+    /*margin-top: 6px;*/
+    height: 280px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_groups_edit {
+    /*margin-top: 6px;*/
+    height: 180px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+
+.form_add_groups_title {
+    font-size: 16px;
+}
+
+.form_add_groups {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_add_groups_details {
+    margin-left: 12px;
+    margin-top: 12px;
+    float: left;
+}
+
+.group_details_contact {
+    float: left;
+    height: 72px;
+    margin-right: 4px;
+    margin-top: 12px;
+    padding: 8px 0;
+    text-align: center;
+    width: 100px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.group_details_contact:hover {
+    background-color: #220022;
+}
+
+.group_details_contact img {
+    width: 42px;
+    height: 42px;
+    
+}
+
+
+.group_inside_box {
+    float: left; width: 100%;
+}
+
+.group_inside_box_left {
+    float: left; width: 40%; margin-top: 12px;
+}
+
+.group_inside_box_right {
+    float: right;
+    margin-right: 12px;
+    width: 150px;
+}
+
+
+.group_details_box {
+    /*width: 44%;*/
+    margin: 12px;
+}
+
+.group_details_box_inner {
+    
+}
+
+.group_details_info_box {
+    margin: 12px 0;
+}
+
+.group_details_info_box span {
+    color: #7dbadf;
+}
+
+.group_details_members_title {
+    color: #7DBADF;
+    font-size: 18px;
+    margin-top: 24px;
+    text-align: left;
+}
+
+.group_details_members_container {
+    
+}
+
+.group_details_members_container img {
+    width: 46px;
+    height: 46px;
+    margin: 4px;
+    text-align: center;
+}
+
+.group_details_members {
+    /*background-color: #220022;*/
+    float: left;
+}
+
+/*.group_details_members .members img {
+    margin: 4px;
+}*/
+
+.group_details_name {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.details_members {
+    position: relative;
+    top: 6px;
+    float: left;
+    width: 68px;
+    text-align: center;
+}
+
+#groups_change_info {
+    text-align: center;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+#btn_save_group_members {
+    text-align: center;
+    margin-top: 12px;
+    width: 100%;
+    height: 60px;
+}
+
+#form_add_groups_details_bottom {
+    float: left;
+    height: 220px;
+    overflow: auto;
+    width: 98%;
+    margin-top: 6px;
+}
+
+
+#gd_contacts_container {
+
+}
+
+.group_details_vis_card_inner {
+    margin-right: 18px; 
+    margin-top: 18px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 270px;
+}
+
+.group_details_top_options {
+    float: left;
+}
+
+
+.group_details_top_option {
+    float: left;
+    height: 32px;
+    width: 180px;
+    padding: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.group_details_top_option span {
+    position: relative;
+    top: 6px;
+}
+
+.group_details_top_option:hover {
+    color: #000000;
+}

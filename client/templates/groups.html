@@ -1,0 +1,88 @@
+
+
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_groups').slideToggle();"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj grupę</span></div></div>
+    </div>
+    <div class="hidden_forms" id="hidden_forms_groups" style="display: none;">
+        <form name="form_add_groups" class="form_add_kidtimetable" ng-submit="saveGroup(group)">
+            <div class="form_add_groups_title" id="form_add_groups_title">Wprowadź nową grupę:</div>
+            <div class="form_add_groups_left">
+                <p><input type="text" class="input_text" placeholder="Nazwa grupy" autocomplete="off" id="field_group_name" ng-model="group.name" required oninvalid="this.setCustomValidity('Wprowadź poprawną nazwę grupy!')" /></p>
+                <p><input type="button" class="button" value="Anuluj" ng-click="cancelGroup()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+<!--
+<tt>groupName = {{groupName}}</tt><br>
+<tt>form_add_group.input.$valid = {{form_add_group.input.$valid}}</tt><br>
+<tt>form_add_group.input.$error = {{form_add_group.input.$error}}</tt><br>
+<tt>form_add_group.$valid = {{form_add_group.$valid}}</tt><br>
+<tt>form_add_group.$error.required = {{!!form_add_group.$error.required}}</tt><br>
+-->
+        </form>
+    </div>
+
+    <div id="group_types">
+        <div class="group_type hover" id="group_type_ALL">Wszystkie</div>
+        <div class="group_type" id="group_type_CLASS">Grupy klasowe</div>
+        <div class="group_type" id="group_type_PRIVATE">Grupy prywatne</div>
+        <div class="group_type" id="group_type_FRIENDS">Grupy znajomych</div>
+    </div>
+
+
+    <div class="notifications_container">
+    <div class="notifications" id="invitation_box_{{invitation.invit_id}}" ng-repeat="invitation in invitations">
+    <form name="groups_invitations_form" ng-submit="confirmInvitationForm(invitation)">
+        <p><img src="/images/important.gif" align="left" />&nbsp;&nbsp;Użytkownik <b class="font14 bold">{{invitation.inv_user_name}}</b> zaprosił Cię do grupy:&nbsp;&nbsp;<b class="font14 bold">{{invitation.grp_name}}</b>
+           <div class="notifications_confirm">
+               <input type="submit" class="button" value="Zatwierdź" />&nbsp;&nbsp;
+               <button class="red" ng-click="rejectInvitation(invitation.invit_id)">Odrzuć</button>
+           </div>
+        </p>
+    </form>
+    </div>
+    </div>
+
+    <div class="group_vis_card">
+        <div class="group_vis_card_inner" id="vis_card_inner_{{group.id}}" ng-repeat="group in groups">
+            <div class="group_vis_card_info" id="vis_card_info_{{group.id}}">
+                <div class="group_title"><a ng-href="/groupsDetails/{{group.id}}"><b class="group_name" id="group_name_{{group.id}}"><label>{{group.name}}</label></b></a></div>
+                <div class="group_inside_box">
+                  <div class="group_inside_box_left">
+                      <div class="vis_card_card_inner">
+                          <div class="vis_card_card_info">
+                              <div><span class="kid_blue_info">0</span>&nbsp;ankiety</div>
+                              <div><span class="kid_blue_info">0</span>&nbsp;wydarzenia</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="group_inside_box_right">
+                      <div class="vis_card_card_inner">
+                          <div class="members_title">Członkowie grupy</div>
+                          <div class="group_members_container" id="group_members_container_{{group.id}}">
+                              <div class="group_members" id="group_members_{{group.id}}">
+                                  <div class="members" ng-repeat="member in group.members.res.members"><img src="/images/avatar.png" title="{{member.first_name}} {{member.last_name}}" class="small_group_avatar" /></div>
+                                  <div class="add_member" id="add_member_{{group.id}}" style="display: none;"><span>+</span></div>
+                              </div>
+                          </div>
+                          <div class="group_members_more">
+                              <a ng-href="/groupsDetails/{{group.id}}"><span>więcej &raquo;</span></a>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="group_inside_box group_vis_card_bottom bottom_box_options">
+                    <div class="bottom_box_options_icons" title="Pokaż szczegóły grupy"><a ng-href="/groupsDetails/{{group.id}}"><img src="/images/Metro_Icons/Other/More_32x32.png" /></a></div>
+                    <div class="bottom_box_options_icons" title="Pokaż dyskusje w grupie"><a ng-href="/news/{{group.id}}"><img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" /></a></div>
+                    <div class="bottom_box_options_icons" ng-show="group.group_type == 'private'" >
+                        <div class="bottom_box_options_icons" title="Edytuj nazwę grupy"><a ng-href="/groupsEdit/{{group.id}}"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" /></a></div>
+                        <div class="bottom_box_options_icons" title="Opuść grupę"><a ng-href="/groupsLeave/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/Applications/Uninstall_32x32.png" /></a></div>
+                    </div>                    
+                    <div class="bottom_box_options_icons" ng-show="group.can_delete == '1'" >
+                        <div class="bottom_box_options_icons" title="Usuń grupę"><a ng-href="/groupsDelete/{{group.id}}?n={{group.name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+                    </div>                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+

@@ -1,0 +1,512 @@
+
+.school_card {
+    width: 91%; 
+    float: left; 
+    background-color: #2b0135; 
+    margin-left: 12px; 
+    margin-right: 24px; 
+    margin-top: 18px;
+}
+
+.school_card_inner {
+    margin-left: 6px; 
+    float: left; 
+    padding: 12px;
+}
+
+.school_card_info {
+    font-size: 14px;
+}
+
+.school_name {
+    color: #7DBADF;
+}
+
+.school_class_name {
+    position: relative; 
+    left: 12px; 
+}
+
+.school_class {
+    position: relative; 
+    left: 6px;
+}
+
+
+.school_content_left {
+    float: left; width: 40%; margin-top: 12px; margin-left: 12px;
+}
+
+.school_details_info {
+    width: 92%; height: 160px; background-color: #2b0135; padding: 12px; margin-left: 6px; margin-top: 6px;    
+}
+
+.school_details_info span {
+    color: #999999;
+}
+
+.school_details_info b {
+    color: #ffffff;
+}
+
+.school_details_info_title {
+    font-size: 14px; color: #7DBADF !important;
+}
+
+.schoolclass_details_info {
+    width: 96%; height: 70px; background-color: #2b0135; padding: 12px; margin-left: 6px; margin-top: 6px;    
+}
+
+.schoolclass_school_info_title {
+    font-size: 16px; color: #7DBADF !important;
+}
+
+.schoolclass_class_info_title {
+    font-size: 14px; color: #FFFFFF !important;
+}
+
+
+.myschool_vis_card {
+    margin: 0px auto 0 auto;
+}
+
+.school_vis_card {
+    margin: 24px auto 0 auto;
+}
+
+.school_vis_card_inner {
+    margin-left: 18px; 
+    margin-top: 18px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 270px;
+    height: 170px;
+}
+
+.school_vis_card_inner:hover {
+    background-color: #26012f; 
+}
+
+.school_vis_card_image {
+    float: left;
+}
+
+.school_vis_card_info {
+    min-height: 100px;
+}
+
+.school_vis_card_info span {
+    position: relative; 
+    left: 12px; 
+    font-size: 12px;
+}
+
+.myschool_vis_card_inner {
+    margin-left: 12px; 
+    margin-top: 2px; 
+    float: left; 
+    background-color: #2b0135; 
+    padding: 12px;
+    width: 92%;
+    height: 18px;
+}
+
+.myschool_vis_card_inner:hover {
+    background-color: #26012f; 
+}
+
+.myschool_vis_card_info {
+    min-height: 16px;
+    float: left;
+}
+
+.myschool_vis_card_info span {
+    position: relative; 
+    left: 12px; 
+    font-size: 14px;
+}
+
+.myschool_vis_card_options {
+    float: right;
+    position: relative;
+    text-align: right;
+    top: -7px;
+}
+
+
+.school_teachers_content {
+    width: 92%; padding: 12px; height: auto; margin-top: 12px; margin-bottom: 12px; display: block;
+}
+
+
+.school_teachers_content_block {
+    float: left; display: block; width: 80%;
+}
+
+.school_teachers_content_block span {
+    font-size: 16px; color: #7DBADF;
+    margin-bottom: 12px;
+}
+
+.teacher_subject {
+    font-size: 11px !important;
+}
+
+.school_teachers {
+    float: left;
+    width: 96%;
+    padding: 12px 0px;
+    border-bottom: 1px solid #220022;
+}
+
+.school_teachers_avatar {
+    float: left;
+    width: 40px;
+}
+
+.school_teachers_avatar img {
+    width: 36px;
+    height: 36px;
+}
+
+.school_teachers_name {
+    float: left;
+    margin-left: 6px;
+}
+
+.school_teachers_name b {
+    font-weight: bold;
+}
+
+.school_teachers_icons {
+    float: right;
+    cursor: pointer;
+}
+
+.school_content_right {
+    float: left;
+    margin-left: 18px;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    width: 360px;
+}
+
+.school_content_right_overflow {
+    float: left;
+    margin-left: 18px;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    width: 360px;
+}
+
+.school_classes_title {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.school_classes_title {
+    margin: 0 auto 6px;
+    text-align: center;
+    
+}
+
+.class_box {
+    margin-top: 1px;
+    background-color: #2b0135;
+    padding: 12px;
+    color: #aaaaaa;
+}
+
+.class_box:hover {
+    background-color: #220022;
+}
+
+.class_box_name {
+    font-size: 16px;
+    color: #7dbadf;
+}
+
+.main_teacher {
+    font-size: 12px !important;
+    color: #ffffff;
+}
+
+.students_in_class_counter span {
+    font-size: 14px !important;
+    color: #ffffff;
+}
+
+.class_box_right_options {
+    float: right;
+    position: relative;
+    top: -36px;
+}
+
+.class_box_right_options img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* FORM */
+
+#hidden_forms_schoolclass_teacher {
+    /*margin-top: 6px;*/
+    height: 372px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+.form_teachers_left {
+    float: left;
+    width: 90%;
+}
+
+.teacher_subject_list {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    height: 142px;
+    overflow: auto;
+}
+
+.teacher_subject_list div {
+    float: left;
+    width: 200px;
+}
+
+#hidden_forms_schoolclass {
+    /*margin-top: 6px;*/
+    height: 200px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_schoolclass_edit {
+    /*margin-top: 6px;*/
+    height: 200px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+.schoolclass_details_form_kids_outside {
+    width: 96%;
+    height: 180px;
+    margin-top: 6px;
+    padding: 6px;
+    float: left;
+    overflow: auto;
+}
+
+#hidden_forms_schoolclass_kid1 {
+    /*margin-top: 6px;*/
+    height: 300px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_schoolclass_kid2 {
+    /*margin-top: 6px;*/
+    height: 340px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+#hidden_forms_schoolclass_kid3 {
+    /*margin-top: 6px;*/
+    height: 420px;
+    background-color: #2e003a;
+    width: 100%;
+}
+
+.form_add_schoolclass {
+    margin-left: 24px;
+    margin-top: 12px;
+    float: left;
+}
+
+.form_add_schoolclass p {
+    display: block;
+    width: 200px;
+    margin-top: 12px;
+}
+
+.form_add_schoolclass_title {
+    font-size: 16px;
+}
+
+.schoolclass_details_form_teachers_outside {
+    width: 96%;
+    height: 180px;
+    margin-top: 6px;
+    padding: 6px;
+    float: left;
+    overflow: auto;
+}
+
+.schoolclass_details_form_teachers {
+    width: 240px;
+    height: 32px;
+    margin-top: 6px;
+    padding: 6px;
+    float: left;
+}
+
+.schoolclass_details_form_teachers:hover {
+    background-color: #220022;
+}
+
+.schoolclass_details_form_teachers img {
+    width: 32px;
+    height: 32px;
+    margin: 0px 8px;
+}
+
+.schoolclass_details_form_teachers input {
+    float: left;
+    margin: 0 12px;
+    position: relative;
+    top: 8px;
+}
+
+.schoolclass_details_form_teachers span {
+    float: left;
+    font-size: 14px;
+    position: relative;
+    top: 4px;
+}
+
+.schoolclass_details_form_kids {
+    width: 300px;
+    height: 32px;
+    margin-top: 6px;
+    padding: 6px;
+}
+
+.schoolclass_details_form_kids:hover {
+    background-color: #220022;
+}
+
+.schoolclass_details_form_kids img {
+    width: 32px;
+    height: 32px;
+    margin: 0px 8px;
+}
+
+.schoolclass_details_form_kids input {
+    float: left;
+    margin: 0 12px;
+    position: relative;
+    top: 8px;
+}
+
+.schoolclass_details_form_kids span {
+    float: left;
+    font-size: 14px;
+    position: relative;
+    top: 4px;
+}
+
+
+#school_types {
+    margin-left: 4px; 
+    margin-top: 12px;
+    display: block;
+    position: absolute;
+    top: 142px;
+}
+
+.school_type {
+    float: left; 
+    padding-left: 6px; 
+    padding-right: 6px; 
+    font-size: 11px;
+    border-right: 1px solid #4e4646;
+    cursor: pointer;
+}
+
+.school_type:hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.school_type.hover {
+    background-color: #7DBADF;
+    color: #1f0127;
+}
+
+.school_type:first-child {
+    margin-left: 0; 
+}
+
+.school_list_info {
+    font-size: 16px;
+    margin: 24px 12px 12px;
+}
+
+.school_list_info_smaller {
+    font-size: 12px;
+    margin: -8px 12px;
+}
+
+#change_actual_start_year_previous_link {
+    float: left;
+}
+
+#change_actual_start_year_next_link {
+    float: right;
+}
+
+.filter_forms {
+    float: left;
+    width: 100%;
+}
+
+.filter_forms form {
+    float: left;
+    margin-left: 12px;
+}
+
+.filter_forms form div {
+    float: left;
+}
+
+.filter_forms form input {
+    float: left;
+    margin-left: 12px;
+}
+
+#myschool_close_schools_outside {
+    border-bottom: 1px solid #220022;
+    
+}
+
+#myschool_close_schools {
+    background-color: #220022;
+    border: 1px solid #220022;
+    height: 16px;
+    margin: 0 44%;
+    position: relative;
+    top: 0px;
+    width: 48px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+}
+
+#myschool_close_schools:hover {
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+}
+
+#myschool_close_schools img {
+    width: 26px;
+    padding: 0;
+    margin: 0;
+}
+
+#myschools_all_outside {
+    /*border-top: 1px solid #220022;*/
+    
+}

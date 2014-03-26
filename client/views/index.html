@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="kidsApp">
+<head>
+    <title>RodziceNaCzasie.pl</title>
+    <meta charset="utf-8" />	
+    <link rel="icon" type="image/png" href="/images/rnc_logo_icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext" media="all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&subset=latin,latin-ext" media="all" rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->  
+        
+        <!--[if lte IE 8]>
+        <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+        </script>
+        <![endif]-->
+	<!--[if lt IE 8]>
+        <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+        <![endif]-->
+    <SocketStream>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+  
+    <script type="text/javascript">
+        fixConsole(true);
+        function fixConsole(alertFallback) {    
+            if (typeof console === "undefined") {
+                console = {}; // define it if it doesn't exist already
+            }
+            if (typeof console.log === "undefined") {
+                if (alertFallback) { console.log = function(msg) { alert(msg); }; } 
+                else { console.log = function() {}; }
+            }
+            if (typeof console.dir === "undefined") {
+                if (alertFallback) { 
+                    console.dir = function(obj) { alert("DIR: "+obj); }; 
+                }
+                else { console.dir = function() {}; }
+            }
+        }
+
+
+    // Facebook error prevent: https://developers.facebook.com/bugs/318390728250352/
+	if (window.location.href.indexOf("#_=_") > 0) { 
+	    window.location = "home"; 
+	};
+	history.pushState('', document.title, window.location.pathname);
+    </script>
+
+    <meta property="og:image" content="http://rnc.rodzicenaczasie.pl/images/rnc_logo_80x62.png"/>
+    <meta property="og:title" content="RodziceNaCzasie.pl"/>
+    <meta property="og:url" content="http://rnc.rodzicenaczasie.pl"/>
+    <meta property="og:site_name" content="RodziceNaCzasie - serwis dla rodziców dzieci w wieku przedszkolnym i szkolnym"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="Współpraca rodziców w ramach grup społecznych tworzonych wokół dzieci uczęszczających do tych samych grup przedszkolnych i klas szkolnych."/>
+
+
+</head>
+
+<body ng-controller="kidsMainCtrl">
+<!--
+<div id="top_panel">
+
+    <div id="panel">
+        <div class="content clearfix">
+            <div class="left_logo">
+                <div class="logo"><img src="images/logo.png" border="0" /><div>&nbsp;RodziceNaCzasie<span>.pl</span></div></div>
+            </div>
+            <div class="left_avatar">
+                <img src="/images/avatar.png" align="left" />
+		<span>{{userInfo.first_name}} {{userInfo.last_name}}</span>
+            </div>
+            <div class="left">
+		<div class="top_panel_icons" title="Twój profil" ng-click="setRoute('userProfile')"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_1_32x32.png" /><br/><span>PROFIL</span></div>
+		<div class="top_panel_icons" title="Prywatność" ng-click="setRoute('userPrivacy')"><img src="/images/Metro_Icons/Other/Power_Lock_32x32.png" /><br/><span>PRYWATNOŚĆ</span></div>
+		<div class="top_panel_icons" title="Twoje powiadomienia" ng-click="setRoute('userNotifications')"><img src="/images/Metro_Icons/System_Icons/Info_32x32.png" /><br/><span>POWIADOMIENIA</span></div>
+		<div class="top_panel_icons logoff" title="Wyloguj" ng-click="logout()"><img src="/images/Metro_Icons/Other/Power_Log_Off_32x32.png" /><br/><span>WYLOGUJ</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab">
+        <ul class="open_top_panel">
+            <li id="top_panel_toggle" title="Otwórz panel z ustawieniami konta"><span>Otwórz panel</span></li>
+        </ul> 
+    </div>
+
+</div> 
+-->
+<div class="logo" id="main_application_logo" style="visibility: hidden;"><a ng-click="setRoute('home')">
+<!--    <img src="/images/logo.png" border="0" /><div>&nbsp;RodziceNaCzasie<span>.pl</span></div>-->
+    <img src="/images/rnc_logo_80x62.png" align="left" />
+    <span id="app_logo_big_text" class="app_logo_top_part">Rodzice</span><br/>
+    <span id="app_logo_small_text" class="app_logo_bottom_part">naCzasie.pl</span>
+</a></div>
+
+<div id="wrapper" style="visibility: hidden;">
+  <div id="containers" ng-hide="authenticated == ''">
+    <div class="container first">
+        <p class="container_title">Szkoła</p>
+        <div class="container_content">
+            <a ng-click="setRoute('kids')" ng-href="/kids"><div class="container_box green2" id="main_menu_kids"><img src="/images/Metro_Icons/System_Icons/User_Accounts_46x46.png" /><br/><span>Dzieci</span></div></a>
+            <a ng-click="setRoute('schools')" ng-href="/schools"><div class="container_box orange2" id="main_menu_school"><img src="/images/Metro_Icons/Folders_OS/Libraries_46x46.png" /><br/><span>Placówka</span></div></a>
+        </div>
+        <div class="container_content">
+            <!--<a ng-click="setRoute('teachers')"><div class="container_box lightblue3" id="main_menu_teachers"><img src="/images/Metro_Icons/Applications/Live_Messenger_alt_3_46x46.png" /><br/><span>Nauczyciele</span></div></a>-->
+            <a ng-click="setRoute('kidsTimetable')" ng-href="/kidsTimetable"><div ng-click="setRoute('kidsTimetable')" class="container_box violet2" id="main_menu_kidsTimetable"><img src="/images/Metro_Icons/Folders_OS/Groups_46x46.png" /><br/><span>Plan Lekcji</span></div></a>
+            <!--<a ng-click="setRoute('books')"><div class="container_box mattgreen2"><img src="/images/Metro_Icons/System_Icons/Device_Manager_46x46.png" /><br/><span>Wyprawka</span></div></a>-->
+        </div>
+    </div>
+
+    <div class="container second">
+        <p class="container_title">Komunikacja</p>
+        <div class="container_content">
+            <a ng-click="setRoute('contacts')" ng-href="/contacts"><div class="container_box violet" id="main_menu_contacts"><img src="/images/Metro_Icons/System_Icons/Contacts_46x46.png" /><br/><span>Znajomi</span></div></a>
+            <a ng-click="setRoute('groups')" ng-href="/groups"><div class="container_box red2" id="main_menu_groups"><img src="/images/Metro_Icons/System_Icons/Windows_Card_Space_46x46.png" /><br/><span>Grupy</span></div></a>
+        </div>
+        <div class="container_content">
+            <a ng-click="setRoute('news')" ng-href="/news"><div class="container_box lightblue2" id="main_menu_news"><img src="/images/Metro_Icons/Applications/Messaging_alt_46x46.png" /><br/><span>Dyskusje</span></div></a>
+            <a ng-click="setRoute('chat')" ng-href="/chat"><div class="container_box lightblue" id="main_menu_chat"><img src="/images/Metro_Icons/Other/Mail_46x46.png" /><br/><span>Wiadomości</span></div></a>
+        </div>
+    </div>
+
+    <div class="container third" ng-hide="userInfo.username != 'demo1' && userInfo.username != 'demo2' && userInfo.username != 'demo3'">
+        <p class="container_title">Aktówka</p>
+        <div class="container_content">
+            <a ng-click="setRoute('polls')" ng-href="/polls"><div class="container_box darkblue2" id="main_menu_polls"><img src="/images/Metro_Icons/System_Icons/System_alt_46x46.png" /><br/><span>Ankiety</span></div></a>
+            <a ng-click="setRoute('documents')" style="opacity: 0.3;" ng-href="/documents"><div class="container_box mattgreen" id="main_menu_documents"><img src="/images/Metro_Icons/Folders_OS/User_Folder_Blank_46x46.png" /><br/><span>Foldery</span></div></a>
+        </div>
+        <div class="container_content" style="opacity: 0.3;">
+            <!--<a ng-click="setRoute('calendar')" ng-href="/calendar">--><div class="container_box lightblue2" id="main_menu_calendar"><img src="/images/Metro_Icons/Applications/Calendar_46x46.png" /><br/><span>Kalendarz</span></div><!--</a>-->
+            <!--<a ng-click="setRoute('budget')" ng-href="/budget"><div class="container_box green3" id="main_menu_budget"><img src="/images/Metro_Icons/Applications/Calculator_46x46.png" /><br/><span>Budżet</span></div></a>-->
+        </div>
+    </div>
+
+
+  </div>
+
+  <div id="content_box">
+      
+      <div id="logged_user_panel">
+          <div id="logged_user_panel_content"><img src="/images/avatar.png" align="left" width="40" />&nbsp;<span>{{userInfo.first_name}}&nbsp;<div id="more_user_menu" title="Otwórz panel użytkownika"><span><img src="/images/arrow_right_15x24.png" /></span></div></span></div>
+          <div id="logged_user_panel_content_right" style="display: none;">
+              <div class="top_panel_icons" title="Twój profil" ng-click="setRoute('userProfile')"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_1_32x32.png" align="left" /><span>PROFIL</span></div>
+              <!--<div class="top_panel_icons" title="Prywatność" ng-click="setRoute('userPrivacy')"><img src="/images/Metro_Icons/Other/Power_Lock_32x32.png" align="left" /><span>PRYWATNOŚĆ</span></div>-->
+              <!--<div class="top_panel_icons" title="Twoje powiadomienia" ng-click="setRoute('userNotifications')"><img src="/images/Metro_Icons/System_Icons/Info_32x32.png" align="left" /><span>POWIADOMIENIA</span></div>-->
+              <div class="top_panel_icons logoff" title="Wyloguj" ng-click="logout()"><img src="/images/Metro_Icons/Other/Power_Log_Off_32x32.png" align="left" /><span>WYLOGUJ</span></div>
+          </div>
+          <div id="content_box_search">
+              <div id="search">
+                  <searchautocomplete list="searchUsersList" selection="name" id="f_search_users" placeholder="Wyszukaj znajomego..."></searchautocomplete>
+                  <a ng-click="setSearch()" id="search_image_link" title="Szukaj" ng-href="#"><img id="search_image" title="Szukaj" src="/images/Metro_Icons/Other/Search_31x31.png" align="right" /></a>
+                  <div id="search_selected_id" style="display: none;"></div>
+              </div>
+              <!--<div id="search_helper" style="display: none;"><span class="search_helper_title">Czy wiesz, że..?</span><span class="search_helper_close" title="Zamknij"><span title="Zamknij" onclick="closeSearchHelper()">X</span></span><br/>
+              <span class="search_helper_text" id="search_helper_text"></span></div>-->
+          </div>
+      </div>
+      
+<!--      <div id="main_notifications"><div id="main_notification_title"><img title="Zaproś znajomych" src="/images/Metro_Icons/System_Icons/Contacts_add_64x32.png" align="left" />&nbsp;
+          <!--<input type="text" placeholder="Zaproś znajomych" name="f_invite_mail" />- ->
+      </div>
+          
+      </div>-->
+    
+      <div id="content_box_header">
+          
+          <img src="/images/Metro_Icons/Applications/Messaging_alt_32x32.png" align="left" id="module_title_image" />&nbsp;&nbsp;<div id="module_title">&nbsp;</div>
+          <div id="main_layout_help_icon" onmouseover="setHelper()" onmouseout="closeHelper()">POMOC</div>
+      </div>
+          <div id="content_box_panel" ng-view>
+          </div>
+  </div>
+
+</div>
+
+
+<div id="application_loader" style="display: none;">
+    <div id="application_loader_inside">
+    <img border="0" id="application_loader_img" src="/images/rnc_logo_80x62_loader.png">
+    <img border="0" id="application_loader_img2" src="/images/ajax-loader.gif">
+    </div>
+</div>
+
+<div id="helper_wrapper" style="display: none;"></div>
+<!--<script src="/_serveDev/code/app/directives.js"></script>-->
+
+
+<div id="test_info" style="z-index: 999999; position: fixed; bottom: 0px; background-color: #cc0000; left: 0px; text-align: center; color: #e8e6ed; font-size: 14px; font-weight: bold; width: 100%; height: 24px;">
+    Uwaga! Jest to wersja testowa serwisu, w związku z czym niektóre funkcje mogą nie działać prawidłowo.
+</div>
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37173242-1']);
+_gaq.push(['_trackPageview']);
+      
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

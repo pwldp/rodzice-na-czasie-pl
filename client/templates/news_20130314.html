@@ -1,0 +1,88 @@
+    <div class="options_panel">
+        <div class="option"><div class="option_link" onclick="$('#hidden_forms_news').slideToggle(); $('#field_news_text').jScrollPane(); $('#hidden_forms_news').css('height', $('.form_add_news_left').height() + 100 + 'px');"><img src="/images/Dusseldorf_icons/16x16_white/plus.png" align="left" />&nbsp;<span>Dodaj wpis</span></div></div>
+    </div>
+
+    <div class="hidden_forms" id="hidden_forms_news" style="display: none;">
+        <form name="form_add_news" class="form_add_news" ng-submit="saveNews(newsform)">
+            <div class="form_add_news_title" id="form_add_news_title">Wprowadź nowy wpis:</div>
+            <div class="form_add_news_left">
+                <p><input type="text" class="input_text" maxlength="120" placeholder="Tytuł" autocomplete="off" id="field_news_title" ng-model="newsform.title" required oninvalid="this.setCustomValidity('Wprowadź tytuł wpisu!')" /></p>
+                <p><textarea class="input_text" placeholder="Treść" autocomplete="off" id="field_news_text" ng-model="newsform.text" required oninvalid="this.setCustomValidity('Wprowadź treść wpisu!')"></textarea></p>
+                <p class="form_add_news_title">Wpis będzie widoczny dla:<br/>
+                    <div class="new_post_form_kids float_left">
+                        <input type="checkbox" ng-model="newsform.only_me" onclick="enableDisableGroups(this)" id="post_checkbox_for_me" /> <span>Tylko Ciebie</span>
+                    </div>
+                    <div class="new_post_form_kids float_left" ng-repeat="group in groups">
+                        <input type="checkbox" ng-model="group._id" id="new_post_group_{{group.id}}" class="post_checkbox_for_groups" /> <span><b class="group_grey">Grupy&nbsp;&nbsp;</b>{{group.name}}</span>
+                    </div>
+                </p>
+                
+                <p><br class="clear" /><input type="button" class="button" value="Anuluj" ng-click="cancelNews()" />&nbsp;&nbsp;<input type="submit" class="button" value="Zapisz" /></p>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div id="post_types">
+        <div class="post_type hover" id="post_type_ALL" ng-click="getPosts(limit, 0, 'all', [], 1)">Wszystkie</div>
+        <div class="post_type" id="post_type_PRIVATE" ng-click="getPosts(limit, 0, 'private', [], 1)">Tylko dla mnie</div>
+        <div class="post_type" id="post_type_GROUP_{{group.id}}" ng-repeat="group in groups" ng-click="getPosts(limit, 0, 'group', [group.id], 1)"><span><b class="group_grey">Grupy&nbsp;&nbsp;</b>{{group.name}}</div>
+    </div>
+<br class="clear" />
+
+
+<ul id="post_list">
+    <li ng-repeat="post in posts" class="posts">
+
+        <!-- post wlasciwy -->
+        <div class="post_header">
+            <div class="post_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_title">
+                <span class="post_author">{{post.owner_obj.first_name}} {{post.owner_obj.last_name}}</span><br/>
+                <span class="post_created_text">{{post.created_text}}</span><br/>
+                {{post.title}}
+            </div>
+            <div class="float_right" ng-show="post.owner_obj.id == userInfo.id"><a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <div class="post_content">{{post.content}}</div>
+        <div class="post_footer">
+            <span class="post_comments_counter">Komentarzy: {{post.comments_num}}&nbsp;</span>&nbsp;&nbsp;
+            <!--<a><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="0" height="24" /></a>
+            <a title="Edytuj wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/Folders_OS/Configure_alt_2_32x32.png" border="0" width="24" height="24" /></a>&nbsp;&nbsp;
+            <a ng-href="/newsDelete/{{post.id}}?n={{post.title}}" title="Usuń wpis" ng-show="post.owner_id == userInfo.id"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" border="0" width="24" height="24" /></a>-->
+        </div>
+
+        <!-- komentarze -->
+        <div class="post_comments_show_all" ng-click="showAllComments(post.id)" ng-show="post.comments_num > 3" ng-hide="post.comments_num == post.comments_to_show.length">Pokaż wszystkie komentarze</div>
+        <div class="post_comments comments_{{post.id}}" ng-repeat="comment in post.comments_to_show">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content"><span class="post_author">{{comment.owner.first_name}} {{comment.owner.last_name}}</span><span class="post_created_text float_right">{{comment.created_text}}</span><br/>{{comment.content}}</div>
+            <div class="float_right top-4 left4" ng-show="comment.owner.id == userInfo.id"><a ng-href="/newsCommentsDelete/{{comment.id}}" title="Usuń komentarz" class="del_link_posts"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_16x16.png" /></a></div>
+        </div>
+        <div class="post_comments">
+            <form name="form_add_comment_{{post.id}}" class="form_add_comment" ng-submit="saveComment(commentform, post.id, comment)">
+            <div class="post_comments_image"><img src="/images/avatar.png" align="left" /></div>
+            <div class="post_comments_content">
+                <span class="post_author">{{userInfo.first_name}}&nbsp;{{userInfo.last_name}}</span>
+                <span class="post_created_text float_right"></span><br/><textarea id="post_comment_to_add_{{post.id}}" name="post_comment_to_add_{{post.id}}" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 80);" class="post_comment_textarea" ng-model="comment" placeholder="Wpisz komentarz"></textarea>
+                <!--<br class="clear" />-->
+                <input type="submit" class="button margin_left4 top-12 float_right" onclick="resizeTextarea('post_comment_to_add_{{post.id}}', 26);" value="Zapisz" />            
+            </div>
+            </form>
+        </div>
+    </li>
+</ul>
+
+<br class="clear" />
+<br/><br/>
+
+<div class="posts_more_button_div">
+    <div id="posts_more_button"><a ng-click="getPosts(limit, offset, filter, group_ids, 0)">Pokaż starsze wpisy</a></div>
+</div>
+<br class="clear" />
+<br/>
+
+
+
+

@@ -1,0 +1,15 @@
+mongo
+use projectx
+db.users.find()
+db.users.insert({"username": "", "password": ".."})
+db.users.remove({}); -- wszystkie obiekty z kolekcji users
+
+
+
+show dbs - pokazuje bazy danych
+show collections - pokazuje kolekcje (tabele)
+
+
+
+Strona mongoose:
+http://mongoosejs.com/index.html

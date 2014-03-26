@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<p>
+Witaj!
+</p>
+
+<p>
+Ten email został wysłany z serwisu <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a>.
+</p>
+
+<p>
+Użyto serwisu {{origin_name}} do zarejestrowania się w RodziceNaCzasie.pl. 
+Adres email: {{email}}, na który wysłano tą wiadomość, został udostępniony przez {{origin_name}}. 
+</p>
+
+<p>
+Od teraz możesz zawsze logować się do <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a>, 
+klikając na ikonę serwisu {{origin_name}}.
+</p>
+
+<p>
+Jeżeli chcesz ustawić sobie hasło do <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a>,
+kliknij na stronie głównej <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a> na link "Zapomniałeś hasła?".
+Dalej postępuj zgodnie z procedurą odzyskiwania hasła.
+</p>
+
+<p>
+Jeżeli to nie Ty dokonałeś rejestracji w <a href="http://rnc.rodzicenaczasie.pl">RodziceNaCzasie.pl</a>, sprawdź dostęp do swojego konta w {{origin_name}}.
+</p>
+
+{% endblock %}

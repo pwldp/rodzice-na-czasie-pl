@@ -1,0 +1,64 @@
+.font14 {
+    font-size: 14px;
+}
+
+.kid_school_left {
+    float: left; width: 40%; margin-top: 12px; margin-left: 12px;
+}
+
+.school_info {
+    width: 92%; height: 200px; background-color: #2b0135; padding: 12px; margin-left: 6px; margin-top: 6px;    
+}
+
+.school_info span {
+    color: #999999;
+}
+
+.school_info b {
+    color: #ffffff;
+}
+
+.school_info_title {
+    font-size: 14px; color: #7DBADF !important;
+}
+
+.kid_school_teachers_content {
+    width: 92%; padding: 12px; height: auto; margin-top: 12px; margin-bottom: 12px; display: block;
+}
+
+.kid_school_teachers_content_block {
+    float: left; display: block;
+}
+
+.kid_school_teachers_content_block span {
+    font-size: 14px; color: #7DBADF;
+}
+
+.kid_school_teacher_name {
+    float: left; margin-left: 6px; margin-top: 6px; text-align: center; width: 36px;
+}
+
+.kid_school_right {
+    float: left; width: 360px; background-color: #2b0135; margin-top: 18px; padding-bottom: 12px; margin-left: 18px;
+}
+
+.kid_school_students_title {
+    padding: 12px;
+}
+
+.student_box {
+    padding: 12px; margin: 12px; border-top: 1px solid #3E004D;
+}
+
+.student_box span {
+    margin-left: 12px;
+}
+
+.kid_school_students_title span {
+    font-size: 14px; color: #7DBADF;
+}
+
+.kid_school_students_title b {
+    color: #ffffff;
+}
+

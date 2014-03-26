@@ -1,0 +1,25 @@
+Logowanie uzytkownika Konto1
+
+ss.rpc("authorization.lin");
+
+
+Pobranie grupy 'friends' zalogowanego uzytkownika. Jezeli jej nie ma to jest tworzona.
+
+ss.rpc("rpc_ServiceGroup.getGroupFriendsMembers");
+
+
+Zaproszenie uzytkownika Konto2 do grupy znajomych
+
+ss.rpc("rpc_ServiceGroup.inviteToGroup","50adff10d1fbee9751000002","");
+
+
+
+Przyjecie zaproszenia
+
+ss.rpc("rpc_ServiceGroup.confirmInvitation","");
+
+
+Skasowanie uzytkownika Konto2 z grupy znajmomych Konto1.
+
+ss.rpc("rpc_ServiceGroup.delfromGroup","50adff10d1fbee9751000002","");
+

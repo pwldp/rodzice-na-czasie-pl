@@ -1,0 +1,21 @@
+#helper_wrapper {
+    background-color: #000000;
+    opacity: 0.78;
+    width: 100%;
+    height: 100%;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 9000;
+}
+
+.helper_wrapper_inside {
+    background-color: #000000;
+    color: #ffffff;
+    z-index: 9002;
+    opacity: 1;
+}

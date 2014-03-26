@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="kidsApp">
+<head>
+    <title>Dzieciaki:;upload</title>
+    <meta charset="utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <SocketStream>
+    <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+  
+
+</head>
+
+<body>
+Wyślij plik na serwera:
+<p>
+    <form action="/upload" enctype="multipart/form-data" method="post">
+    Wybierz plik: <input type="file" name="fobj">
+    <br><input type="submit" value="Send">    
+    </form>
+</p>
+        
+</body>
+</html>

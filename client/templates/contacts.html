@@ -1,0 +1,65 @@
+
+
+    <div id="contact_letters">
+        <div class="letter hover" id="letter_ALL">Wszyscy</div>
+        <div class="letter" id="letter_A">A</div>
+        <div class="letter" id="letter_B">B</div>
+        <div class="letter" id="letter_C">C</div>
+        <div class="letter" id="letter_Ć">Ć</div>
+        <div class="letter" id="letter_D">D</div>
+        <div class="letter" id="letter_E">E</div>
+        <div class="letter" id="letter_F">F</div>
+        <div class="letter" id="letter_G">G</div>
+        <div class="letter" id="letter_H">H</div>
+        <div class="letter" id="letter_I">I</div>
+        <div class="letter" id="letter_J">J</div>
+        <div class="letter" id="letter_K">K</div>
+        <div class="letter" id="letter_L">L</div>
+        <div class="letter" id="letter_Ł">Ł</div>
+        <div class="letter" id="letter_M">M</div>
+        <div class="letter" id="letter_N">N</div>
+        <div class="letter" id="letter_O">O</div>
+        <div class="letter" id="letter_Ó">Ó</div>
+        <div class="letter" id="letter_P">P</div>
+        <div class="letter" id="letter_R">R</div>
+        <div class="letter" id="letter_S">S</div>
+        <div class="letter" id="letter_Ś">Ś</div>
+        <div class="letter" id="letter_T">T</div>
+        <div class="letter" id="letter_U">U</div>
+        <div class="letter" id="letter_W">W</div>
+        <div class="letter" id="letter_Z">Z</div>
+        <div class="letter" id="letter_Ź">Ź</div>
+        <div class="letter" id="letter_Ż">Ż</div>
+    </div>
+
+
+    <div class="notifications_container">
+    <div class="notifications" id="invitation_box_{{invitation.invit_id}}" ng-repeat="invitation in invitations">
+    <form name="friends_invitations_form" ng-submit="confirmInvitationForm(invitation)">
+        <p><img src="/images/important.gif" align="left" />&nbsp;&nbsp;Czeka na Ciebie zaproszenie do znajomych od:&nbsp;&nbsp;<b class="font14">{{invitation.inv_user_name}}</b>
+           <div class="notifications_confirm">
+               <input type="submit" class="button" value="Zatwierdź" />&nbsp;&nbsp;
+               <button class="red" ng-click="rejectInvitation(invitation.invit_id)">Odrzuć</button>
+           </div>
+        </p>
+    </form>
+    </div>
+    </div>
+
+    <div class="vis_card">
+        <div class="contact_vis_card_inner" id="vis_card_inner_{{contact.id}}" ng-repeat="contact in contacts">
+            <div class="vis_card_image"><img src="/images/avatar.png" width="60" align="left" /></div>
+            <div class="contact_vis_card_info" id="vis_card_info_{{contact.id}}">
+                <span><b class="contact_name" id="contact_name_{{contact.id}}">{{contact.first_name}} <label>{{contact.last_name}}</label></b></span><br/>
+                <span>{{contact.city}}</span><br/>
+            </div>
+            <div class="contact_inside_box contact_vis_card_bottom bottom_box_options">
+                <!--<div class="bottom_box_options_icons" title="Przypisz do grupy"><a ng-click="setRoute('groups')"><img src="/images/Metro_Icons/System_Icons/Windows_Card_Space_32x32.png" /></a></div>-->
+                <div class="bottom_box_options_icons" title="Skontaktuj się z użytkownikiem"><a ng-href="/chat/{{contact.id}}?n={{contact.first_name}} {{contact.last_name}}"><img src="/images/Metro_Icons/Other/Mail_32x32.png" class="schoolclass_contact_icon" title="Skontaktuj się z użytkownikiem" /></a></div>
+                <div class="bottom_box_options_icons" title="Usuń znajomego"><a ng-href="/contactsDelete/{{contact.id}}?n={{contact.first_name}} {{contact.last_name}}"><img src="/images/Metro_Icons/System_Icons/Recycle_Bin_Full_32x32.png" /></a></div>
+            </div>
+        </div>
+        
+    </div>
+
+

@@ -1,0 +1,21 @@
+
+    <div class="hidden_forms" id="hidden_forms_kids_second_parent">
+        <form ng-submit="saveParent(kidformparent)" name="kidformparent" class="form_add_kid_sec_parent">
+          <div class="form_kid_left">            
+            <div class="form_add_kid_title">Podaj adres email innego opiekuna dziecka.</div>
+            <p>Na podany adres zostanie wysłane zaproszenie do serwisu. Wskazany opiekun/rodzic będzie miał pełen dostęp do danych dziecka.</p>
+            <p><input type="email" class="input_text" placeholder="Email" ng-model="kidformparent.email" required oninvalid="this.setCustomValidity('Wprowadź poprawny adres email!')" /></p>
+          </div>
+          <div class="form_kid_right">
+            <p>&nbsp;</p>
+          </div>
+          <p><input type="button" class="button" ng-click="cancelKid()" value="Anuluj" />&nbsp;&nbsp;
+             <input type="submit" class="button" value="Zapisz" /></p>
+        </form>
+
+
+    </div>
+
+
+
+
